@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>hello</title>
+    <url>/2024/04/24/hello/</url>
+    <content><![CDATA[<p>第一个笔记</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第一篇笔记</title>
+    <url>/2024/04/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="你好这是我滴第一篇笔记耶耶耶"><a href="#你好这是我滴第一篇笔记耶耶耶" class="headerlink" title="你好这是我滴第一篇笔记耶耶耶"></a>你好这是我滴第一篇笔记耶耶耶</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>asd a</li>
+<li>asda</li>
+<li>qweq</li>
+<li>123</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Yolov10小知识</title>
+    <url>/2024/05/26/Yolov10%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p> 今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。</p>
+<p>为了提升性能效率边界，这一次改进的是后处理和模型架构。</p>
+<p>在原来，YOLO后处理依赖着非极大值抑制（NMS），性能对NMS的超参数敏感，阻碍了YOLO的端到端部署，产生了一定的推理延迟。</p>
+<p>增强特征提取能力可以考虑以下模块：DarkNet、CSPNet、EfficientRep和ELAN等</p>
+<p>DarkNet是yolov3里面的backbone，主要是由重复堆叠下采样卷积+n*残差块组成。主要是由cnn卷积核提取特征。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://img-blog.csdnimg.cn/direct/14b426a4f6b44003b64dd82a14daa2d7.png"
+                      alt="在这里插入图片描述"
+                ></p>
+<p>CSPNet的主要目的是使该体系结构能够实现更丰富的梯度组合，同时减少计算量。</p>
+<p>增强多尺度特征融合：PAN、BiC、GD和RepGFPN等</p>
+<p>模型缩放策略和重新参数化技术</p>
+]]></content>
+      <tags>
+        <tag>Object Detection</tag>
+      </tags>
+  </entry>
+</search>
