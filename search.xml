@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hello</title>
-    <url>/2024/04/24/hello/</url>
-    <content><![CDATA[<p>第一个笔记</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第一篇笔记</title>
-    <url>/2024/04/25/%E7%AC%AC%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="你好这是我滴第一篇笔记耶耶耶"><a href="#你好这是我滴第一篇笔记耶耶耶" class="headerlink" title="你好这是我滴第一篇笔记耶耶耶"></a>你好这是我滴第一篇笔记耶耶耶</h3><div class="highlight-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="code"><pre><span class="line">npm install </span><br></pre></td></tr></table></figure></div>
-
-<ul>
-<li>asd a</li>
-<li>asda</li>
-<li>qweq</li>
-<li>123</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Yolov10小知识</title>
     <url>/2024/05/26/Yolov10%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p> 今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。</p>
@@ -40,5 +21,78 @@
       <tags>
         <tag>Object Detection</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>进程调度算法</title>
+    <url>/2024/08/28/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="先来先服务调度算法FCFS"><a href="#先来先服务调度算法FCFS" class="headerlink" title="先来先服务调度算法FCFS"></a>先来先服务调度算法FCFS</h2><p><strong>每次从就绪队列选择最先进入队列的进程，然后一直运行，直到进程退出或被阻塞，才会继续从队列中选择第一个进程接着运行。</strong></p>
+<p>对短作业不利。</p>
+<p>适用于 CPU 繁忙型作业的系统，而不适用于 I&#x2F;O 繁忙型作业的系统。</p>
+<h2 id="最短作业优先调度算法SJF"><a href="#最短作业优先调度算法SJF" class="headerlink" title="最短作业优先调度算法SJF"></a>最短作业优先调度算法SJF</h2><p><strong>优先选择运行时间最短的进程来运行</strong>，这有助于提高系统的吞吐量。</p>
+<p>对长作业不利，被推迟到很后面。</p>
+<h2 id="高响应比优先调度算法HRRN"><a href="#高响应比优先调度算法HRRN" class="headerlink" title="高响应比优先调度算法HRRN"></a>高响应比优先调度算法HRRN</h2><p>进程调度先运行响应比优先级最高的。<br>$$<br>优先权&#x3D;\frac{等待时间+要求服务时间}{要求服务时间}<br>$$<br>兼顾长作业和短作业。</p>
+<h2 id="时间片轮转调度算法RR"><a href="#时间片轮转调度算法RR" class="headerlink" title="时间片轮转调度算法RR"></a>时间片轮转调度算法RR</h2><p><strong>使用最广</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.assets/image-20240828124832086.png"
+                      alt="image-20240828124832086"
+                ></p>
+<p>每个进程被分配一个时间段，称为时间片，即在该时间内可以为该进程运行。</p>
+<ul>
+<li>如果时间片用完，进程还在运行，那么将会把此进程从 CPU 释放出来，并把 CPU 分配另外一个进程；</li>
+<li>如果该进程在时间片结束前阻塞或结束，则 CPU 立即进行切换；</li>
+</ul>
+<p>另外，时间片的长度就是一个很关键的点：</p>
+<ul>
+<li>如果时间片设得太短会导致过多的进程上下文切换，降低了 CPU 效率；</li>
+<li>如果设得太长又可能引起对短作业进程的响应时间变长。将</li>
+</ul>
+<p>通常时间片设为 <code>20ms~50ms</code> 通常是一个比较合理的折中值。</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>数模</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>about_conda</title>
+    <url>/2024/07/09/about-conda/</url>
+    <content><![CDATA[<p>记录一下常用的conda命令</p>
+<p>查看版本</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure></div>
+
+<p>查看环境配置</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda config --show</span><br></pre></td></tr></table></figure></div>
+
+<p>更新conda</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure></div>
+
+<p>创建虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda create -n env_name python=3.9</span><br></pre></td></tr></table></figure></div>
+
+<p>查看虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda env list</span><br><span class="line">conda info -e</span><br><span class="line">conda info --envs</span><br></pre></td></tr></table></figure></div>
+
+<p>激活虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda activate env_name</span><br></pre></td></tr></table></figure></div>
+
+<p>退出虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure></div>
+
+<p>删除虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda remove --name env_name --all</span><br></pre></td></tr></table></figure></div>
+
+<p>删除虚拟环境中的某些包</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda remove --name env_name  package_name</span><br></pre></td></tr></table></figure></div>
+
+<p>查看环境中有的包</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda list</span><br></pre></td></tr></table></figure></div>
+
+<p>克隆虚拟环境</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda create -n BBB --clone AAA</span><br></pre></td></tr></table></figure></div>
+
+<p>在本地的conda环境AAA，克隆给新环境BBB</p>
+]]></content>
   </entry>
 </search>
