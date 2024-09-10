@@ -30,12 +30,12 @@
 <p>适用于 CPU 繁忙型作业的系统，而不适用于 I&#x2F;O 繁忙型作业的系统。</p>
 <h2 id="最短作业优先调度算法SJF"><a href="#最短作业优先调度算法SJF" class="headerlink" title="最短作业优先调度算法SJF"></a>最短作业优先调度算法SJF</h2><p><strong>优先选择运行时间最短的进程来运行</strong>，这有助于提高系统的吞吐量。</p>
 <p>对长作业不利，被推迟到很后面。</p>
-<h2 id="高响应比优先调度算法HRRN"><a href="#高响应比优先调度算法HRRN" class="headerlink" title="高响应比优先调度算法HRRN"></a>高响应比优先调度算法HRRN</h2><p>进程调度先运行响应比优先级最高的。<br>$$<br>优先权&#x3D;\frac{等待时间+要求服务时间}{要求服务时间}<br>$$<br>兼顾长作业和短作业。</p>
+<h2 id="高响应比优先调度算法HRRN"><a href="#高响应比优先调度算法HRRN" class="headerlink" title="高响应比优先调度算法HRRN"></a>高响应比优先调度算法HRRN</h2><p>进程调度先运行响应比优先级最高的。<br>$$<br>优先权&#x3D; \frac { 等待时间+要求服务时间 }{ 要求服务时间 }<br>$$<br>兼顾长作业和短作业。</p>
 <h2 id="时间片轮转调度算法RR"><a href="#时间片轮转调度算法RR" class="headerlink" title="时间片轮转调度算法RR"></a>时间片轮转调度算法RR</h2><p><strong>使用最广</strong></p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.assets/image-20240828124832086.png"
+                     data-src="/../_posts/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.assets/image-20240828124832086.png"
                       alt="image-20240828124832086"
                 ></p>
 <p>每个进程被分配一个时间段，称为时间片，即在该时间内可以为该进程运行。</p>
