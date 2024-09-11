@@ -11,8 +11,8 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/direct/14b426a4f6b44003b64dd82a14daa2d7.png"
-                      alt="在这里插入图片描述"
+                     data-src="/images/14b426a4f6b44003b64dd82a14daa2d7.png"
+                      alt="图片"
                 ></p>
 <p>CSPNet的主要目的是使该体系结构能够实现更丰富的梯度组合，同时减少计算量。</p>
 <p>增强多尺度特征融合：PAN、BiC、GD和RepGFPN等</p>
