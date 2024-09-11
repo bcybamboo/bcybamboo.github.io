@@ -35,7 +35,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/../_posts/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.assets/image-20240828124832086.png"
+                     data-src="/images/image-20240828124832086.png"
                       alt="image-20240828124832086"
                 ></p>
 <p>每个进程被分配一个时间段，称为时间片，即在该时间内可以为该进程运行。</p>
