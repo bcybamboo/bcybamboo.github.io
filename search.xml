@@ -95,4 +95,98 @@
 <p>在本地的conda环境AAA，克隆给新环境BBB</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>如何读论文</title>
+    <url>/2024/02/16/begin/</url>
+    <content><![CDATA[<h1 id="如何读论文"><a href="#如何读论文" class="headerlink" title="如何读论文"></a>如何读论文</h1><p>从头开始看一篇论文所花的时间太久了，而且记忆不深，就没什么效果（对我来说），所以在参考了学长的观点后，我觉得可以从以下结构开始阅读：</p>
+<table>
+<thead>
+<tr>
+<th align="center">原来结构</th>
+<th align="center">推荐结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Abstract</td>
+<td align="center">Abstract(摘要)</td>
+</tr>
+<tr>
+<td align="center">Introduction</td>
+<td align="center">Discussion（讨论）</td>
+</tr>
+<tr>
+<td align="center">Methods</td>
+<td align="center">Introduction（导言）</td>
+</tr>
+<tr>
+<td align="center">Results</td>
+<td align="center">Results（结果）</td>
+</tr>
+<tr>
+<td align="center">Discussion</td>
+<td align="center">Methods（方法）</td>
+</tr>
+</tbody></table>
+<h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>关注四个信息：</p>
+<ul>
+<li>研究目的（为什么要研究）</li>
+<li>方法（如何研究）</li>
+<li>结果（发现了什么）</li>
+<li>结论（它意味着什么）</li>
+</ul>
+<h2 id="Discussion（讨论）"><a href="#Discussion（讨论）" class="headerlink" title="Discussion（讨论）"></a>Discussion（讨论）</h2><p>内容一般是：</p>
+<ul>
+<li>明确回答introduction中提出的问题</li>
+<li>解释结果如何支持结论</li>
+</ul>
+<p>看看自己是否理解和相信作者的观点</p>
+<h2 id="Introduction（导言）"><a href="#Introduction（导言）" class="headerlink" title="Introduction（导言）"></a>Introduction（导言）</h2><p>作用：</p>
+<ul>
+<li>激发我们对主题的兴趣</li>
+<li>将文章置于大背景中</li>
+</ul>
+<p>一般来说，先引导作者从一般问题（对主题的已知了解）到具体问题（对主题的未知了解），再到重点问题（作者提出的问题）。所以要介绍之前的作品以及这些作品与该主题的关系。</p>
+<p>想想作者为什么要做这个研究，研究的问题和讨论的问题是否一致</p>
+<h2 id="Results（结果）"><a href="#Results（结果）" class="headerlink" title="Results（结果）"></a>Results（结果）</h2><p>内容一般是：</p>
+<ul>
+<li>作者的发现</li>
+<li>关键数据，通常用图表显示</li>
+</ul>
+<p>问问自己所收集的数据是否适合回答所研究的问题</p>
+<h2 id="Methods（方法）"><a href="#Methods（方法）" class="headerlink" title="Methods（方法）"></a>Methods（方法）</h2><ul>
+<li>做了哪些实验来回答引言中提出的问题</li>
+</ul>
+<h2 id="如何找到文章的要点"><a href="#如何找到文章的要点" class="headerlink" title="如何找到文章的要点"></a>如何找到文章的要点</h2><p>主要地方包括：</p>
+<ul>
+<li><p>文章标题</p>
+</li>
+<li><p>Abstract</p>
+</li>
+<li><p>Keywords</p>
+<ul>
+<li>“We hypothesize that…”（假设）</li>
+<li>“We propose…”(建议)</li>
+<li>“We introduce…”（提出）</li>
+</ul>
+</li>
+<li><p>图表的标题</p>
+</li>
+<li><p>introduction的第一句和最后一句</p>
+</li>
+</ul>
+<h2 id="notes"><a href="#notes" class="headerlink" title="notes"></a>notes</h2><p>做笔记也是阅读文献中比较重要的一步，用固定的格式比较方便查找：</p>
+<ul>
+<li><strong>Article title</strong>（文章标题）</li>
+<li>作者，期刊</li>
+<li>有关方向</li>
+<li>阅读日期</li>
+<li>网址</li>
+<li>主要概念（推荐结构）</li>
+<li>我自己的想法</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
 </search>
