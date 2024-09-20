@@ -189,4 +189,249 @@
         <tag>notes</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LPSNet：Lightweight and Progressively-Scalable Networks for Semantic Segmentation</title>
+    <url>/2024/03/16/LPSNet/</url>
+    <content><![CDATA[<h1 id="Lightweight-and-Progressively-Scalable-Networks-for-Semantic-Segmentation"><a href="#Lightweight-and-Progressively-Scalable-Networks-for-Semantic-Segmentation" class="headerlink" title="Lightweight and Progressively-Scalable Networks for Semantic Segmentation"></a>Lightweight and Progressively-Scalable Networks for Semantic Segmentation</h1><h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>主要方法：通过一次性扩展单个维度（卷积块的数量、通道的数量或输入分辨率）来逐步将小型网络扩展到更大的网络，以满足最佳速度&#x2F;精度权衡。</p>
+<h2 id="Conclusion-and-Discussion（总结和讨论）"><a href="#Conclusion-and-Discussion（总结和讨论）" class="headerlink" title="Conclusion and Discussion（总结和讨论）"></a>Conclusion and Discussion（总结和讨论）</h2><p>它是一种探索经济设计并逐步扩大网络以实现有效的语义分割</p>
+<p>可能影响精度&#x2F;延迟的平衡的因素为：<strong>多路径框架中的基本卷积块和路径交互方式</strong></p>
+<p>在卷积块中使用3×3Conv和双线性插值实现跨路径的交互</p>
+<p>（上采样换成PointRend会怎样？）</p>
+<p>先构建一个微型网络，然后一次性扩展单个维度将微型网络扩展为一系列较大的网络</p>
+<h2 id="Introduction（引言）"><a href="#Introduction（引言）" class="headerlink" title="Introduction（引言）"></a>Introduction（引言）</h2><p>语义分割是为图像分割或视频帧的每个像素分配语义标签</p>
+<p>多尺度学习沿三个不同维度进行语义分割：</p>
+<ul>
+<li>U-shape(结构分层融合特征，逐步提高空间分辨率)</li>
+<li>pyramid pooling（在多个尺度上执行空间或空洞空间金字塔池化深入研究金字塔信息）</li>
+<li>muti-path framework（将输入图像的大小调整为多个分辨率或尺度，并将每个尺度输入到深度学习的单独路径中）</li>
+</ul>
+<p>本文使用的就是muti-path framework，将输入分辨率从高到低并行放置，直接保持高分辨率信息，这样学习到的特征可能更有能力对每个像素进行分类和定位</p>
+<ul>
+<li>轻量化用于语义分割的计算单元</li>
+<li>逐步扩大网络，同时平衡准确性和推理延迟</li>
+</ul>
+<p><strong>一次性扩展单个维度（卷积块的数量、通道的数量或输入分辨率）</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%E8%81%94%E6%83%B3%E6%88%AA%E5%9B%BE_20240315191556.png"
+                      alt="联想截图_20240315191556"
+                ></p>
+<h3 id="contributions"><a href="#contributions" class="headerlink" title="contributions:"></a>contributions:</h3><p>(1) The lightweight design of convolutional blocks and the way of path interactions in multipath framework are shown capable of regarding as the practical principles for efficient semantic segmentation; （卷积块的轻量化设计和多路径框架中的路径交互方式实用）</p>
+<p>(2) The exquisitely devised LPS-Net is shown able to progressively expand the network complexity while striking the right accuracy-efficiency tradeoff; （可扩展网络复杂性）</p>
+<p>(3) LPSNet has been properly verified through extensive experiments over three datasets, and superior capability is observed on both NVIDIA GPUs and embedded devices in our experiments.（结果很不错）</p>
+<h2 id="Results（结果）"><a href="#Results（结果）" class="headerlink" title="Results（结果）"></a>Results（结果）</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240315194455560.png"
+                      alt="image-20240315194455560"
+                ></p>
+<h2 id="Methods（方法）"><a href="#Methods（方法）" class="headerlink" title="Methods（方法）"></a>Methods（方法）</h2><h3 id="Macro-Architecture（employs-the-multi-path-recipe）"><a href="#Macro-Architecture（employs-the-multi-path-recipe）" class="headerlink" title="Macro Architecture（employs the multi-path recipe）"></a>Macro Architecture（employs the multi-path recipe）</h3><p>LPS-Net 中采用多路径配方的宏架构</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240315205546026.png"
+                      alt="image-20240315205546026"
+                ></p>
+<p>（轻量化）三个设计原则：（卷积类型、通道数数量、跨多个路径的交互方式）</p>
+<p>将输入图像的大小调整为多个尺度，并将每个尺度反馈送到单独的路径中。</p>
+<p>将交互模块放置在阶段 3∼5 的末尾，旨在促进路径之间的相互交互。所有路径的输出被聚合并输入到分割头中，以生成具有 num 类通道的分数图。</p>
+<p>对分数图执行双线性上采样，产生分辨率为 H×W 的输出，与输入分辨率完全匹配</p>
+<h3 id="卷积块"><a href="#卷积块" class="headerlink" title="卷积块"></a>卷积块</h3><ul>
+<li>卷积块的类型</li>
+</ul>
+<p>通过实验选择用标准卷积作为 <code>LPSNet</code> 中的构建块</p>
+<ul>
+<li>通道数</li>
+</ul>
+<p>具有 2n-divisible 通道宽度的卷积的可并行化实现。因此，将 <code>LPSNet</code> 中卷积的通道宽度设为2n-divisible，其中 <code>n</code> 尽可能大。</p>
+<h3 id="Multi-Path交互"><a href="#Multi-Path交互" class="headerlink" title="Multi-Path交互"></a><strong>Multi-Path交互</strong></h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240316154125443.png"
+                      alt="image-20240316154125443"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240316154135995.png"
+                      alt="image-20240316154135995"
+                ></p>
+<h3 id="扩展算法"><a href="#扩展算法" class="headerlink" title="扩展算法"></a>扩展算法</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240316154602791.png"
+                      alt="image-20240316154602791"
+                ></p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>细碎知识点</title>
+    <url>/2024/04/24/%E7%BB%86%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别"><a href="#关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别" class="headerlink" title="关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别"></a>关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别</h1><h3 id="监督学习（Supervised-Learning-或Supervised-Machine-Learning）"><a href="#监督学习（Supervised-Learning-或Supervised-Machine-Learning）" class="headerlink" title="监督学习（Supervised Learning 或Supervised Machine Learning）"></a>监督学习（Supervised Learning 或Supervised Machine Learning）</h3><p>使用标记数据集来训练算法，一边训练后的算法可以对数据进行分类或准确预测结果。</p>
+<p>可分成两类：分类（线性分类器、支持向量机、决策树、随机森林等）、回归（使用一种算法理解因变量和自变量之间的关系，有助于根据不同的数据点来预测数值）</p>
+<h3 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h3><p>用算法来分析并聚类未标记的数据集，以便发现数据中隐藏的模式和规律，而不需要人工干预。</p>
+<p>主要用于三个任务：聚类、关联和降维</p>
+<ul>
+<li>聚类（Clustering）：数据挖掘技术，用于根据未标记数据的相似性或差异性对他们进行分类分组。适用于细分市场的划分、图像压缩等。</li>
+<li>关联（Association）：使用不同的规则来查找给定数据集中变量之间的关系。常用于推荐算法。</li>
+<li>降维（Dimensionality Reduction）:当特定数据集中的特征（或维度）太多时，在保持数据完整性的同时，将数据输入的数量（维度）减少到可管理可操作的大小。常用于数据预处理阶段，例如用自编码器把图片数据中的噪点去除，以提高图像质量。</li>
+</ul>
+<h4 id="对比："><a href="#对比：" class="headerlink" title="对比："></a>对比：</h4><p>监督学习和无监督学习本质区别就是<strong>用来训练的数据是否进行标注</strong>。</p>
+<p>监督学习处理数据比较耗费算力，但结果比较准确，可以解释。无监督学习处理数据算力开销不大，但是无法解释，也许是可以挖掘出未被人类注意的新规律的。</p>
+<h3 id="半监督学习（Semi-supervised-Learning）"><a href="#半监督学习（Semi-supervised-Learning）" class="headerlink" title="半监督学习（Semi-supervised Learning）"></a>半监督学习（Semi-supervised Learning）</h3><p>适用情况：相对较少的标记数据+大量未标记数据</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240508170017070.png"
+                      alt="image-20240508170017070"
+                ></p>
+<h3 id="强化学习（Reinforcement-Learning）"><a href="#强化学习（Reinforcement-Learning）" class="headerlink" title="强化学习（Reinforcement Learning）"></a>强化学习（Reinforcement Learning）</h3><p>对算法执行的正确和不正确行为分别进行奖励和惩罚的制度，目的是使算法获得最大的累积奖励，从而学会在特定环境下做出最佳决策。</p>
+<ul>
+<li>代理人，Agent：一个我们试图学习的实体（即玩家在游戏中所使用的角色）；</li>
+<li>环境，Environment：代理人所处的环境（游戏所设置的游戏世界设定）；</li>
+<li>状态，State：代理人在环境中获得自己当前状态的各种信息；</li>
+<li>行动，Actions：代理人在环境中所执行的与环境交互的各种动作（马里奥游戏中的行走、跑步、跳跃等等）；</li>
+<li>奖励，Reward：代理人从环境中获得的行动反馈（在马里奥的游戏里，即为正确的行动增加的积分&#x2F;硬币，是一个积极的奖励。因落入陷阱或被怪物吃掉而丢失积分，或损失一条“命”，则是一个消极的奖励）；</li>
+<li>策略，Policy：根据代理人当前的状态决定一个合适的决策，以最大化地在未来某个时间段内获得正面报酬，最小化获得负面的惩罚；</li>
+<li>价值函数， Value function：决定什么才是对代理人是有益的。</li>
+</ul>
+<h3 id="自监督学习（self-supervised-learning）SSL"><a href="#自监督学习（self-supervised-learning）SSL" class="headerlink" title="自监督学习（self-supervised learning）SSL"></a>自监督学习（self-supervised learning）SSL</h3><p>不需要人工标注训练数据，主要训练从大规模的无监督数据中挖掘能够应用于自身的监督信息，从而从输入的一部分数据中去学习另一部分。</p>
+<p>自监督学习可以通过对图片的剪裁、九宫格切割后再打乱、镜像或降低色彩饱和度等操作，让机器学会改变后的图像与原图像之间存在着十分接近的联系，这种紧密联系在二维的 Embedding 坐标空间中显示为极度靠近的坐标点。不仅仅是图片，自监督学习可以对音频、视频、文本进行同样的学习。然而这些紧密的联系，是无法通过人类标注员来操作的。就好比我们可以对图中的鸟标注为“鸟”，但是自监督学习只会把它标注为 Embedding 空间中数据结构位置信息，这在本质上和人类给这幅图标注为“鸟”是一个意思。</p>
+<p>可以看出，自监督学习很容易被误解为无监督学习中的聚类，因为他们也同样是<strong>把不同的未标记的事物进行分类</strong>，但其实自监督学习是在<strong>最大化同一类样本在 Embedding 空间中表征的相似性</strong>，同时<strong>最小化不同类样本之间表征的相似性</strong>。要做到相同类别的事物表达相近，不同类别的事物表达要更远，也就是说要极端化这种对比。通过这样的极端化过程，编码器（Encoder）能学到样本在 Embedding 空间中的许多潜在特征。所谓物以类聚，人以群分！</p>
+<p>可以对巨量数据自动进行更广泛的标注，对下游任务产生帮助。也适合挖掘大量的数据集中不被人类关注过的“隐蔽”信息。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240508172136916.png"
+                      alt="image-20240508172136916"
+                ></p>
+<h2 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h2><p>由于硬件资源的限制，使用多台机器共同完成训练任务。</p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PointRend__Image Segmentation as Rendering</title>
+    <url>/2024/03/22/PointRend/</url>
+    <content><![CDATA[<h1 id="PointRend-Image-Segmentation-as-Rendering"><a href="#PointRend-Image-Segmentation-as-Rendering" class="headerlink" title="PointRend: Image Segmentation as Rendering"></a><a class="link"   href="https://arxiv.org/abs/1912.08193" >PointRend: Image Segmentation as Rendering <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p><strong>现有方法</strong>：一般会输出一个原图1&#x2F;8或1&#x2F;16大小的预测图，然后通过双线性插值来补齐最后的8x&#x2F;16x分辨率</p>
+<p><strong>现有方法存在的问题</strong></p>
+<p>过采样：对于图片中低频区域，没必要用太多的采样点，却使用太多采样点造成过采样；<br>欠采样 ：对于图片中高频区域（ 靠近物体边界 ），这些区域的采样过于稀疏，导致分割出的边界过于平滑。</p>
+<p><strong>PointRend</strong></p>
+<p>提出的 PointRend 是一个通用的模块，它允许许多可能的实现：输入一个或多个 feature map（通常比原图分辨率低 4x 或 16x），输出高分辨率的预测结果.</p>
+<ul>
+<li><p>PointRend 只对选择的点进行预测，而不是对所有输入点都进行预测.</p>
+</li>
+<li><p>对选择的点先通过插值的方式提取点特征，然后用 point head subnetwork 来预测点标签</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240322121912139.png"
+                      alt="image-20240322121912139"
+                ></p>
+<p><strong>Inference</strong></p>
+<p>每个迭代循环中：<br>① 用双线性插值对上次预测出的 seg mask 进行上采样；<br>② 然后在上采样后的 mask 中找出 N 个最不确定的点（比如 binary mask 中 pribabilities 接近 0.5 的点）；<br>③ 用 pointrend 提取这些点的 feature 并预测它们的 label.</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240322121856009.png"
+                      alt="image-20240322121856009"
+                ></p>
+<p><strong>采样的三个原则</strong></p>
+<p><strong>过生成</strong>: 从均匀分布中随机抽取 KN（K&gt;1）个点作为候选点。</p>
+<p><strong>重要性抽样</strong>: 插值得到所有 KN 点处的的粗预测，然后计算这些点的不确定性，选择其中最不确定的 βN ( β∈[0,1] ) 个点。</p>
+<p><strong>广域覆盖:</strong> 剩下的 (1−β)N 个点从均匀分布中随机采样得到</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240322122545106.png"
+                      alt="image-20240322122545106"
+                ></p>
+<p><strong>Coarse prediction features</strong></p>
+<p><strong>必要性：</strong>只有点特征是不够的，因为 ① 对实例分割而言，一个点可能在两个实例的交叠处，需要区域信息来辅助判断；② 对实例分割和语义分割两项任务而言，点特征所使用的 feature map 可能只包含 low-level 的信息，因此还需要包含进去一些上下文和语义信息.</p>
+<p>因此使用粗分割结果作为辅助信息，被涵盖在点特征表示向量中：一个点处表示 K 分类结果的 K 维向量.</p>
+<p><strong>Point Head</strong></p>
+<p>2 个 1024-wide hidden layers 的 MLP</p>
+<p>类似于图卷积或 PointNet，这个 MLP 对所有的点<strong>共享参数.</strong></p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UPDP__A Unified Progressive Depth Pruner for CNN and Vision Transformer</title>
+    <url>/2024/07/01/%E5%89%AA%E6%9E%9D/</url>
+    <content><![CDATA[<h1 id="UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer"><a href="#UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer" class="headerlink" title="UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer"></a>UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer</h1><p>简要介绍：一种很厉害的剪枝方法，适用于cnn和transformer</p>
+<h2 id="传统剪枝（pruning）"><a href="#传统剪枝（pruning）" class="headerlink" title="传统剪枝（pruning）"></a><a href="https://www.cnblogs.com/armcvai/p/17143077.html"><strong>传统剪枝</strong>（pruning）</a></h2><p>模型剪枝算是模型压缩的一种，直接减少参数量，为了减少对硬件的要求、加速模型推理和落地。（模型稀疏化）</p>
+<p>做法：直接删除部分不重要的权重参数，减少参数量和计算量，尽量使精度不受影响。</p>
+<p>在神经网络中，<strong>非结构化稀疏</strong>包括权重稀疏、激活稀疏、梯度稀疏</p>
+<h4 id="权重稀疏"><a href="#权重稀疏" class="headerlink" title="权重稀疏"></a>权重稀疏</h4><p>权重的数值分布比较像正态分布，而且越接近0，权重越多。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240624201620571.png"
+                      alt="image-20240624201620571"
+                ></p>
+<p>卷积层的剪枝敏感性大于全连接层，且第一层卷积层最为敏感。</p>
+<p>剪枝三段式工作 <code>pipeline</code> ：训练、剪枝、微调</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240624201850731.png"
+                      alt="image-20240624201850731"
+                ></p>
+<p>对硬件加速不友好，尤其是GPU，因为稀疏后得到的矩阵是高度非规则的矩阵。</p>
+<h4 id="激活稀疏"><a href="#激活稀疏" class="headerlink" title="激活稀疏"></a>激活稀疏</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240624205508674.png"
+                      alt="image-20240624205508674"
+                ></p>
+<p>APoZ高  –&gt;  冗余</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240624205700813.png"
+                      alt="image-20240624205700813"
+                ></p>
+<p>剪枝三段式工作：</p>
+<ol>
+<li>正常训练，然后在大型数据集上运行网络以获得每个神经元的APoZ。</li>
+<li>根据标准修剪高APoZ的神经元，并移除相应的神经元连接。</li>
+<li>使用修建前的权重初始化之后再重新训练一遍。</li>
+</ol>
+<h3 id="结构化稀疏（粗粒系稀疏、块稀疏）"><a href="#结构化稀疏（粗粒系稀疏、块稀疏）" class="headerlink" title="结构化稀疏（粗粒系稀疏、块稀疏）"></a>结构化稀疏（粗粒系稀疏、块稀疏）</h3><ul>
+<li><code>channel/filter-wise</code> 减少网络通道</li>
+<li><code>shape-wise</code></li>
+</ul>
+<p>一般都是丢弃整行或整列的权重，或者卷积层中的整个滤波器。</p>
+<p>结构化剪枝包含通道剪枝和块剪枝等技术。通道修剪侧重于消除内核内的整个通道过滤器，而块修剪则在更大范围内进行，通常针对完整块。</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>提出一种新颖的子网块修剪策略和渐进式训练方法，而且扩展到transformer模型，效果很好</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>主要贡献：</p>
+<p>（1）我们提出了一种统一且高效的<strong>深度剪枝方法</strong>来优化 CNN 和视觉 Transformer 模型。</p>
+<p> (2)我们提出了一种用于<strong>子网优化的渐进式训练策略</strong>，以及一种<strong>使用重新参数化技术的新颖的块修剪策略</strong>。 </p>
+<p>(3) 对 CNN 和视觉 Transformer 模型进行全面的实验，以展示我们的深度剪枝方法的优越剪枝性能。</p>
+<p>深度卷积减少计算量和参数，但是内存占用增加</p>
+<h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>（未完待续）</p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAM 2__Segment Anything in Images and Videos</title>
+    <url>/2024/08/22/SAM2/</url>
+    <content><![CDATA[<h1 id="SAM-2-Segment-Anything-in-Images-and-Videos"><a href="#SAM-2-Segment-Anything-in-Images-and-Videos" class="headerlink" title="SAM 2: Segment Anything in Images and Videos"></a>SAM 2: Segment Anything in Images and Videos</h1><h2 id="Introduction-介绍"><a href="#Introduction-介绍" class="headerlink" title="Introduction(介绍)"></a>Introduction(介绍)</h2><p>比起SAM，SAM2可以看作是SAM的拓展，从静态的图像分割，到动态的视频分割。准确度和速度都提升了。</p>
+<p>（未完待续）</p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
 </search>
