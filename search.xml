@@ -467,7 +467,12 @@
 <li>消融实验突出了精度和速度的平衡</li>
 <li>我们框架的模块化设计出现了两种新颖的分割架构，分别使用MobileNet [14] 和具有多种解码方法的 ShuffleNet [15]。与 SegNet 相比，ShuffleNet 减少了 143 倍的 GFLOPs。</li>
 </ol>
-<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p>![屏幕截图 2023-11-14 172740](&#x2F;images&#x2F;屏幕截图 2023-11-14 172740.png)</p>
+<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/hello.png"
+                      alt="屏幕截图 2023-11-14 172740"
+                ></p>
 <p> 图2（a）是SkipNet的解码结构，类似于FCN8s的结构，其中较高高分辨率的特征图通过1x1卷积来将通道数量减少到最终的类别数量，每一个通道都对应着一个类别。</p>
 <p>图2（b）是UNet的解码结构，Unet结构提供的解码方式为：利用反卷积，将与下采样阶段对应的特征图进行上采样。上采样的特征图与下采样中有相同分辨率的特征图进行融合。逐级向上采样提供的精度比一次8倍向上采样的精度更高。目前采用的融合方法是逐元素相加，concatenation的方法可以提供更高的准确率，因为其确保了网络能够学习特征的加权融合，但是这样会增加计算量(concatenation会改变通道数量)。上采样之后的特征最后会接一个1x1的卷积来输出最后的逐元素分类。</p>
 <p>对于Dilation Frontend的解码结构，文中并没有给出示意图，Dilation Frontend结构利用了空洞卷积来取代下采样。空洞卷积确保了网络能够保留足够的感受野的同时，不会降低特征图的分辨率。但是副作用就是计算量的增加，修改编码器网络使得下采样率从32变为8。下采样的减少是通过删除池化层或将步幅为2的卷积转换为步幅为1的卷积来完成的。然后，将池化或正常的卷积替换为两个空洞率为2和4的空洞卷积[3]。</p>
