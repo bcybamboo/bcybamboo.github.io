@@ -13,25 +13,36 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/2024/05/26/yolov10小知识/"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/2024/10/12/wtconv-md/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。 为了提升性能效率边界，这一次改进的是后处理和模型架构。 在原来，YOLO后处理依赖着非极大值抑制（NMS），性能对NMS的超参数敏感，阻碍了YOLO的端到端部署，产生了一定的推理延迟。 增强特征提取能力可以考虑以下模块：DarkNet、CSPNet、EfficientRep和ELAN等 DarkNet是yolo">
+        <meta name="description" content="Abstract(摘要)新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。 Discussion（讨论）使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。 WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。 Limitations(限制)运行时间在现有框架内相对较高，这是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yolov10小知识">
-<meta property="og:url" content="https://bcybamboo.github.io/2024/05/26/Yolov10%E5%B0%8F%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="WTConv">
+<meta property="og:url" content="https://bcybamboo.github.io/2024/10/12/WTConv-md/index.html">
 <meta property="og:site_name" content="Bamboo">
-<meta property="og:description" content="今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。 为了提升性能效率边界，这一次改进的是后处理和模型架构。 在原来，YOLO后处理依赖着非极大值抑制（NMS），性能对NMS的超参数敏感，阻碍了YOLO的端到端部署，产生了一定的推理延迟。 增强特征提取能力可以考虑以下模块：DarkNet、CSPNet、EfficientRep和ELAN等 DarkNet是yolo">
+<meta property="og:description" content="Abstract(摘要)新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。 Discussion（讨论）使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。 WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。 Limitations(限制)运行时间在现有框架内相对较高，这是">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bcybamboo.github.io/images/14b426a4f6b44003b64dd82a14daa2d7.png">
-<meta property="article:published_time" content="2024-05-26T11:50:30.000Z">
-<meta property="article:modified_time" content="2024-09-11T08:48:31.451Z">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113051486.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113111025.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113120298.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113128778.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113138305.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012114015929.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012114751984.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012115300453.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012115518981.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012120342993.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012120843103.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012121934132.png">
+<meta property="og:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012121859356.png">
+<meta property="article:published_time" content="2024-10-12T02:22:46.000Z">
+<meta property="article:modified_time" content="2024-10-12T04:22:06.014Z">
 <meta property="article:author" content="Bamboo">
-<meta property="article:tag" content="Object Detection">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bcybamboo.github.io/images/14b426a4f6b44003b64dd82a14daa2d7.png">
+<meta name="twitter:image" content="https://bcybamboo.github.io/WTConv-md.assets/image-20241012113051486.png">
     
     
     <!--- Icon Part-->
@@ -43,7 +54,7 @@
     
     <title>
         
-            Yolov10小知识 -
+            WTConv -
         
         Bamboo
     </title>
@@ -389,7 +400,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Yolov10小知识</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">WTConv</h1>
                 </div>
             
             </div>
@@ -410,42 +421,31 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-05-26 19:50:30</span>
-        <span class="mobile">2024-05-26 19:50:30</span>
+        <span class="desktop">2024-10-12 10:22:46</span>
+        <span class="mobile">2024-10-12 10:22:46</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-09-11 16:48:31</span>
-            <span class="mobile">2024-09-11 16:48:31</span>
+            <span class="desktop">2024-10-12 12:22:06</span>
+            <span class="mobile">2024-10-12 12:22:06</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
     
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/Object-Detection/">Object Detection</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>222 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.6k Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 Mins</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>5 Mins</span>
         </span>
     
     
@@ -464,20 +464,127 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <p> 今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。</p>
-<p>为了提升性能效率边界，这一次改进的是后处理和模型架构。</p>
-<p>在原来，YOLO后处理依赖着非极大值抑制（NMS），性能对NMS的超参数敏感，阻碍了YOLO的端到端部署，产生了一定的推理延迟。</p>
-<p>增强特征提取能力可以考虑以下模块：DarkNet、CSPNet、EfficientRep和ELAN等</p>
-<p>DarkNet是yolov3里面的backbone，主要是由重复堆叠下采样卷积+n*残差块组成。主要是由cnn卷积核提取特征。</p>
+            <h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。</p>
+<h2 id="Discussion（讨论）"><a href="#Discussion（讨论）" class="headerlink" title="Discussion（讨论）"></a>Discussion（讨论）</h2><p>使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。</p>
+<p>WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。</p>
+<h3 id="Limitations-限制"><a href="#Limitations-限制" class="headerlink" title="Limitations(限制)"></a>Limitations(限制)</h3><p>运行时间在现有框架内相对较高，这是由于多个顺序操作（WT-conv-IWT）的开销造成的，这可能比本身的成本更高。</p>
+<p>可以通过使用专门的实现来缓解，例如，在每个级别中与卷积并行执行 WT 以减少内存读取，或就地执行 WT 和 IWT 以减少内存分配。</p>
+<h2 id="Introduction（导言）"><a href="#Introduction（导言）" class="headerlink" title="Introduction（导言）"></a>Introduction（导言）</h2><p>一开始，大家认为vit的多头自注意力层有利于特征的全局混合，而卷积在结构上仅限于特征的局部混合。（性能差距）为了弥补性能差距，把卷积核增大到7×7大小，但是内核会变得过度参数化，并且在达到全局感受野之前性能会饱和。</p>
+<p>发现，使用较大的内核使 CNN 的形状偏差更大，这意味着它们捕获图像中低频的能力得到了提高。但是卷积层通常倾向于响应输入中的高频。而注意力头更适合低频。</p>
+<p>所以</p>
+<p><strong>idea</strong>：利用时频分析中的小波变换（WT），使卷积的感受野能够很好地放大，并通过级联引导 CNN 更好地响应低频。</p>
+<p><strong>movivation</strong>：保留了一定的空间分辨率，这使得空间运算（比如卷积）更加有意义。</p>
+<p>提出了 WTConv，该层使用级联 WT 分解并执行一组小核卷积，每个卷积都专注于越来越大的感受野中输入的不同频段。这个过程使我们能够更加重视输入中的低频，同时仅添加少量可训练参数。（感受野大，参数量少）</p>
+<p>对于k×k感受野，参数量随k呈对数增长。</p>
+<p>To summarize, our <strong>key contributions</strong> are:（主要贡献）</p>
+<p> – A new layer, called WTConv, that uses the WT to increase the receptive field of convolutions effectively. （有效地增加卷积的感受野）</p>
+<p>– WTConv is designed to be a drop-in replacement (for depth-wise convolutions) within given CNNs. （WTConv可替代CNN的Conv）</p>
+<p>– Extensive empirical evaluation demonstrates that WTConv improves CNNs’ results in several key computer-vision tasks. （改善cv任务的结果）</p>
+<p>– Analysis of WTConv’s contribution to CNN’s scalability, robustness, shapebias, and ERF.（可扩展性、鲁棒性）</p>
+<h2 id="Methods（方法）"><a href="#Methods（方法）" class="headerlink" title="Methods（方法）"></a>Methods（方法）</h2><h3 id="Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换"><a href="#Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换" class="headerlink" title="Preliminaries: The Wavelet Transform as Convolutions(小波变换)"></a>Preliminaries: The Wavelet Transform as Convolutions(小波变换)</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012113051486.png"
+                      alt="image-20241012113051486"
+                ></p>
+<p>我们在两个维度上操作，使用以下四个滤波器组产生步幅为 2 的深度卷积：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/14b426a4f6b44003b64dd82a14daa2d7.png"
-                      alt="图片"
+                     data-src="/WTConv-md.assets/image-20241012113111025.png"
+                      alt="image-20241012113111025"
                 ></p>
-<p>CSPNet的主要目的是使该体系结构能够实现更丰富的梯度组合，同时减少计算量。</p>
-<p>增强多尺度特征融合：PAN、BiC、GD和RepGFPN等</p>
-<p>模型缩放策略和重新参数化技术</p>
+<p>fLL为低通滤波器，其余三个为高通滤波器，对于每个输入通道，卷积的输出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012113120298.png"
+                      alt="image-20241012113120298"
+                ></p>
+<p>XLL 是 X 的低频分量，而 XLH 、 XHL 、 XHH 是其水平、垂直和对角高频分量。由于公式（1）中形成了正交基，所以应用小波逆变换（IWT）通过转置卷积得到X：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012113128778.png"
+                      alt="image-20241012113128778"
+                ></p>
+<p>然后通过递归分解低频分量给出级联小波分解。每个分解级别由下式给出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012113138305.png"
+                      alt="image-20241012113138305"
+                ></p>
+<p>由迭代分解低频分量可以分析出，小波变换更加关注于低频，较低频率的频率分辨率增加，空间分辨率降低。输入低频的重复小波变换分解强调了它们并增加了层的相应响应。</p>
+<h3 id="Convolution-in-the-Wavelet-Domain（小波域中的卷积）"><a href="#Convolution-in-the-Wavelet-Domain（小波域中的卷积）" class="headerlink" title="Convolution in the Wavelet Domain（小波域中的卷积）"></a>Convolution in the Wavelet Domain（小波域中的卷积）</h3><p>已知，增加卷积核的大小时参数量以2次方增长，为了缓解这种情况，使用小波变换来过滤和缩小输入的低频和高频内容。然后，在使用 IWT 构造输出之前，对不同频率图执行小内核深度卷积。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012114015929.png"
+                      alt="image-20241012114015929"
+                ></p>
+<p>X 是输入张量，W 是 k × k 深度内核的权重张量，其输入通道数是 X 的四倍。（刚好和分离出来的不同频率分量的卷积相匹配）该操作分离了频率分量之间的卷积，还允许较小的内核在原始输入的较大区域中进行操作。</p>
+<p>采用该 1 级组合运算，并使用等式 1 中相同的级联原理进一步增加等式4，该过程由下式给出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012114751984.png"
+                      alt="image-20241012114751984"
+                ></p>
+<p> X(0) LL 是层的输入，X(i) H 表示级别 i 的所有三个高频图X(i)LH,X(i)HL,X(i)HH。</p>
+<p>为了组合不同频率的输出, WT 及其逆是线性运算,意味着 IWT(X + Y ) &#x3D; IWT(X) + IWT(Y )，所以得到：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012115300453.png"
+                      alt="image-20241012115300453"
+                ></p>
+<p> Z(i) 是从级别 i 开始的聚合输出。不同大小卷积的两个输出相加作为输出。</p>
+<p>例：使用 2 级小波分解和 3 × 3 卷积核大小。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012115518981.png"
+                      alt="image-20241012115518981"
+                ></p>
+<p>不能对 Y (i) LL 、 Y (i) H 中的每一个进行归一化，因为它们的单独归一化并不对应于原始域中的归一化。仅执行通道缩放来权衡每个频率分量足够。</p>
+<h3 id="The-Benefits-of-Using-WTConv（使用WTConv的好处）"><a href="#The-Benefits-of-Using-WTConv（使用WTConv的好处）" class="headerlink" title="The Benefits of Using WTConv（使用WTConv的好处）"></a>The Benefits of Using WTConv（使用WTConv的好处）</h3><p>将 WTConv 合并到给定的 CNN 中有两个主要的技术优势：</p>
+<ul>
+<li>WT 的 l 级级联频率分解，与每个级别的固定大小内核 k 一起，允许参数数量在级别数中线性缩放而感受野呈指数增长。</li>
+<li>WTConv 层的构建比标准卷积更好地捕获低频。因为输入低频的重复小波变换分解强调了它们并增加了层的相应响应。</li>
+</ul>
+<h3 id="Computational-Cost（计算成本）"><a href="#Computational-Cost（计算成本）" class="headerlink" title="Computational Cost（计算成本）"></a>Computational Cost（计算成本）</h3><p>深度卷积的计算成本为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012120342993.png"
+                      alt="image-20241012120342993"
+                ></p>
+<p>其中 C 是输入通道数，(NW , NH ) 是输入的空间维度，(KW , KH ) 是内核大小，(SW , SH ) 是每个维度的步幅。</p>
+<p>通过使用标准卷积运算的简单实现，WT 的 FLOP 计数为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012120843103.png"
+                      alt="image-20241012120843103"
+                ></p>
+<p>因为四个内核的大小为 2×2，每个空间维度上的步幅为 2，并且在每个输入通道上运行。</p>
+<p>比较起来，这仍然比类似感受野的标准深度卷积节省了很多。</p>
+<h2 id="Results（结果）"><a href="#Results（结果）" class="headerlink" title="Results（结果）"></a>Results（结果）</h2><p> 形状偏差</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012121934132.png"
+                      alt="image-20241012121934132"
+                ></p>
+<p>形状偏差与人类的感知有关，被认为是比较理想的。</p>
+<p>消融实验</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/WTConv-md.assets/image-20241012121859356.png"
+                      alt="image-20241012121859356"
+                ></p>
 
         </div>
 
@@ -485,18 +592,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> Yolov10小知识</li>
+        <li><strong>Title:</strong> WTConv</li>
         <li><strong>Author:</strong> Bamboo</li>
         <li><strong>Created at
-                :</strong> 2024-05-26 19:50:30</li>
+                :</strong> 2024-10-12 10:22:46</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-09-11 16:48:31
+                    :</strong> 2024-10-12 12:22:06
             </li>
         
         <li>
-            <strong>Link:</strong> https://bcybamboo.github.io/2024/05/26/Yolov10小知识/
+            <strong>Link:</strong> https://bcybamboo.github.io/2024/10/12/WTConv-md/
         </li>
         <li>
             <strong>
@@ -515,43 +622,20 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/Object-Detection/">#Object Detection</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/07/01/%E5%89%AA%E6%9E%9D/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">UPDP__A Unified Progressive Depth Pruner for CNN and Vision Transformer</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/04/24/%E7%BB%86%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/"
+                        href="/2024/08/28/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">细碎知识点</span>
+                                <span class="post-nav-title-item">进程调度算法</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -614,8 +698,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">Yolov10小知识</div>
-        
+        <div class="page-title">WTConv</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-%E6%91%98%E8%A6%81"><span class="nav-text">Abstract(摘要)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discussion%EF%BC%88%E8%AE%A8%E8%AE%BA%EF%BC%89"><span class="nav-text">Discussion（讨论）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitations-%E9%99%90%E5%88%B6"><span class="nav-text">Limitations(限制)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction%EF%BC%88%E5%AF%BC%E8%A8%80%EF%BC%89"><span class="nav-text">Introduction（导言）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Methods%EF%BC%88%E6%96%B9%E6%B3%95%EF%BC%89"><span class="nav-text">Methods（方法）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preliminaries-The-Wavelet-Transform-as-Convolutions-%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2"><span class="nav-text">Preliminaries: The Wavelet Transform as Convolutions(小波变换)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolution-in-the-Wavelet-Domain%EF%BC%88%E5%B0%8F%E6%B3%A2%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%8D%B7%E7%A7%AF%EF%BC%89"><span class="nav-text">Convolution in the Wavelet Domain（小波域中的卷积）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Benefits-of-Using-WTConv%EF%BC%88%E4%BD%BF%E7%94%A8WTConv%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%89"><span class="nav-text">The Benefits of Using WTConv（使用WTConv的好处）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Computational-Cost%EF%BC%88%E8%AE%A1%E7%AE%97%E6%88%90%E6%9C%AC%EF%BC%89"><span class="nav-text">Computational Cost（计算成本）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Results%EF%BC%88%E7%BB%93%E6%9E%9C%EF%BC%89"><span class="nav-text">Results（结果）</span></a></li></ol>
 
     </div>
 </div>
