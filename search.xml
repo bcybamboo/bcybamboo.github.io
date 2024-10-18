@@ -189,7 +189,7 @@
       </tags>
   </entry>
   <entry>
-    <title>LPSNet：Lightweight and Progressively-Scalable Networks for Semantic Segmentation</title>
+    <title>LPSNet</title>
     <url>/2024/03/16/LPSNet/</url>
     <content><![CDATA[<h1 id="Lightweight-and-Progressively-Scalable-Networks-for-Semantic-Segmentation"><a href="#Lightweight-and-Progressively-Scalable-Networks-for-Semantic-Segmentation" class="headerlink" title="Lightweight and Progressively-Scalable Networks for Semantic Segmentation"></a>Lightweight and Progressively-Scalable Networks for Semantic Segmentation</h1><h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>主要方法：通过一次性扩展单个维度（卷积块的数量、通道的数量或输入分辨率）来逐步将小型网络扩展到更大的网络，以满足最佳速度&#x2F;精度权衡。</p>
 <h2 id="Conclusion-and-Discussion（总结和讨论）"><a href="#Conclusion-and-Discussion（总结和讨论）" class="headerlink" title="Conclusion and Discussion（总结和讨论）"></a>Conclusion and Discussion（总结和讨论）</h2><p>它是一种探索经济设计并逐步扩大网络以实现有效的语义分割</p>
@@ -328,7 +328,7 @@
       </tags>
   </entry>
   <entry>
-    <title>PointRend__Image Segmentation as Rendering</title>
+    <title>PointRend</title>
     <url>/2024/03/22/PointRend/</url>
     <content><![CDATA[<h1 id="PointRend-Image-Segmentation-as-Rendering"><a href="#PointRend-Image-Segmentation-as-Rendering" class="headerlink" title="PointRend: Image Segmentation as Rendering"></a><a class="link"   href="https://arxiv.org/abs/1912.08193" >PointRend: Image Segmentation as Rendering <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p><strong>现有方法</strong>：一般会输出一个原图1&#x2F;8或1&#x2F;16大小的预测图，然后通过双线性插值来补齐最后的8x&#x2F;16x分辨率</p>
 <p><strong>现有方法存在的问题</strong></p>
@@ -377,7 +377,7 @@
       </tags>
   </entry>
   <entry>
-    <title>A Unified Progressive Depth Pruner for CNN and Vision Transformer</title>
+    <title>UPDP</title>
     <url>/2024/07/01/%E5%89%AA%E6%9E%9D/</url>
     <content><![CDATA[<h1 id="UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer"><a href="#UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer" class="headerlink" title="UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer"></a>UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer</h1><p>简要介绍：一种很厉害的剪枝方法，适用于cnn和transformer</p>
 <h2 id="传统剪枝（pruning）"><a href="#传统剪枝（pruning）" class="headerlink" title="传统剪枝（pruning）"></a><a href="https://www.cnblogs.com/armcvai/p/17143077.html"><strong>传统剪枝</strong>（pruning）</a></h2><p>模型剪枝算是模型压缩的一种，直接减少参数量，为了减少对硬件的要求、加速模型推理和落地。（模型稀疏化）</p>
@@ -568,9 +568,9 @@
 ]]></content>
   </entry>
   <entry>
-    <title>SAM Segment Anything</title>
+    <title>SAM</title>
     <url>/2024/08/20/SAM/</url>
-    <content><![CDATA[<h1 id="SAM-Segment-Anything"><a href="#SAM-Segment-Anything" class="headerlink" title="SAM:Segment Anything"></a>SAM:Segment Anything</h1><p><img  
+    <content><![CDATA[<h1 id="Segment-Anything"><a href="#Segment-Anything" class="headerlink" title="Segment Anything"></a>Segment Anything</h1><p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="/images/image-20240922195105165.png"
@@ -617,9 +617,9 @@
       </tags>
   </entry>
   <entry>
-    <title>RTSeg__Real-time Semantic Segmentation Comparative Study</title>
+    <title>RTSeg</title>
     <url>/2023/11/16/RTSeg/</url>
-    <content><![CDATA[<h1 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
+    <content><![CDATA[<h2 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h2><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
 <p>针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。</p>
 <h2 id="ABSTRACT（摘要）"><a href="#ABSTRACT（摘要）" class="headerlink" title="ABSTRACT（摘要）"></a>ABSTRACT（摘要）</h2><p>Semantic segmentation benefits robotics related applications, especially autonomous driving. Most of the research on semantic segmentation only focuses on increasing the accuracy of segmentation models with little attention to computationally efficient solutions. The few work conducted in this direction does not provide principled methods to evaluate the different design choices for segmentation. In this paper, we address this gap by presenting a real-time semantic segmentation benchmarking framework with a decoupled design for feature extraction and decoding methods. The framework is comprised of different network architectures for feature extraction such as VGG16, Resnet18, MobileNet, and ShuffleNet. It is also comprised of multiple meta-architectures for segmentation that define the decoding methodology. These include SkipNet, UNet, and Dilation Frontend. Experimental results are presented on the Cityscapes dataset for urban scenes. The modular design allows novel architectures to emerge, that lead to 143x GFLOPs reduction in comparison to SegNet. This benchmarking framework is publicly available at 1 .</p>
 <p>在语义分割上大多数都是提升精度，但是很少关注计算效率高的解决方案，针对这一空白，提出了一个实时语义分割基准框架，对特征提取和解码进行了解耦设计。</p>
@@ -651,9 +651,9 @@
       </tags>
   </entry>
   <entry>
-    <title>SAM 2__Segment Anything in Images and Videos</title>
+    <title>SAM 2</title>
     <url>/2024/08/22/SAM2/</url>
-    <content><![CDATA[<h1 id="SAM-2-Segment-Anything-in-Images-and-Videos"><a href="#SAM-2-Segment-Anything-in-Images-and-Videos" class="headerlink" title="SAM 2: Segment Anything in Images and Videos"></a>SAM 2: Segment Anything in Images and Videos</h1><h2 id="Introduction-介绍"><a href="#Introduction-介绍" class="headerlink" title="Introduction(介绍)"></a>Introduction(介绍)</h2><p>比起SAM，SAM2可以看作是SAM的拓展，从静态的图像分割，到动态的视频分割。准确度和速度都提升了。</p>
+    <content><![CDATA[<h1 id="Segment-Anything-in-Images-and-Videos"><a href="#Segment-Anything-in-Images-and-Videos" class="headerlink" title="Segment Anything in Images and Videos"></a>Segment Anything in Images and Videos</h1><h2 id="Introduction-介绍"><a href="#Introduction-介绍" class="headerlink" title="Introduction(介绍)"></a>Introduction(介绍)</h2><p>比起SAM，SAM2可以看作是SAM的拓展，从静态的图像分割，到动态的视频分割。准确度和速度都提升了。</p>
 <p>（未完待续）</p>
 ]]></content>
       <tags>
