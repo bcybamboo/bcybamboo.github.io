@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Yolov10小知识</title>
+    <title>Yolov10</title>
     <url>/2024/05/26/Yolov10%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p> 今天突然发现都出了YOLOv10了，技术真的变更的好快，以下是本人学习的一些小知识。</p>
 <p>为了提升性能效率边界，这一次改进的是后处理和模型架构。</p>
@@ -19,7 +19,7 @@
 <p>模型缩放策略和重新参数化技术</p>
 ]]></content>
       <tags>
-        <tag>Object Detection</tag>
+        <tag>论文阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -52,7 +52,6 @@
 ]]></content>
       <tags>
         <tag>操作系统</tag>
-        <tag>数模</tag>
       </tags>
   </entry>
   <entry>
@@ -186,7 +185,7 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>notes</tag>
+        <tag>论文阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -265,7 +264,7 @@
                 ></p>
 ]]></content>
       <tags>
-        <tag>notes</tag>
+        <tag>论文阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -374,7 +373,7 @@
 <p>类似于图卷积或 PointNet，这个 MLP 对所有的点<strong>共享参数.</strong></p>
 ]]></content>
       <tags>
-        <tag>notes</tag>
+        <tag>论文阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -434,7 +433,7 @@
 <h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>（未完待续）</p>
 ]]></content>
       <tags>
-        <tag>notes</tag>
+        <tag>论文阅读</tag>
       </tags>
   </entry>
   <entry>
@@ -567,5 +566,134 @@
 </tr>
 </tbody></table>
 ]]></content>
+  </entry>
+  <entry>
+    <title>SAM Segment Anything</title>
+    <url>/2024/08/20/SAM/</url>
+    <content><![CDATA[<h1 id="SAM-Segment-Anything"><a href="#SAM-Segment-Anything" class="headerlink" title="SAM:Segment Anything"></a>SAM:Segment Anything</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922195105165.png"
+                      alt="image-20240922195105165"
+                ></p>
+<h2 id="Task（提示分割任务）"><a href="#Task（提示分割任务）" class="headerlink" title="Task（提示分割任务）"></a>Task（提示分割任务）</h2><p>作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。</p>
+<p>仔细解释一下，</p>
+<ul>
+<li><p>prompt只是指定在图像中分割什么。</p>
+</li>
+<li><p>有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。</p>
+</li>
+</ul>
+<h2 id="Model（SAM）"><a href="#Model（SAM）" class="headerlink" title="Model（SAM）"></a>Model（SAM）</h2><p>首先要满足三个条件：</p>
+<ul>
+<li>必须支持灵活的提示</li>
+<li>需要实时计算掩码以允许交互使用</li>
+<li>必须具有模糊意识</li>
+</ul>
+<p>流程如下：prompt进入提示编码器嵌入提示，image进入图像编码器计算图像嵌入，然后将两个信息源组合在一个轻量级掩码解码器中（在解码器里预测分割mask），然后输出一个有效的掩码。</p>
+<p>在这其中，可以使用不同的prompt搭配相同的图像嵌入。</p>
+<p>为了SAM能够更好的感知处理歧义，作者还预测单个提示的多个掩码。</p>
+<p>细节：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922213002034.png"
+                      alt="image-20240922213002034"
+                ></p>
+<p><code>Image encoder</code>(图像编码器)：使用MAE预训练的vit，为了处理高分辨率输入。</p>
+<p><code>Prompt encoder</code>(提示编码器)：使用CLIP中现成的文本编码器对每种提示类型和自由格式文本进行学习嵌入。使用卷积嵌入mask，然后与图像嵌入按元素求和（add）。</p>
+<p><code>Mask decoder</code>(掩码编码器)：掩码解码器有效地将图像嵌入、提示嵌入和输出标记映射到掩码。</p>
+<p>过程：采用了 Transformer 解码器块 的修改，后跟动态掩模预测头。修改后的解码器块使用两个方向的即时自注意力和交叉注意力（即时图像嵌入，反之亦然）来更新所有嵌入。运行两个块后，我们对图像嵌入进行上采样，并且 MLP 将输出标记映射到动态线性分类器，然后计算每个图像位置的掩模前景概率。</p>
+<p><code>Resolving ambiguity</code>（解决歧义）：改成预测单个提示的多个输出掩码，发现三个掩码输出足以解决最常见的问题（整体、部分、子部分）</p>
+<p><code>Losses</code>：我们使用焦点损失和骰子损失的线性组合来监督掩模预测。</p>
+<h2 id="Data（Data-engine数据引擎-Dataset）"><a href="#Data（Data-engine数据引擎-Dataset）" class="headerlink" title="Data（Data engine数据引擎 &amp; Dataset）"></a>Data（Data engine数据引擎 &amp; Dataset）</h2><p>为了构建了一个数据引擎，分为三个阶段：辅助手动、半自动和全自动。</p>
+<p>在第一阶段，SAM 协助注释者注释掩模，类似于经典的交互式分割设置。</p>
+<p>在第二阶段，SAM 可以通过提示可能的对象位置来自动为对象子集生成掩码，而注释器则专注于注释其余对象，从而帮助增加掩码多样性。</p>
+<p>在最后阶段，我们使用前景点的规则网格提示 SAM，每张图像平均产生 大概100 个高质量掩模。</p>
+<p>数据集是SA-1B，包括来自 11M 许可和隐私保护图像的超过 1B 个掩码。</p>
+]]></content>
+      <tags>
+        <tag>论文阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RTSeg__Real-time Semantic Segmentation Comparative Study</title>
+    <url>/2023/11/16/RTSeg/</url>
+    <content><![CDATA[<h1 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
+<p>针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。</p>
+<h2 id="ABSTRACT（摘要）"><a href="#ABSTRACT（摘要）" class="headerlink" title="ABSTRACT（摘要）"></a>ABSTRACT（摘要）</h2><p>Semantic segmentation benefits robotics related applications, especially autonomous driving. Most of the research on semantic segmentation only focuses on increasing the accuracy of segmentation models with little attention to computationally efficient solutions. The few work conducted in this direction does not provide principled methods to evaluate the different design choices for segmentation. In this paper, we address this gap by presenting a real-time semantic segmentation benchmarking framework with a decoupled design for feature extraction and decoding methods. The framework is comprised of different network architectures for feature extraction such as VGG16, Resnet18, MobileNet, and ShuffleNet. It is also comprised of multiple meta-architectures for segmentation that define the decoding methodology. These include SkipNet, UNet, and Dilation Frontend. Experimental results are presented on the Cityscapes dataset for urban scenes. The modular design allows novel architectures to emerge, that lead to 143x GFLOPs reduction in comparison to SegNet. This benchmarking framework is publicly available at 1 .</p>
+<p>在语义分割上大多数都是提升精度，但是很少关注计算效率高的解决方案，针对这一空白，提出了一个实时语义分割基准框架，对特征提取和解码进行了解耦设计。</p>
+<p>特征提取用了不同的网络结构：VGG16、Resnet18、MobileNet和ShuffleNet；解码是由多个用于分割的元架构定义的：SkipNet、UNet和Dilation Frontend。</p>
+<h2 id="INTRODUCTION（介绍）"><a href="#INTRODUCTION（介绍）" class="headerlink" title="INTRODUCTION（介绍）"></a>INTRODUCTION（介绍）</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20231101224230740.png"
+                      alt="image-20231101224230740"
+                ></p>
+<p>主要贡献：</p>
+<ol>
+<li>将特征提取模块和解码器进行了模块化解耦，并将器成为元架构（有助于理解网络不同部分对实时性能的影响）</li>
+<li>消融实验突出了精度和速度的平衡</li>
+<li>我们框架的模块化设计出现了两种新颖的分割架构，分别使用MobileNet [14] 和具有多种解码方法的 ShuffleNet [15]。与 SegNet 相比，ShuffleNet 减少了 143 倍的 GFLOPs。</li>
+</ol>
+<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/hello.png"
+                      alt="屏幕截图 2023-11-14 172740"
+                ></p>
+<p> 图2（a）是SkipNet的解码结构，类似于FCN8s的结构，其中较高高分辨率的特征图通过1x1卷积来将通道数量减少到最终的类别数量，每一个通道都对应着一个类别。</p>
+<p>图2（b）是UNet的解码结构，Unet结构提供的解码方式为：利用反卷积，将与下采样阶段对应的特征图进行上采样。上采样的特征图与下采样中有相同分辨率的特征图进行融合。逐级向上采样提供的精度比一次8倍向上采样的精度更高。目前采用的融合方法是逐元素相加，concatenation的方法可以提供更高的准确率，因为其确保了网络能够学习特征的加权融合，但是这样会增加计算量(concatenation会改变通道数量)。上采样之后的特征最后会接一个1x1的卷积来输出最后的逐元素分类。</p>
+<p>对于Dilation Frontend的解码结构，文中并没有给出示意图，Dilation Frontend结构利用了空洞卷积来取代下采样。空洞卷积确保了网络能够保留足够的感受野的同时，不会降低特征图的分辨率。但是副作用就是计算量的增加，修改编码器网络使得下采样率从32变为8。下采样的减少是通过删除池化层或将步幅为2的卷积转换为步幅为1的卷积来完成的。然后，将池化或正常的卷积替换为两个空洞率为2和4的空洞卷积[3]。</p>
+]]></content>
+      <tags>
+        <tag>论文阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SAM 2__Segment Anything in Images and Videos</title>
+    <url>/2024/08/22/SAM2/</url>
+    <content><![CDATA[<h1 id="SAM-2-Segment-Anything-in-Images-and-Videos"><a href="#SAM-2-Segment-Anything-in-Images-and-Videos" class="headerlink" title="SAM 2: Segment Anything in Images and Videos"></a>SAM 2: Segment Anything in Images and Videos</h1><h2 id="Introduction-介绍"><a href="#Introduction-介绍" class="headerlink" title="Introduction(介绍)"></a>Introduction(介绍)</h2><p>比起SAM，SAM2可以看作是SAM的拓展，从静态的图像分割，到动态的视频分割。准确度和速度都提升了。</p>
+<p>（未完待续）</p>
+]]></content>
+      <tags>
+        <tag>论文阅读</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SkipNet</title>
+    <url>/2023/11/16/SkipNet/</url>
+    <content><![CDATA[<h1 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>代码：<a class="link"   href="https://github.com/ucbdrive/skipnet" >https://github.com/ucbdrive/skipnet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="Abstract-（摘要）"><a href="#Abstract-（摘要）" class="headerlink" title="Abstract. （摘要）"></a>Abstract. （摘要）</h2><p>While deeper convolutional networks are needed to achieve maximum accuracy in visual perception tasks, for many inputs shallower networks are sufficient. We exploit this observation by learning to skip convolutional layers on a per-input basis. We introduce SkipNet, a modified residual network, that uses a gating network to selectively skip convolutional blocks based on the activations of the previous layer. We formulate the dynamic skipping problem in the context of sequential decision making and propose a hybrid learning algorithm that combines supervised learning and reinforcement learning to address the challenges of non-differentiable skipping decisions. We show SkipNet reduces computation by 30 − 90% while preserving the accuracy of the original model on four benchmark datasets and outperforms the state-of-the-art dynamic networks and static compression methods. We also qualitatively evaluate the gating policy to reveal a relationship between image scale and saliency and the number of layers skipped.</p>
+<p>尽管需要更深的卷积网络才能在视觉感知任务中获得更大的准确性，但对于大多数输入来说，较浅的网络就够了。</p>
+<p>SkipNet是经过改进的残差网络，使用gating network根据前一层的激活有选择地跳过卷积层。我们在顺序决策（sequential decision）的背景下制定动态跳过（dynamic skipping）问题，并提出一种混合学习算法，将监督学习和强化学习相结合，以解决不可微分的跳过动态的问题。</p>
+<p>计算量减少了30%至90%，同时在四个基准数据集上保留了原始模型的准确性，并且胜过了最新的动态网络和静态压缩方法。</p>
+<p>定性评估gating策略，以揭示图像比例和显着性（saliency）与跳过的层数之间的关系。</p>
+<h2 id="Introduction（介绍）"><a href="#Introduction（介绍）" class="headerlink" title="Introduction（介绍）"></a>Introduction（介绍）</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20231116225046629.png"
+                      alt="image-20231116225046629"
+                ></p>
+<p>动态选择在推理过程中应跳过卷积神经网络的哪些层，动态跳过问题-构造-&gt;顺序决策问题，其中前一层的输出决定是否绕过后一层。</p>
+<p>动态跳过问题的目标是保留整个网络准确性的同时，跳过尽可能多的层。（减少参数量，观察每层的作用）</p>
+<p>为了在保持准确性的同时减少计算量，我们需要正确绕过网络中不必要的层，学习有效的跳过策略也是一项挑战。</p>
+<p>（同时因为会跳过层数，所以不能应用梯度的优化）</p>
+<p>过程：将gating module明确分配给每组卷积层（each group of layers）。gating模块将前一层的激活映射到二进制决策，以跳过或执行后一层。我们分两个阶段训练门控模块。首先，我们通过采用重新参数化(reparametrization)技巧对二进制<a class="link"   href="https://so.csdn.net/so/search?q=skip&spm=1001.2101.3001.7020" >skip <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>决策使用soft-max松弛，并结合原始模型使用的标准交叉熵损失一起训练layers and gates。然后，我们将概率gate输出视为初始跳过策略，并在不使用relaxation的情况下使用REINFORCE来优化策略。在后期阶段，我们共同优化跳过策略和预测误差，以稳定探索过程。</p>
+<h2 id="Related-Work（相关工作）"><a href="#Related-Work（相关工作）" class="headerlink" title="Related Work（相关工作）"></a>Related Work（相关工作）</h2><p>加速现有的卷积网络：（训练初始网络后使用）权重稀疏化、滤波器修剪、矢量量化和蒸馏-&gt;将模型转移到较浅的网络上进行模型压缩</p>
+<p>他人实验探索：通过提早终止来动态缩放计算、暂停循环网络以节省计算成本、在卷积网络中使用尽早终止、ResNets每组块中的提前终止</p>
+<p>SkipNet并不会提早退出，而是根据处理层的输出有条件地绕过各个层，可以更好地权衡成本</p>
+<h2 id="SkipNet-Model-Design（模型构思）"><a href="#SkipNet-Model-Design（模型构思）" class="headerlink" title="SkipNet Model Design（模型构思）"></a>SkipNet Model Design（模型构思）</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20231116231511966.png"
+                      alt="image-20231116231511966"
+                ></p>
+<p>对于给定输入有选择地包括或排除了各个层。 使用插入在各层之间的小型门控网络可以完成各层的按输入选择。 gating网络将前一层或一组层的输出映射到一个二进制决策，以执行或绕过后一层或一组层</p>
+<p>对于a，当gating module独立的时候，情况变复杂的时候参数量变多</p>
+<h3 id="Gating-Network-Design"><a href="#Gating-Network-Design" class="headerlink" title="Gating Network Design"></a>Gating Network Design</h3>]]></content>
+      <tags>
+        <tag>论文阅读</tag>
+      </tags>
   </entry>
 </search>
