@@ -13,26 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/2024/08/20/reading/sam/"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/archives/rtseg.html"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="SAM:Segment Anything Task（提示分割任务）作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。 仔细解释一下，  prompt只是指定在图像中分割什么。  有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。   Model（SAM）首先要满足三个条件：  必须支持灵活的提示 需要实时计算掩码">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SAM Segment Anything">
-<meta property="og:url" content="https://bcybamboo.github.io/2024/08/20/reading/SAM/index.html">
+        <meta name="description" content="RTSeg: Real-time Semantic Segmentation Comparative Study 这一篇更加关注计算效率，以下是一些些翻译加一些些理解。 针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。 ABSTRACT（摘要）Semantic segmentation benefits robotics">
+<meta property="og:type" content="website">
+<meta property="og:title" content="RTSeg__Real-time Semantic Segmentation Comparative Study">
+<meta property="og:url" content="https://bcybamboo.github.io/archives/RTSeg.html">
 <meta property="og:site_name" content="Bamboo">
-<meta property="og:description" content="SAM:Segment Anything Task（提示分割任务）作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。 仔细解释一下，  prompt只是指定在图像中分割什么。  有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。   Model（SAM）首先要满足三个条件：  必须支持灵活的提示 需要实时计算掩码">
+<meta property="og:description" content="RTSeg: Real-time Semantic Segmentation Comparative Study 这一篇更加关注计算效率，以下是一些些翻译加一些些理解。 针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。 ABSTRACT（摘要）Semantic segmentation benefits robotics">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240922195105165.png">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240922213002034.png">
-<meta property="article:published_time" content="2024-08-20T04:25:11.000Z">
-<meta property="article:modified_time" content="2024-10-18T07:42:54.126Z">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20231101224230740.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/hello.png">
+<meta property="article:published_time" content="2023-11-16T14:27:32.000Z">
+<meta property="article:modified_time" content="2024-10-18T07:42:57.057Z">
 <meta property="article:author" content="Bamboo">
 <meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20240922195105165.png">
+<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20231101224230740.png">
     
     
     <!--- Icon Part-->
@@ -44,7 +44,7 @@
     
     <title>
         
-            SAM Segment Anything -
+            RTSeg__Real-time Semantic Segmentation Comparative Study -
         
         Bamboo
     </title>
@@ -232,7 +232,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"bcybamboo.github.io","root":"/","language":"en","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"朝春天走去，别烂在过去和梦里。","subtitle":{"text":[],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Essay reading":{"path":"/reading","icon":"fa-solid fa-book"},"Study":{"path":"/study","icon":"fa-solid fa-graduation-cap"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"朝春天走去，别烂在过去和梦里。","subtitle":{"text":[],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Essay reading":{"path":"/archives","icon":"fa-solid fa-book"},"Study":{"path":"/study","icon":"fa-solid fa-graduation-cap"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -317,8 +317,8 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class=""
-                                   href="/reading"
+                                <a class="active"
+                                   href="/archives"
                                         >
                                     <i class="fa-solid fa-book fa-fw"></i>
                                     ESSAY READING
@@ -388,8 +388,8 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
-                           href="/reading"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
                         >
                             <span>
                                 ESSAY READING
@@ -438,7 +438,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -458,273 +458,45 @@
             <div class="main-content">
 
                 
-                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
-    <div class="article-content-container">
-
-        <div class="article-title relative w-full">
-            
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">SAM Segment Anything</h1>
-                </div>
-            
-            </div>
-
+                    <div class="page-template-container">
+    
+    
+    
+    <div class="page-template-content markdown-body">
         
-            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-                    <img src="/images/dump.svg">
-                </div>
-                <div class="info flex flex-col justify-between">
-                    <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">Bamboo</span>
-                        
-                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-08-20 12:25:11</span>
-        <span class="mobile">2024-08-20 12:25:11</span>
-        <span class="hover-info">Created</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-18 15:42:54</span>
-            <span class="mobile">2024-10-18 15:42:54</span>
-            <span class="hover-info">Updated</span>
-        </span>
-    
-
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/notes/">notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>768 Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        
-
-
-        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="SAM-Segment-Anything"><a href="#SAM-Segment-Anything" class="headerlink" title="SAM:Segment Anything"></a>SAM:Segment Anything</h1><p><img  
+            <h1 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
+<p>针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。</p>
+<h2 id="ABSTRACT（摘要）"><a href="#ABSTRACT（摘要）" class="headerlink" title="ABSTRACT（摘要）"></a>ABSTRACT（摘要）</h2><p>Semantic segmentation benefits robotics related applications, especially autonomous driving. Most of the research on semantic segmentation only focuses on increasing the accuracy of segmentation models with little attention to computationally efficient solutions. The few work conducted in this direction does not provide principled methods to evaluate the different design choices for segmentation. In this paper, we address this gap by presenting a real-time semantic segmentation benchmarking framework with a decoupled design for feature extraction and decoding methods. The framework is comprised of different network architectures for feature extraction such as VGG16, Resnet18, MobileNet, and ShuffleNet. It is also comprised of multiple meta-architectures for segmentation that define the decoding methodology. These include SkipNet, UNet, and Dilation Frontend. Experimental results are presented on the Cityscapes dataset for urban scenes. The modular design allows novel architectures to emerge, that lead to 143x GFLOPs reduction in comparison to SegNet. This benchmarking framework is publicly available at 1 .</p>
+<p>在语义分割上大多数都是提升精度，但是很少关注计算效率高的解决方案，针对这一空白，提出了一个实时语义分割基准框架，对特征提取和解码进行了解耦设计。</p>
+<p>特征提取用了不同的网络结构：VGG16、Resnet18、MobileNet和ShuffleNet；解码是由多个用于分割的元架构定义的：SkipNet、UNet和Dilation Frontend。</p>
+<h2 id="INTRODUCTION（介绍）"><a href="#INTRODUCTION（介绍）" class="headerlink" title="INTRODUCTION（介绍）"></a>INTRODUCTION（介绍）</h2><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240922195105165.png"
-                      alt="image-20240922195105165"
+                     data-src="/images/image-20231101224230740.png"
+                      alt="image-20231101224230740"
                 ></p>
-<h2 id="Task（提示分割任务）"><a href="#Task（提示分割任务）" class="headerlink" title="Task（提示分割任务）"></a>Task（提示分割任务）</h2><p>作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。</p>
-<p>仔细解释一下，</p>
-<ul>
-<li><p>prompt只是指定在图像中分割什么。</p>
-</li>
-<li><p>有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。</p>
-</li>
-</ul>
-<h2 id="Model（SAM）"><a href="#Model（SAM）" class="headerlink" title="Model（SAM）"></a>Model（SAM）</h2><p>首先要满足三个条件：</p>
-<ul>
-<li>必须支持灵活的提示</li>
-<li>需要实时计算掩码以允许交互使用</li>
-<li>必须具有模糊意识</li>
-</ul>
-<p>流程如下：prompt进入提示编码器嵌入提示，image进入图像编码器计算图像嵌入，然后将两个信息源组合在一个轻量级掩码解码器中（在解码器里预测分割mask），然后输出一个有效的掩码。</p>
-<p>在这其中，可以使用不同的prompt搭配相同的图像嵌入。</p>
-<p>为了SAM能够更好的感知处理歧义，作者还预测单个提示的多个掩码。</p>
-<p>细节：</p>
-<p><img  
+<p>主要贡献：</p>
+<ol>
+<li>将特征提取模块和解码器进行了模块化解耦，并将器成为元架构（有助于理解网络不同部分对实时性能的影响）</li>
+<li>消融实验突出了精度和速度的平衡</li>
+<li>我们框架的模块化设计出现了两种新颖的分割架构，分别使用MobileNet [14] 和具有多种解码方法的 ShuffleNet [15]。与 SegNet 相比，ShuffleNet 减少了 143 倍的 GFLOPs。</li>
+</ol>
+<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20240922213002034.png"
-                      alt="image-20240922213002034"
+                     data-src="/images/hello.png"
+                      alt="屏幕截图 2023-11-14 172740"
                 ></p>
-<p><code>Image encoder</code>(图像编码器)：使用MAE预训练的vit，为了处理高分辨率输入。</p>
-<p><code>Prompt encoder</code>(提示编码器)：使用CLIP中现成的文本编码器对每种提示类型和自由格式文本进行学习嵌入。使用卷积嵌入mask，然后与图像嵌入按元素求和（add）。</p>
-<p><code>Mask decoder</code>(掩码编码器)：掩码解码器有效地将图像嵌入、提示嵌入和输出标记映射到掩码。</p>
-<p>过程：采用了 Transformer 解码器块 的修改，后跟动态掩模预测头。修改后的解码器块使用两个方向的即时自注意力和交叉注意力（即时图像嵌入，反之亦然）来更新所有嵌入。运行两个块后，我们对图像嵌入进行上采样，并且 MLP 将输出标记映射到动态线性分类器，然后计算每个图像位置的掩模前景概率。</p>
-<p><code>Resolving ambiguity</code>（解决歧义）：改成预测单个提示的多个输出掩码，发现三个掩码输出足以解决最常见的问题（整体、部分、子部分）</p>
-<p><code>Losses</code>：我们使用焦点损失和骰子损失的线性组合来监督掩模预测。</p>
-<h2 id="Data（Data-engine数据引擎-Dataset）"><a href="#Data（Data-engine数据引擎-Dataset）" class="headerlink" title="Data（Data engine数据引擎 &amp; Dataset）"></a>Data（Data engine数据引擎 &amp; Dataset）</h2><p>为了构建了一个数据引擎，分为三个阶段：辅助手动、半自动和全自动。</p>
-<p>在第一阶段，SAM 协助注释者注释掩模，类似于经典的交互式分割设置。</p>
-<p>在第二阶段，SAM 可以通过提示可能的对象位置来自动为对象子集生成掩码，而注释器则专注于注释其余对象，从而帮助增加掩码多样性。</p>
-<p>在最后阶段，我们使用前景点的规则网格提示 SAM，每张图像平均产生 大概100 个高质量掩模。</p>
-<p>数据集是SA-1B，包括来自 11M 许可和隐私保护图像的超过 1B 个掩码。</p>
+<p> 图2（a）是SkipNet的解码结构，类似于FCN8s的结构，其中较高高分辨率的特征图通过1x1卷积来将通道数量减少到最终的类别数量，每一个通道都对应着一个类别。</p>
+<p>图2（b）是UNet的解码结构，Unet结构提供的解码方式为：利用反卷积，将与下采样阶段对应的特征图进行上采样。上采样的特征图与下采样中有相同分辨率的特征图进行融合。逐级向上采样提供的精度比一次8倍向上采样的精度更高。目前采用的融合方法是逐元素相加，concatenation的方法可以提供更高的准确率，因为其确保了网络能够学习特征的加权融合，但是这样会增加计算量(concatenation会改变通道数量)。上采样之后的特征最后会接一个1x1的卷积来输出最后的逐元素分类。</p>
+<p>对于Dilation Frontend的解码结构，文中并没有给出示意图，Dilation Frontend结构利用了空洞卷积来取代下采样。空洞卷积确保了网络能够保留足够的感受野的同时，不会降低特征图的分辨率。但是副作用就是计算量的增加，修改编码器网络使得下采样率从32变为8。下采样的减少是通过删除池化层或将步幅为2的卷积转换为步幅为1的卷积来完成的。然后，将池化或正常的卷积替换为两个空洞率为2和4的空洞卷积[3]。</p>
 
-        </div>
-
-        
-            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>Title:</strong> SAM Segment Anything</li>
-        <li><strong>Author:</strong> Bamboo</li>
-        <li><strong>Created at
-                :</strong> 2024-08-20 12:25:11</li>
-        
-            <li>
-                <strong>Updated at
-                    :</strong> 2024-10-18 15:42:54
-            </li>
-        
-        <li>
-            <strong>Link:</strong> https://bcybamboo.github.io/2024/08/20/reading/SAM/
-        </li>
-        <li>
-            <strong>
-                License:
-            </strong>
-            
-
-            
-                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
-            
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/notes/">#notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-
-        
-            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-                
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/08/22/reading/SAM2/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">SAM 2__Segment Anything in Images and Videos</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="next"
-                        rel="next"
-                        href="/2024/07/09/about-conda/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">about_conda</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-
-        
-            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
-                <div class="comments-container mt-10 w-full ">
-    <div id="comment-anchor" class="w-full h-2.5"></div>
-    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
-        Comments
-    </div>
-    
-
-        
-            
-    <div id="waline"></div>
-    <script type="module" data-swup-reload-script>
-      import { init } from '/js/libs/waline.mjs';
-
-      function loadWaline() {
-        init({
-          el: '#waline',
-          serverURL: 'https://example.example.com',
-          lang: 'zh-CN',
-          dark: 'body[class~="dark-mode"]',
-          requiredMeta: ['nick', 'mail'],
-          emoji: [],
-          recaptchaV3Key: "wasd",
-          
-        });
-      }
-
-      if (typeof swup !== 'undefined') {
-        loadWaline();
-      } else {
-        window.addEventListener('DOMContentLoaded', loadWaline);
-      }
-    </script>
-
-
-
-        
-    
-</div>
-
-            </div>
         
     </div>
-
-    
-        <div class="toc-content-container">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">On this page</div>
-        <div class="page-title">SAM Segment Anything</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SAM-Segment-Anything"><span class="nav-text">SAM:Segment Anything</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Task%EF%BC%88%E6%8F%90%E7%A4%BA%E5%88%86%E5%89%B2%E4%BB%BB%E5%8A%A1%EF%BC%89"><span class="nav-text">Task（提示分割任务）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model%EF%BC%88SAM%EF%BC%89"><span class="nav-text">Model（SAM）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data%EF%BC%88Data-engine%E6%95%B0%E6%8D%AE%E5%BC%95%E6%93%8E-Dataset%EF%BC%89"><span class="nav-text">Data（Data engine数据引擎 &amp; Dataset）</span></a></li></ol></li></ol>
-
+    <div class="page-template-comments">
+        
     </div>
 </div>
-        </div>
-    
-</div>
-
 
 
                 
@@ -750,11 +522,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        14 posts in total
+                        9 posts in total
                     </span>
                     
                         <span>
-                            9.7k words in total
+                            5.4k words in total
                         </span>
                     
                 </p>
@@ -811,27 +583,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-side-tools-container">
