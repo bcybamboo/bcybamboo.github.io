@@ -269,7 +269,7 @@
       </tags>
   </entry>
   <entry>
-    <title>细碎知识点</title>
+    <title>deep Learning知识点</title>
     <url>/2024/04/24/%E7%BB%86%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
     <content><![CDATA[<h1 id="关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别"><a href="#关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别" class="headerlink" title="关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别"></a>关于监督学习、无监督学习、半监督学习、强化学习、自监督学习的区别</h1><h3 id="监督学习（Supervised-Learning-或Supervised-Machine-Learning）"><a href="#监督学习（Supervised-Learning-或Supervised-Machine-Learning）" class="headerlink" title="监督学习（Supervised Learning 或Supervised Machine Learning）"></a>监督学习（Supervised Learning 或Supervised Machine Learning）</h3><p>使用标记数据集来训练算法，一边训练后的算法可以对数据进行分类或准确预测结果。</p>
 <p>可分成两类：分类（线性分类器、支持向量机、决策树、随机森林等）、回归（使用一种算法理解因变量和自变量之间的关系，有助于根据不同的数据点来预测数值）</p>
@@ -378,7 +378,7 @@
       </tags>
   </entry>
   <entry>
-    <title>UPDP__A Unified Progressive Depth Pruner for CNN and Vision Transformer</title>
+    <title>A Unified Progressive Depth Pruner for CNN and Vision Transformer</title>
     <url>/2024/07/01/%E5%89%AA%E6%9E%9D/</url>
     <content><![CDATA[<h1 id="UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer"><a href="#UPDP-A-Unified-Progressive-Depth-Pruner-for-CNN-and-Vision-Transformer" class="headerlink" title="UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer"></a>UPDP: A Unified Progressive Depth Pruner for CNN and Vision Transformer</h1><p>简要介绍：一种很厉害的剪枝方法，适用于cnn和transformer</p>
 <h2 id="传统剪枝（pruning）"><a href="#传统剪枝（pruning）" class="headerlink" title="传统剪枝（pruning）"></a><a href="https://www.cnblogs.com/armcvai/p/17143077.html"><strong>传统剪枝</strong>（pruning）</a></h2><p>模型剪枝算是模型压缩的一种，直接减少参数量，为了减少对硬件的要求、加速模型推理和落地。（模型稀疏化）</p>
