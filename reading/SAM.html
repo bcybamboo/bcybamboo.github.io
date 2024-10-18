@@ -13,18 +13,26 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/page/2/"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/reading/sam.html"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta property="og:type" content="website">
-<meta property="og:title" content="Bamboo">
-<meta property="og:url" content="https://bcybamboo.github.io/page/2/index.html">
+        <meta name="description" content="SAM:Segment Anything Task（提示分割任务）作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。 仔细解释一下，  prompt只是指定在图像中分割什么。  有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。   Model（SAM）首先要满足三个条件：  必须支持灵活的提示 需要实时计算掩码">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SAM Segment Anything">
+<meta property="og:url" content="https://bcybamboo.github.io/reading/SAM.html">
 <meta property="og:site_name" content="Bamboo">
+<meta property="og:description" content="SAM:Segment Anything Task（提示分割任务）作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。 仔细解释一下，  prompt只是指定在图像中分割什么。  有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。   Model（SAM）首先要满足三个条件：  必须支持灵活的提示 需要实时计算掩码">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240922195105165.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240922213002034.png">
+<meta property="article:published_time" content="2024-08-20T04:25:11.000Z">
+<meta property="article:modified_time" content="2024-10-18T07:42:54.126Z">
 <meta property="article:author" content="Bamboo">
+<meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20240922195105165.png">
     
     
     <!--- Icon Part-->
@@ -35,6 +43,8 @@
     <!--- Page Info-->
     
     <title>
+        
+            SAM Segment Anything -
         
         Bamboo
     </title>
@@ -263,41 +273,6 @@
 <main class="page-container" id="swup">
 
     
-        <style>
-    .home-article-item,
-    .sidebar-links,
-    .sidebar-content,
-    a.page-number,
-    a.extend,
-    .sidebar-links .links:hover,
-    .right-bottom-tools,
-    footer.footer {
-        background-color: var(--background-color-transparent-80) !important;
-    }
-    .right-bottom-tools:hover,
-    a.page-number:hover,
-    a.extend:hover {
-        background-color: var(--primary-color) !important;
-    }
-    .site-info,
-    .home-article-sticky-label {
-        background-color: var(--background-color-transparent-15) !important;
-    }
-    .home-article-sticky-label {
-        backdrop-filter: none !important;
-    }
-    .home-banner-background {
-        filter: blur(15px);
-    }
-</style>
-
-<div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-    <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-    <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-</div>
-
-
-    
 
     <div class="main-content-container">
 
@@ -309,9 +284,9 @@
         <div class="left">
             
             <a class="logo-title" href="/">
-                <h1>
+                
                 Bamboo
-                </h1>
+                
             </a>
         </div>
 
@@ -325,7 +300,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -342,7 +317,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class=""
+                                <a class="active"
                                    href="/reading"
                                         >
                                     <i class="fa-solid fa-book fa-fw"></i>
@@ -393,7 +368,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/"
                         >
                             <span>
@@ -413,7 +388,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
                            href="/reading"
                         >
                             <span>
@@ -463,7 +438,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -479,280 +454,66 @@
         <div class="main-content-body">
 
             
-                <div class="home-sidebar-container">
-    <div class="sticky-container sticky">
-        
-        
-            
-            <div class="sidebar-content" >
-                <div class="avatar flex justify-center">
-    <img src="/images/dump.svg">
-</div>
-                <div class="author flex flex-col justify-center my-2.5 mx-0">
-    <div class="name">Bamboo</div>
-    
-        <div class="label">Lv2</div>
-    
-</div>
-                <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-            </div>
-        
-
-    </div>
-</div>
-
-            
 
             <div class="main-content">
 
                 
-                    <div class="home-content-container">
-    <ul class="home-article-list">
+                    <div class="page-template-container">
+    
+    
+    
+    <div class="page-template-content markdown-body">
         
-            <li class="home-article-item">
+            <h1 id="SAM-Segment-Anything"><a href="#SAM-Segment-Anything" class="headerlink" title="SAM:Segment Anything"></a>SAM:Segment Anything</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922195105165.png"
+                      alt="image-20240922195105165"
+                ></p>
+<h2 id="Task（提示分割任务）"><a href="#Task（提示分割任务）" class="headerlink" title="Task（提示分割任务）"></a>Task（提示分割任务）</h2><p>作为预训练，流程就是：给一个prompt（提示）和对应的图，返回一个有效的掩码。</p>
+<p>仔细解释一下，</p>
+<ul>
+<li><p>prompt只是指定在图像中分割什么。</p>
+</li>
+<li><p>有效输出掩码意味着，即使给的提示不明确甚至可能涉及多个对象，输出也应该是一个合理的掩码的至少其中一个对象。</p>
+</li>
+</ul>
+<h2 id="Model（SAM）"><a href="#Model（SAM）" class="headerlink" title="Model（SAM）"></a>Model（SAM）</h2><p>首先要满足三个条件：</p>
+<ul>
+<li>必须支持灵活的提示</li>
+<li>需要实时计算掩码以允许交互使用</li>
+<li>必须具有模糊意识</li>
+</ul>
+<p>流程如下：prompt进入提示编码器嵌入提示，image进入图像编码器计算图像嵌入，然后将两个信息源组合在一个轻量级掩码解码器中（在解码器里预测分割mask），然后输出一个有效的掩码。</p>
+<p>在这其中，可以使用不同的prompt搭配相同的图像嵌入。</p>
+<p>为了SAM能够更好的感知处理歧义，作者还预测单个提示的多个掩码。</p>
+<p>细节：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20240922213002034.png"
+                      alt="image-20240922213002034"
+                ></p>
+<p><code>Image encoder</code>(图像编码器)：使用MAE预训练的vit，为了处理高分辨率输入。</p>
+<p><code>Prompt encoder</code>(提示编码器)：使用CLIP中现成的文本编码器对每种提示类型和自由格式文本进行学习嵌入。使用卷积嵌入mask，然后与图像嵌入按元素求和（add）。</p>
+<p><code>Mask decoder</code>(掩码编码器)：掩码解码器有效地将图像嵌入、提示嵌入和输出标记映射到掩码。</p>
+<p>过程：采用了 Transformer 解码器块 的修改，后跟动态掩模预测头。修改后的解码器块使用两个方向的即时自注意力和交叉注意力（即时图像嵌入，反之亦然）来更新所有嵌入。运行两个块后，我们对图像嵌入进行上采样，并且 MLP 将输出标记映射到动态线性分类器，然后计算每个图像位置的掩模前景概率。</p>
+<p><code>Resolving ambiguity</code>（解决歧义）：改成预测单个提示的多个输出掩码，发现三个掩码输出足以解决最常见的问题（整体、部分、子部分）</p>
+<p><code>Losses</code>：我们使用焦点损失和骰子损失的线性组合来监督掩模预测。</p>
+<h2 id="Data（Data-engine数据引擎-Dataset）"><a href="#Data（Data-engine数据引擎-Dataset）" class="headerlink" title="Data（Data engine数据引擎 &amp; Dataset）"></a>Data（Data engine数据引擎 &amp; Dataset）</h2><p>为了构建了一个数据引擎，分为三个阶段：辅助手动、半自动和全自动。</p>
+<p>在第一阶段，SAM 协助注释者注释掩模，类似于经典的交互式分割设置。</p>
+<p>在第二阶段，SAM 可以通过提示可能的对象位置来自动为对象子集生成掩码，而注释器则专注于注释其余对象，从而帮助增加掩码多样性。</p>
+<p>在最后阶段，我们使用前景点的规则网格提示 SAM，每张图像平均产生 大概100 个高质量掩模。</p>
+<p>数据集是SA-1B，包括来自 11M 许可和隐私保护图像的超过 1B 个掩码。</p>
 
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2024/03/16/LPSNet/">
-                            LPSNet：Lightweight and Progressively-Scalable Networks for Semantic Segmentation
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            Lightweight and Progressively-Scalable Networks for Semantic SegmentationAbstract(摘要)主要方法：通过一次性扩展单个维度（卷积块的数量、通道的数量或输入分辨率）来逐步将...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Sat Mar 16 2024 19:07:25 GMT+0800">
-                
-                    2024-03-16
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/notes/">notes</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2024/03/16/LPSNet/">Read more<span class="seo-reader-text">LPSNet：Lightweight and Progressively-Scalable Networks for Semantic Segmentation</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2024/02/16/begin/">
-                            如何读论文
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            如何读论文从头开始看一篇论文所花的时间太久了，而且记忆不深，就没什么效果（对我来说），所以在参考了学长的观点后，我觉得可以从以下结构开始阅读：
-
-
-
-原来结构
-推荐结构
-
-
-
-Abstract
-Abstract(摘要)
-
-
-Introduction
-...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Feb 16 2024 21:00:25 GMT+0800">
-                
-                    2024-02-16
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/notes/">notes</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
-
-    <a href="/2024/02/16/begin/">Read more<span class="seo-reader-text">如何读论文</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
+    <div class="page-template-comments">
         
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/11/16/SkipNet/">
-                            SkipNet
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            SkipNet 代码：https://github.com/ucbdrive/skipnet 
-Abstract. （摘要）While deeper convolutional networks are needed to achieve maxim...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Nov 16 2023 23:24:01 GMT+0800">
-                
-                    2023-11-16
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/notes/">notes</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/11/16/SkipNet/">Read more<span class="seo-reader-text">SkipNet</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2023/11/16/RTSeg/">
-                            RTSeg__Real-time Semantic Segmentation Comparative Study
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            RTSeg: Real-time Semantic Segmentation Comparative Study 这一篇更加关注计算效率，以下是一些些翻译加一些些理解。
-针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Nov 16 2023 22:27:32 GMT+0800">
-                
-                    2023-11-16
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/notes/">notes</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/11/16/RTSeg/">Read more<span class="seo-reader-text">RTSeg__Real-time Semantic Segmentation Comparative Study</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator px-7 py-5">
-        <div class="paginator">
-    <a class="extend prev" rel="prev" href="/"><i class="fa-regular fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-</div>
-
     </div>
 </div>
 
-                    <div class="comment-container pjax"></div>
+
                 
 
             </div>
@@ -776,11 +537,11 @@ Abstract. （摘要）While deeper convolutional networks are needed to achieve 
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        14 posts in total
+                        9 posts in total
                     </span>
                     
                         <span>
-                            9.7k words in total
+                            5.4k words in total
                         </span>
                     
                 </p>
@@ -921,7 +682,6 @@ Abstract. （摘要）While deeper convolutional networks are needed to achieve 
         containers: ["#swup"],
     });
 </script>
-
 
 
 

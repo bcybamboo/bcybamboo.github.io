@@ -13,26 +13,36 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/2023/11/16/skipnet/"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/reading/wtconv.html"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="SkipNet 代码：https:&#x2F;&#x2F;github.com&#x2F;ucbdrive&#x2F;skipnet  Abstract. （摘要）While deeper convolutional networks are needed to achieve maximum accuracy in visual perception tasks, for many inputs shallower networks">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SkipNet">
-<meta property="og:url" content="https://bcybamboo.github.io/2023/11/16/SkipNet/index.html">
+        <meta name="description" content="Abstract(摘要)新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。 Discussion（讨论）使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。 WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。 Limitations(限制)运行时间在现有框架内相对较高，这是">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WTConv">
+<meta property="og:url" content="https://bcybamboo.github.io/reading/WTConv.html">
 <meta property="og:site_name" content="Bamboo">
-<meta property="og:description" content="SkipNet 代码：https:&#x2F;&#x2F;github.com&#x2F;ucbdrive&#x2F;skipnet  Abstract. （摘要）While deeper convolutional networks are needed to achieve maximum accuracy in visual perception tasks, for many inputs shallower networks">
+<meta property="og:description" content="Abstract(摘要)新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。 Discussion（讨论）使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。 WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。 Limitations(限制)运行时间在现有框架内相对较高，这是">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20231116225046629.png">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20231116231511966.png">
-<meta property="article:published_time" content="2023-11-16T15:24:01.000Z">
-<meta property="article:modified_time" content="2024-10-18T07:42:46.889Z">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012113051486.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012113111025.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012113120298.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012113128778.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012113138305.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012114015929.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012114751984.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012115300453.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012115518981.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012120342993.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012120843103.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012121934132.png">
+<meta property="og:image" content="https://bcybamboo.github.io/images/image-20241012121859356.png">
+<meta property="article:published_time" content="2024-10-12T02:22:46.000Z">
+<meta property="article:modified_time" content="2024-10-18T07:42:43.576Z">
 <meta property="article:author" content="Bamboo">
-<meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20231116225046629.png">
+<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20241012113051486.png">
     
     
     <!--- Icon Part-->
@@ -44,7 +54,7 @@
     
     <title>
         
-            SkipNet -
+            WTConv -
         
         Bamboo
     </title>
@@ -317,7 +327,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class=""
+                                <a class="active"
                                    href="/reading"
                                         >
                                     <i class="fa-solid fa-book fa-fw"></i>
@@ -388,7 +398,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
                            href="/reading"
                         >
                             <span>
@@ -438,7 +448,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -458,260 +468,140 @@
             <div class="main-content">
 
                 
-                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
-    <div class="article-content-container">
-
-        <div class="article-title relative w-full">
-            
-                <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">SkipNet</h1>
-                </div>
-            
-            </div>
-
+                    <div class="page-template-container">
+    
+    
+    
+    <div class="page-template-content markdown-body">
         
-            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
-                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
-                    <img src="/images/dump.svg">
-                </div>
-                <div class="info flex flex-col justify-between">
-                    <div class="author flex items-center">
-                        <span class="name text-default-text-color text-lg font-semibold">Bamboo</span>
-                        
-                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv2</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-11-16 23:24:01</span>
-        <span class="mobile">2023-11-16 23:24:01</span>
-        <span class="hover-info">Created</span>
-    </span>
-    
-        <span class="article-date article-meta-item">
-            <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-18 15:42:46</span>
-            <span class="mobile">2024-10-18 15:42:46</span>
-            <span class="hover-info">Updated</span>
-        </span>
-    
-
-    
-    
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/notes/">notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
-
-    
-    
-        <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>992 Words</span>
-        </span>
-    
-    
-        <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>3 Mins</span>
-        </span>
-    
-    
-        <span class="article-pv article-meta-item">
-            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
-        </span>
-    
-</div>
-
-                    </div>
-                </div>
-            </div>
-        
-
-        
-
-
-        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>代码：<a class="link"   target="_blank" rel="noopener" href="https://github.com/ucbdrive/skipnet" >https://github.com/ucbdrive/skipnet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h2 id="Abstract-（摘要）"><a href="#Abstract-（摘要）" class="headerlink" title="Abstract. （摘要）"></a>Abstract. （摘要）</h2><p>While deeper convolutional networks are needed to achieve maximum accuracy in visual perception tasks, for many inputs shallower networks are sufficient. We exploit this observation by learning to skip convolutional layers on a per-input basis. We introduce SkipNet, a modified residual network, that uses a gating network to selectively skip convolutional blocks based on the activations of the previous layer. We formulate the dynamic skipping problem in the context of sequential decision making and propose a hybrid learning algorithm that combines supervised learning and reinforcement learning to address the challenges of non-differentiable skipping decisions. We show SkipNet reduces computation by 30 − 90% while preserving the accuracy of the original model on four benchmark datasets and outperforms the state-of-the-art dynamic networks and static compression methods. We also qualitatively evaluate the gating policy to reveal a relationship between image scale and saliency and the number of layers skipped.</p>
-<p>尽管需要更深的卷积网络才能在视觉感知任务中获得更大的准确性，但对于大多数输入来说，较浅的网络就够了。</p>
-<p>SkipNet是经过改进的残差网络，使用gating network根据前一层的激活有选择地跳过卷积层。我们在顺序决策（sequential decision）的背景下制定动态跳过（dynamic skipping）问题，并提出一种混合学习算法，将监督学习和强化学习相结合，以解决不可微分的跳过动态的问题。</p>
-<p>计算量减少了30%至90%，同时在四个基准数据集上保留了原始模型的准确性，并且胜过了最新的动态网络和静态压缩方法。</p>
-<p>定性评估gating策略，以揭示图像比例和显着性（saliency）与跳过的层数之间的关系。</p>
-<h2 id="Introduction（介绍）"><a href="#Introduction（介绍）" class="headerlink" title="Introduction（介绍）"></a>Introduction（介绍）</h2><p><img  
+            <h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>新提出的WTConv（小波卷积）可以获得非常大的感受野而不会受到过度参数化的影响。</p>
+<h2 id="Discussion（讨论）"><a href="#Discussion（讨论）" class="headerlink" title="Discussion（讨论）"></a>Discussion（讨论）</h2><p>使用WTConv，我们可以以纯卷积方法配置全局感受野的空间混合。</p>
+<p>WTConv 大大增加了 CNN 的有效感受野，改善了 CNN 的形状偏差，使网络对损坏更加鲁棒，并为各种视觉任务提供了更好的性能。</p>
+<h3 id="Limitations-限制"><a href="#Limitations-限制" class="headerlink" title="Limitations(限制)"></a>Limitations(限制)</h3><p>运行时间在现有框架内相对较高，这是由于多个顺序操作（WT-conv-IWT）的开销造成的，这可能比本身的成本更高。</p>
+<p>可以通过使用专门的实现来缓解，例如，在每个级别中与卷积并行执行 WT 以减少内存读取，或就地执行 WT 和 IWT 以减少内存分配。</p>
+<h2 id="Introduction（导言）"><a href="#Introduction（导言）" class="headerlink" title="Introduction（导言）"></a>Introduction（导言）</h2><p>一开始，大家认为vit的多头自注意力层有利于特征的全局混合，而卷积在结构上仅限于特征的局部混合。（性能差距）为了弥补性能差距，把卷积核增大到7×7大小，但是内核会变得过度参数化，并且在达到全局感受野之前性能会饱和。</p>
+<p>发现，使用较大的内核使 CNN 的形状偏差更大，这意味着它们捕获图像中低频的能力得到了提高。但是卷积层通常倾向于响应输入中的高频。而注意力头更适合低频。</p>
+<p>所以</p>
+<p><strong>idea</strong>：利用时频分析中的小波变换（WT），使卷积的感受野能够很好地放大，并通过级联引导 CNN 更好地响应低频。</p>
+<p><strong>movivation</strong>：保留了一定的空间分辨率，这使得空间运算（比如卷积）更加有意义。</p>
+<p>提出了 WTConv，该层使用级联 WT 分解并执行一组小核卷积，每个卷积都专注于越来越大的感受野中输入的不同频段。这个过程使我们能够更加重视输入中的低频，同时仅添加少量可训练参数。（感受野大，参数量少）</p>
+<p>对于k×k感受野，参数量随k呈对数增长。</p>
+<p>To summarize, our <strong>key contributions</strong> are:（主要贡献）</p>
+<p> – A new layer, called WTConv, that uses the WT to increase the receptive field of convolutions effectively. （有效地增加卷积的感受野）</p>
+<p>– WTConv is designed to be a drop-in replacement (for depth-wise convolutions) within given CNNs. （WTConv可替代CNN的Conv）</p>
+<p>– Extensive empirical evaluation demonstrates that WTConv improves CNNs’ results in several key computer-vision tasks. （改善cv任务的结果）</p>
+<p>– Analysis of WTConv’s contribution to CNN’s scalability, robustness, shapebias, and ERF.（可扩展性、鲁棒性）</p>
+<h2 id="Methods（方法）"><a href="#Methods（方法）" class="headerlink" title="Methods（方法）"></a>Methods（方法）</h2><h3 id="Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换"><a href="#Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换" class="headerlink" title="Preliminaries: The Wavelet Transform as Convolutions(小波变换)"></a>Preliminaries: The Wavelet Transform as Convolutions(小波变换)</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20231116225046629.png"
-                      alt="image-20231116225046629"
+                     data-src="/images/image-20241012113051486.png"
+                      alt="image-20241012113051486"
                 ></p>
-<p>动态选择在推理过程中应跳过卷积神经网络的哪些层，动态跳过问题-构造-&gt;顺序决策问题，其中前一层的输出决定是否绕过后一层。</p>
-<p>动态跳过问题的目标是保留整个网络准确性的同时，跳过尽可能多的层。（减少参数量，观察每层的作用）</p>
-<p>为了在保持准确性的同时减少计算量，我们需要正确绕过网络中不必要的层，学习有效的跳过策略也是一项挑战。</p>
-<p>（同时因为会跳过层数，所以不能应用梯度的优化）</p>
-<p>过程：将gating module明确分配给每组卷积层（each group of layers）。gating模块将前一层的激活映射到二进制决策，以跳过或执行后一层。我们分两个阶段训练门控模块。首先，我们通过采用重新参数化(reparametrization)技巧对二进制<a class="link"   target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=skip&spm=1001.2101.3001.7020" >skip <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>决策使用soft-max松弛，并结合原始模型使用的标准交叉熵损失一起训练layers and gates。然后，我们将概率gate输出视为初始跳过策略，并在不使用relaxation的情况下使用REINFORCE来优化策略。在后期阶段，我们共同优化跳过策略和预测误差，以稳定探索过程。</p>
-<h2 id="Related-Work（相关工作）"><a href="#Related-Work（相关工作）" class="headerlink" title="Related Work（相关工作）"></a>Related Work（相关工作）</h2><p>加速现有的卷积网络：（训练初始网络后使用）权重稀疏化、滤波器修剪、矢量量化和蒸馏-&gt;将模型转移到较浅的网络上进行模型压缩</p>
-<p>他人实验探索：通过提早终止来动态缩放计算、暂停循环网络以节省计算成本、在卷积网络中使用尽早终止、ResNets每组块中的提前终止</p>
-<p>SkipNet并不会提早退出，而是根据处理层的输出有条件地绕过各个层，可以更好地权衡成本</p>
-<h2 id="SkipNet-Model-Design（模型构思）"><a href="#SkipNet-Model-Design（模型构思）" class="headerlink" title="SkipNet Model Design（模型构思）"></a>SkipNet Model Design（模型构思）</h2><p><img  
+<p>我们在两个维度上操作，使用以下四个滤波器组产生步幅为 2 的深度卷积：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/image-20231116231511966.png"
-                      alt="image-20231116231511966"
+                     data-src="/images/image-20241012113111025.png"
+                      alt="image-20241012113111025"
                 ></p>
-<p>对于给定输入有选择地包括或排除了各个层。 使用插入在各层之间的小型门控网络可以完成各层的按输入选择。 gating网络将前一层或一组层的输出映射到一个二进制决策，以执行或绕过后一层或一组层</p>
-<p>对于a，当gating module独立的时候，情况变复杂的时候参数量变多</p>
-<h3 id="Gating-Network-Design"><a href="#Gating-Network-Design" class="headerlink" title="Gating Network Design"></a>Gating Network Design</h3>
-        </div>
+<p>fLL为低通滤波器，其余三个为高通滤波器，对于每个输入通道，卷积的输出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012113120298.png"
+                      alt="image-20241012113120298"
+                ></p>
+<p>XLL 是 X 的低频分量，而 XLH 、 XHL 、 XHH 是其水平、垂直和对角高频分量。由于公式（1）中形成了正交基，所以应用小波逆变换（IWT）通过转置卷积得到X：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012113128778.png"
+                      alt="image-20241012113128778"
+                ></p>
+<p>然后通过递归分解低频分量给出级联小波分解。每个分解级别由下式给出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012113138305.png"
+                      alt="image-20241012113138305"
+                ></p>
+<p>由迭代分解低频分量可以分析出，小波变换更加关注于低频，较低频率的频率分辨率增加，空间分辨率降低。输入低频的重复小波变换分解强调了它们并增加了层的相应响应。</p>
+<h3 id="Convolution-in-the-Wavelet-Domain（小波域中的卷积）"><a href="#Convolution-in-the-Wavelet-Domain（小波域中的卷积）" class="headerlink" title="Convolution in the Wavelet Domain（小波域中的卷积）"></a>Convolution in the Wavelet Domain（小波域中的卷积）</h3><p>已知，增加卷积核的大小时参数量以2次方增长，为了缓解这种情况，使用小波变换来过滤和缩小输入的低频和高频内容。然后，在使用 IWT 构造输出之前，对不同频率图执行小内核深度卷积。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012114015929.png"
+                      alt="image-20241012114015929"
+                ></p>
+<p>X 是输入张量，W 是 k × k 深度内核的权重张量，其输入通道数是 X 的四倍。（刚好和分离出来的不同频率分量的卷积相匹配）该操作分离了频率分量之间的卷积，还允许较小的内核在原始输入的较大区域中进行操作。</p>
+<p>采用该 1 级组合运算，并使用等式 1 中相同的级联原理进一步增加等式4，该过程由下式给出：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012114751984.png"
+                      alt="image-20241012114751984"
+                ></p>
+<p> X(0) LL 是层的输入，X(i) H 表示级别 i 的所有三个高频图X(i)LH,X(i)HL,X(i)HH。</p>
+<p>为了组合不同频率的输出, WT 及其逆是线性运算,意味着 IWT(X + Y ) &#x3D; IWT(X) + IWT(Y )，所以得到：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012115300453.png"
+                      alt="image-20241012115300453"
+                ></p>
+<p> Z(i) 是从级别 i 开始的聚合输出。不同大小卷积的两个输出相加作为输出。</p>
+<p>例：使用 2 级小波分解和 3 × 3 卷积核大小。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012115518981.png"
+                      alt="image-20241012115518981"
+                ></p>
+<p>不能对 Y (i) LL 、 Y (i) H 中的每一个进行归一化，因为它们的单独归一化并不对应于原始域中的归一化。仅执行通道缩放来权衡每个频率分量足够。</p>
+<h3 id="The-Benefits-of-Using-WTConv（使用WTConv的好处）"><a href="#The-Benefits-of-Using-WTConv（使用WTConv的好处）" class="headerlink" title="The Benefits of Using WTConv（使用WTConv的好处）"></a>The Benefits of Using WTConv（使用WTConv的好处）</h3><p>将 WTConv 合并到给定的 CNN 中有两个主要的技术优势：</p>
+<ul>
+<li>WT 的 l 级级联频率分解，与每个级别的固定大小内核 k 一起，允许参数数量在级别数中线性缩放而感受野呈指数增长。</li>
+<li>WTConv 层的构建比标准卷积更好地捕获低频。因为输入低频的重复小波变换分解强调了它们并增加了层的相应响应。</li>
+</ul>
+<h3 id="Computational-Cost（计算成本）"><a href="#Computational-Cost（计算成本）" class="headerlink" title="Computational Cost（计算成本）"></a>Computational Cost（计算成本）</h3><p>深度卷积的计算成本为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012120342993.png"
+                      alt="image-20241012120342993"
+                ></p>
+<p>其中 C 是输入通道数，(NW , NH ) 是输入的空间维度，(KW , KH ) 是内核大小，(SW , SH ) 是每个维度的步幅。</p>
+<p>通过使用标准卷积运算的简单实现，WT 的 FLOP 计数为</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012120843103.png"
+                      alt="image-20241012120843103"
+                ></p>
+<p>因为四个内核的大小为 2×2，每个空间维度上的步幅为 2，并且在每个输入通道上运行。</p>
+<p>比较起来，这仍然比类似感受野的标准深度卷积节省了很多。</p>
+<h2 id="Results（结果）"><a href="#Results（结果）" class="headerlink" title="Results（结果）"></a>Results（结果）</h2><p> 形状偏差</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012121934132.png"
+                      alt="image-20241012121934132"
+                ></p>
+<p>形状偏差与人类的感知有关，被认为是比较理想的。</p>
+<p>消融实验</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241012121859356.png"
+                      alt="image-20241012121859356"
+                ></p>
 
-        
-            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li><strong>Title:</strong> SkipNet</li>
-        <li><strong>Author:</strong> Bamboo</li>
-        <li><strong>Created at
-                :</strong> 2023-11-16 23:24:01</li>
-        
-            <li>
-                <strong>Updated at
-                    :</strong> 2024-10-18 15:42:46
-            </li>
-        
-        <li>
-            <strong>Link:</strong> https://bcybamboo.github.io/2023/11/16/SkipNet/
-        </li>
-        <li>
-            <strong>
-                License:
-            </strong>
-            
-
-            
-                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
-            
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
-
-        
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/notes/">#notes</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
-
-        
-
-        
-            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
-                
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/02/16/begin/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">如何读论文</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="next"
-                        rel="next"
-                        href="/2023/11/16/RTSeg/"
-                        >
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">RTSeg__Real-time Semantic Segmentation Comparative Study</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-
-        
-            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
-                <div class="comments-container mt-10 w-full ">
-    <div id="comment-anchor" class="w-full h-2.5"></div>
-    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
-        Comments
-    </div>
-    
-
-        
-            
-    <div id="waline"></div>
-    <script type="module" data-swup-reload-script>
-      import { init } from '/js/libs/waline.mjs';
-
-      function loadWaline() {
-        init({
-          el: '#waline',
-          serverURL: 'https://example.example.com',
-          lang: 'zh-CN',
-          dark: 'body[class~="dark-mode"]',
-          requiredMeta: ['nick', 'mail'],
-          emoji: [],
-          recaptchaV3Key: "wasd",
-          
-        });
-      }
-
-      if (typeof swup !== 'undefined') {
-        loadWaline();
-      } else {
-        window.addEventListener('DOMContentLoaded', loadWaline);
-      }
-    </script>
-
-
-
-        
-    
-</div>
-
-            </div>
         
     </div>
-
-    
-        <div class="toc-content-container">
-            <div class="post-toc-wrap">
-    <div class="post-toc">
-        <div class="toc-title">On this page</div>
-        <div class="page-title">SkipNet</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SkipNet"><span class="nav-text">SkipNet </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-%EF%BC%88%E6%91%98%E8%A6%81%EF%BC%89"><span class="nav-text">Abstract. （摘要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction%EF%BC%88%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="nav-text">Introduction（介绍）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work%EF%BC%88%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%EF%BC%89"><span class="nav-text">Related Work（相关工作）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SkipNet-Model-Design%EF%BC%88%E6%A8%A1%E5%9E%8B%E6%9E%84%E6%80%9D%EF%BC%89"><span class="nav-text">SkipNet Model Design（模型构思）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gating-Network-Design"><span class="nav-text">Gating Network Design</span></a></li></ol></li></ol></li></ol>
-
+    <div class="page-template-comments">
+        
     </div>
 </div>
-        </div>
-    
-</div>
-
 
 
                 
@@ -737,11 +627,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        14 posts in total
+                        9 posts in total
                     </span>
                     
                         <span>
-                            9.7k words in total
+                            5.4k words in total
                         </span>
                     
                 </p>
@@ -798,27 +688,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="article-tools-list">
-        <!-- TOC aside toggle -->
-        
-            <li class="right-bottom-tools page-aside-toggle">
-                <i class="fa-regular fa-outdent"></i>
-            </li>
-        
-
-        <!-- go comment -->
-        
-            <li class="go-comment">
-                <i class="fa-regular fa-comments"></i>
-            </li>
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-side-tools-container">
