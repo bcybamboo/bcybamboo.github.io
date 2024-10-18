@@ -589,35 +589,35 @@
 <h2 id="Methods（方法）"><a href="#Methods（方法）" class="headerlink" title="Methods（方法）"></a>Methods（方法）</h2><h3 id="Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换"><a href="#Preliminaries-The-Wavelet-Transform-as-Convolutions-小波变换" class="headerlink" title="Preliminaries: The Wavelet Transform as Convolutions(小波变换)"></a>Preliminaries: The Wavelet Transform as Convolutions(小波变换)</h3><p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012113051486.png"
+                     data-src="/images/image-20241012113051486.png"
                       alt="image-20241012113051486"
                 ></p>
 <p>我们在两个维度上操作，使用以下四个滤波器组产生步幅为 2 的深度卷积：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012113111025.png"
+                     data-src="/images/image-20241012113111025.png"
                       alt="image-20241012113111025"
                 ></p>
 <p>fLL为低通滤波器，其余三个为高通滤波器，对于每个输入通道，卷积的输出：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012113120298.png"
+                     data-src="/images/image-20241012113120298.png"
                       alt="image-20241012113120298"
                 ></p>
 <p>XLL 是 X 的低频分量，而 XLH 、 XHL 、 XHH 是其水平、垂直和对角高频分量。由于公式（1）中形成了正交基，所以应用小波逆变换（IWT）通过转置卷积得到X：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012113128778.png"
+                     data-src="/images/image-20241012113128778.png"
                       alt="image-20241012113128778"
                 ></p>
 <p>然后通过递归分解低频分量给出级联小波分解。每个分解级别由下式给出：</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012113138305.png"
+                     data-src="/images/image-20241012113138305.png"
                       alt="image-20241012113138305"
                 ></p>
 <p>由迭代分解低频分量可以分析出，小波变换更加关注于低频，较低频率的频率分辨率增加，空间分辨率降低。输入低频的重复小波变换分解强调了它们并增加了层的相应响应。</p>
@@ -625,7 +625,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012114015929.png"
+                     data-src="/images/image-20241012114015929.png"
                       alt="image-20241012114015929"
                 ></p>
 <p>X 是输入张量，W 是 k × k 深度内核的权重张量，其输入通道数是 X 的四倍。（刚好和分离出来的不同频率分量的卷积相匹配）该操作分离了频率分量之间的卷积，还允许较小的内核在原始输入的较大区域中进行操作。</p>
@@ -633,7 +633,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012114751984.png"
+                     data-src="/images/image-20241012114751984.png"
                       alt="image-20241012114751984"
                 ></p>
 <p> X(0) LL 是层的输入，X(i) H 表示级别 i 的所有三个高频图X(i)LH,X(i)HL,X(i)HH。</p>
@@ -641,7 +641,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012115300453.png"
+                     data-src="/images/image-20241012115300453.png"
                       alt="image-20241012115300453"
                 ></p>
 <p> Z(i) 是从级别 i 开始的聚合输出。不同大小卷积的两个输出相加作为输出。</p>
@@ -649,7 +649,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012115518981.png"
+                     data-src="/images/image-20241012115518981.png"
                       alt="image-20241012115518981"
                 ></p>
 <p>不能对 Y (i) LL 、 Y (i) H 中的每一个进行归一化，因为它们的单独归一化并不对应于原始域中的归一化。仅执行通道缩放来权衡每个频率分量足够。</p>
@@ -662,7 +662,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012120342993.png"
+                     data-src="/images/image-20241012120342993.png"
                       alt="image-20241012120342993"
                 ></p>
 <p>其中 C 是输入通道数，(NW , NH ) 是输入的空间维度，(KW , KH ) 是内核大小，(SW , SH ) 是每个维度的步幅。</p>
@@ -670,7 +670,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012120843103.png"
+                     data-src="/images/image-20241012120843103.png"
                       alt="image-20241012120843103"
                 ></p>
 <p>因为四个内核的大小为 2×2，每个空间维度上的步幅为 2，并且在每个输入通道上运行。</p>
@@ -679,7 +679,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012121934132.png"
+                     data-src="/images/image-20241012121934132.png"
                       alt="image-20241012121934132"
                 ></p>
 <p>形状偏差与人类的感知有关，被认为是比较理想的。</p>
@@ -687,7 +687,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/WTConv-md.assets/image-20241012121859356.png"
+                     data-src="/images/image-20241012121859356.png"
                       alt="image-20241012121859356"
                 ></p>
 ]]></content>
