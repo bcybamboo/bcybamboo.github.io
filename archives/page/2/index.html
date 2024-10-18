@@ -13,26 +13,18 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/reading/rtseg.html"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/archives/page/2/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="RTSeg: Real-time Semantic Segmentation Comparative Study 这一篇更加关注计算效率，以下是一些些翻译加一些些理解。 针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。 ABSTRACT（摘要）Semantic segmentation benefits robotics">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RTSeg__Real-time Semantic Segmentation Comparative Study">
-<meta property="og:url" content="https://bcybamboo.github.io/reading/RTSeg.html">
+        <meta property="og:type" content="website">
+<meta property="og:title" content="Bamboo">
+<meta property="og:url" content="https://bcybamboo.github.io/archives/page/2/index.html">
 <meta property="og:site_name" content="Bamboo">
-<meta property="og:description" content="RTSeg: Real-time Semantic Segmentation Comparative Study 这一篇更加关注计算效率，以下是一些些翻译加一些些理解。 针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。 ABSTRACT（摘要）Semantic segmentation benefits robotics">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20231101224230740.png">
-<meta property="og:image" content="https://bcybamboo.github.io/images/hello.png">
-<meta property="article:published_time" content="2023-11-16T14:27:32.000Z">
-<meta property="article:modified_time" content="2024-10-18T07:42:57.057Z">
 <meta property="article:author" content="Bamboo">
-<meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20231101224230740.png">
     
     
     <!--- Icon Part-->
@@ -44,7 +36,7 @@
     
     <title>
         
-            RTSeg__Real-time Semantic Segmentation Comparative Study -
+            Archive -
         
         Bamboo
     </title>
@@ -317,7 +309,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/reading"
                                         >
                                     <i class="fa-solid fa-book fa-fw"></i>
@@ -388,7 +380,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/reading"
                         >
                             <span>
@@ -438,7 +430,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">14</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -458,46 +450,171 @@
             <div class="main-content">
 
                 
-                    <div class="page-template-container">
+                    <div class="archive-container shadow-none hover:shadow-none sm:shadow-redefine sm:hover:shadow-redefine-hover">
     
-    
-    
-    <div class="page-template-content markdown-body">
-        
-            <h1 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
-<p>针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。</p>
-<h2 id="ABSTRACT（摘要）"><a href="#ABSTRACT（摘要）" class="headerlink" title="ABSTRACT（摘要）"></a>ABSTRACT（摘要）</h2><p>Semantic segmentation benefits robotics related applications, especially autonomous driving. Most of the research on semantic segmentation only focuses on increasing the accuracy of segmentation models with little attention to computationally efficient solutions. The few work conducted in this direction does not provide principled methods to evaluate the different design choices for segmentation. In this paper, we address this gap by presenting a real-time semantic segmentation benchmarking framework with a decoupled design for feature extraction and decoding methods. The framework is comprised of different network architectures for feature extraction such as VGG16, Resnet18, MobileNet, and ShuffleNet. It is also comprised of multiple meta-architectures for segmentation that define the decoding methodology. These include SkipNet, UNet, and Dilation Frontend. Experimental results are presented on the Cityscapes dataset for urban scenes. The modular design allows novel architectures to emerge, that lead to 143x GFLOPs reduction in comparison to SegNet. This benchmarking framework is publicly available at 1 .</p>
-<p>在语义分割上大多数都是提升精度，但是很少关注计算效率高的解决方案，针对这一空白，提出了一个实时语义分割基准框架，对特征提取和解码进行了解耦设计。</p>
-<p>特征提取用了不同的网络结构：VGG16、Resnet18、MobileNet和ShuffleNet；解码是由多个用于分割的元架构定义的：SkipNet、UNet和Dilation Frontend。</p>
-<h2 id="INTRODUCTION（介绍）"><a href="#INTRODUCTION（介绍）" class="headerlink" title="INTRODUCTION（介绍）"></a>INTRODUCTION（介绍）</h2><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20231101224230740.png"
-                      alt="image-20231101224230740"
-                ></p>
-<p>主要贡献：</p>
-<ol>
-<li>将特征提取模块和解码器进行了模块化解耦，并将器成为元架构（有助于理解网络不同部分对实时性能的影响）</li>
-<li>消融实验突出了精度和速度的平衡</li>
-<li>我们框架的模块化设计出现了两种新颖的分割架构，分别使用MobileNet [14] 和具有多种解码方法的 ShuffleNet [15]。与 SegNet 相比，ShuffleNet 减少了 143 倍的 GFLOPs。</li>
-</ol>
-<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/hello.png"
-                      alt="屏幕截图 2023-11-14 172740"
-                ></p>
-<p> 图2（a）是SkipNet的解码结构，类似于FCN8s的结构，其中较高高分辨率的特征图通过1x1卷积来将通道数量减少到最终的类别数量，每一个通道都对应着一个类别。</p>
-<p>图2（b）是UNet的解码结构，Unet结构提供的解码方式为：利用反卷积，将与下采样阶段对应的特征图进行上采样。上采样的特征图与下采样中有相同分辨率的特征图进行融合。逐级向上采样提供的精度比一次8倍向上采样的精度更高。目前采用的融合方法是逐元素相加，concatenation的方法可以提供更高的准确率，因为其确保了网络能够学习特征的加权融合，但是这样会增加计算量(concatenation会改变通道数量)。上采样之后的特征最后会接一个1x1的卷积来输出最后的逐元素分类。</p>
-<p>对于Dilation Frontend的解码结构，文中并没有给出示意图，Dilation Frontend结构利用了空洞卷积来取代下采样。空洞卷积确保了网络能够保留足够的感受野的同时，不会降低特征图的分辨率。但是副作用就是计算量的增加，修改编码器网络使得下采样率从32变为8。下采样的减少是通过删除池化层或将步幅为2的卷积转换为步幅为1的卷积来完成的。然后，将池化或正常的卷积替换为两个空洞率为2和4的空洞卷积[3]。</p>
 
-        
-    </div>
-    <div class="page-template-comments">
-        
-    </div>
+<div class="archive-list-container">
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2024</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">12</span>
+            </div>
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-18'>
+                
+                    
+                        <a href="/2024/10/18/python%E7%AC%94%E8%AE%B0/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">python笔记</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='10-12'>
+                
+                    
+                        <a href="/2024/10/12/reading/WTConv/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">WTConv</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-28'>
+                
+                    
+                        <a href="/2024/08/28/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">进程调度算法</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-22'>
+                
+                    
+                        <a href="/2024/08/22/reading/SAM2/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">SAM 2__Segment Anything in Images and Videos</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='08-20'>
+                
+                    
+                        <a href="/2024/08/20/reading/SAM/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">SAM Segment Anything</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-09'>
+                
+                    
+                        <a href="/2024/07/09/about-conda/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">about_conda</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='07-01'>
+                
+                    
+                        <a href="/2024/07/01/%E5%89%AA%E6%9E%9D/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">A Unified Progressive Depth Pruner for CNN and Vision Transformer</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='05-26'>
+                
+                    
+                        <a href="/2024/05/26/Yolov10%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">Yolov10小知识</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-24'>
+                
+                    
+                        <a href="/2024/04/24/%E7%BB%86%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">deep Learning知识点</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-22'>
+                
+                    
+                        <a href="/2024/03/22/PointRend/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">PointRend__Image Segmentation as Rendering</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-16'>
+                
+                    
+                        <a href="/2024/03/16/LPSNet/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">LPSNet：Lightweight and Progressively-Scalable Networks for Semantic Segmentation</span>
+                        </a>
+                    
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='02-16'>
+                
+                    
+                        <a href="/2024/02/16/begin/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">如何读论文</span>
+                        </a>
+                    
+              
+            </ul>
+        </section>
+    
+        <section class="archive-item mb-spacing-unit last:mb-0">
+            <div class="archive-item-header flex flex-row items-center mb-2">
+                <span class="archive-year font-semibold text-3xl mr-2">2023</span>
+                <span class="archive-year-post-count text-xs md:text-sm font-bold rounded-small bg-third-background-color py-[2px] px-[10px] border border-border-color">2</span>
+            </div>
+            <ul class="article-list pl-0 md:pl-8 text-lg leading-[1.5]">
+              
+                
+                    
+                    <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='11-16'>
+                
+                    
+                        <a href="/2023/11/16/reading/SkipNet/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">SkipNet</span>
+                        </a>
+                    
+              
+                
+                    
+                        <a href="/2023/11/16/reading/RTSeg/" class="block overflow-hidden w-fit">
+                            <span class="article-title mb-0.5 text-2xl">RTSeg__Real-time Semantic Segmentation Comparative Study</span>
+                        </a>
+                    
+              
+            </ul>
+        </section>
+    
 </div>
 
+</div>
 
                 
 
@@ -522,11 +639,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        9 posts in total
+                        14 posts in total
                     </span>
                     
                         <span>
-                            5.4k words in total
+                            9.7k words in total
                         </span>
                     
                 </p>
