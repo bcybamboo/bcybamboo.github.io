@@ -13,27 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://bcybamboo.github.io/2024/03/22/pointrend/"/>
+    <link rel="canonical" href="https://bcybamboo.github.io/2024/11/02/sql注入/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="PointRend: Image Segmentation as Rendering 现有方法：一般会输出一个原图1&#x2F;8或1&#x2F;16大小的预测图，然后通过双线性插值来补齐最后的8x&#x2F;16x分辨率 现有方法存在的问题 过采样：对于图片中低频区域，没必要用太多的采样点，却使用太多采样点造成过采样；欠采样 ：对于图片中高频区域（ 靠近物体边界 ），这些区域的采样过于稀疏，导致">
+        <meta name="description" content="SQL注入分类SQL注入按照类型分为数字型注入和字符型注入。注入点的数据类型为数字型时为数字型注入，注入点的数据类型为字符型为字符型注入。 SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中，程序将获取的信息或者报错信息直接显示在页面中，这样的注入为报错注入；如果在注入的过程中，程序不显示任何SQL报错信息，只能通过精心构造SQL语句，根据页面是否正常返回或者返回的时间判断">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PointRend">
-<meta property="og:url" content="https://bcybamboo.github.io/2024/03/22/PointRend/index.html">
+<meta property="og:title" content="SQL注入">
+<meta property="og:url" content="https://bcybamboo.github.io/2024/11/02/SQL%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Bamboo">
-<meta property="og:description" content="PointRend: Image Segmentation as Rendering 现有方法：一般会输出一个原图1&#x2F;8或1&#x2F;16大小的预测图，然后通过双线性插值来补齐最后的8x&#x2F;16x分辨率 现有方法存在的问题 过采样：对于图片中低频区域，没必要用太多的采样点，却使用太多采样点造成过采样；欠采样 ：对于图片中高频区域（ 靠近物体边界 ），这些区域的采样过于稀疏，导致">
+<meta property="og:description" content="SQL注入分类SQL注入按照类型分为数字型注入和字符型注入。注入点的数据类型为数字型时为数字型注入，注入点的数据类型为字符型为字符型注入。 SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中，程序将获取的信息或者报错信息直接显示在页面中，这样的注入为报错注入；如果在注入的过程中，程序不显示任何SQL报错信息，只能通过精心构造SQL语句，根据页面是否正常返回或者返回的时间判断">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240322121912139.png">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240322121856009.png">
-<meta property="og:image" content="https://bcybamboo.github.io/images/image-20240322122545106.png">
-<meta property="article:published_time" content="2024-03-22T04:25:01.000Z">
-<meta property="article:modified_time" content="2024-10-18T08:46:07.997Z">
+<meta property="article:published_time" content="2024-11-02T06:36:45.000Z">
+<meta property="article:modified_time" content="2024-11-02T06:38:07.380Z">
 <meta property="article:author" content="Bamboo">
-<meta property="article:tag" content="论文阅读">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://bcybamboo.github.io/images/image-20240322121912139.png">
     
     
     <!--- Icon Part-->
@@ -45,7 +40,7 @@
     
     <title>
         
-            PointRend -
+            SQL注入 -
         
         Bamboo
     </title>
@@ -451,7 +446,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">PointRend</h1>
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">SQL注入</h1>
                 </div>
             
             </div>
@@ -472,37 +467,26 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2024-03-22 12:25:01</span>
-        <span class="mobile">2024-03-22 12:25:01</span>
+        <span class="desktop">2024-11-02 14:36:45</span>
+        <span class="mobile">2024-11-02 14:36:45</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-10-18 16:46:07</span>
-            <span class="mobile">2024-10-18 16:46:07</span>
+            <span class="desktop">2024-11-02 14:38:07</span>
+            <span class="mobile">2024-11-02 14:38:07</span>
             <span class="hover-info">Updated</span>
         </span>
     
 
     
     
-        <span class="article-tags article-meta-item">
-            <i class="fa-regular fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
-    
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>599 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>671 Words</span>
         </span>
     
     
@@ -526,47 +510,15 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1 id="PointRend-Image-Segmentation-as-Rendering"><a href="#PointRend-Image-Segmentation-as-Rendering" class="headerlink" title="PointRend: Image Segmentation as Rendering"></a><a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.08193" >PointRend: Image Segmentation as Rendering <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></h1><p><strong>现有方法</strong>：一般会输出一个原图1&#x2F;8或1&#x2F;16大小的预测图，然后通过双线性插值来补齐最后的8x&#x2F;16x分辨率</p>
-<p><strong>现有方法存在的问题</strong></p>
-<p>过采样：对于图片中低频区域，没必要用太多的采样点，却使用太多采样点造成过采样；<br>欠采样 ：对于图片中高频区域（ 靠近物体边界 ），这些区域的采样过于稀疏，导致分割出的边界过于平滑。</p>
-<p><strong>PointRend</strong></p>
-<p>提出的 PointRend 是一个通用的模块，它允许许多可能的实现：输入一个或多个 feature map（通常比原图分辨率低 4x 或 16x），输出高分辨率的预测结果.</p>
-<ul>
-<li><p>PointRend 只对选择的点进行预测，而不是对所有输入点都进行预测.</p>
-</li>
-<li><p>对选择的点先通过插值的方式提取点特征，然后用 point head subnetwork 来预测点标签</p>
-</li>
-</ul>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240322121912139.png"
-                      alt="image-20240322121912139"
-                ></p>
-<p><strong>Inference</strong></p>
-<p>每个迭代循环中：<br>① 用双线性插值对上次预测出的 seg mask 进行上采样；<br>② 然后在上采样后的 mask 中找出 N 个最不确定的点（比如 binary mask 中 pribabilities 接近 0.5 的点）；<br>③ 用 pointrend 提取这些点的 feature 并预测它们的 label.</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240322121856009.png"
-                      alt="image-20240322121856009"
-                ></p>
-<p><strong>采样的三个原则</strong></p>
-<p><strong>过生成</strong>: 从均匀分布中随机抽取 KN（K&gt;1）个点作为候选点。</p>
-<p><strong>重要性抽样</strong>: 插值得到所有 KN 点处的的粗预测，然后计算这些点的不确定性，选择其中最不确定的 βN ( β∈[0,1] ) 个点。</p>
-<p><strong>广域覆盖:</strong> 剩下的 (1−β)N 个点从均匀分布中随机采样得到</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/image-20240322122545106.png"
-                      alt="image-20240322122545106"
-                ></p>
-<p><strong>Coarse prediction features</strong></p>
-<p><strong>必要性：</strong>只有点特征是不够的，因为 ① 对实例分割而言，一个点可能在两个实例的交叠处，需要区域信息来辅助判断；② 对实例分割和语义分割两项任务而言，点特征所使用的 feature map 可能只包含 low-level 的信息，因此还需要包含进去一些上下文和语义信息.</p>
-<p>因此使用粗分割结果作为辅助信息，被涵盖在点特征表示向量中：一个点处表示 K 分类结果的 K 维向量.</p>
-<p><strong>Point Head</strong></p>
-<p>2 个 1024-wide hidden layers 的 MLP</p>
-<p>类似于图卷积或 PointNet，这个 MLP 对所有的点<strong>共享参数.</strong></p>
+            <h2 id="SQL注入分类"><a href="#SQL注入分类" class="headerlink" title="SQL注入分类"></a>SQL注入分类</h2><p>SQL注入按照类型分为数字型注入和字符型注入。注入点的数据类型为数字型时为数字型注入，注入点的数据类型为字符型为字符型注入。<br> SQL注入按照服务器返回信息是否显示分为报错注入和盲注。如果在注入的过程中，程序将获取的信息或者报错信息直接显示在页面中，这样的注入为报错注入；如果在注入的过程中，程序不显示任何SQL报错信息，只能通过精心构造SQL语句，根据页面是否正常返回或者返回的时间判断注入的结果，这样的注入为盲注。</p>
+<h2 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h2><p>数字型注入就是注入点的数据类型是数字型，没有用单引号引起来。数字型注入的典型示例代码</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;SELECT * FROM users WHERE id=<span class="subst">$id</span> LIMIT 0,1&quot;</span>;</span><br><span class="line"><span class="variable">$result</span> = <span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br><span class="line"><span class="variable">$row</span> = <span class="title function_ invoke__">mysql_fetch_array</span>(<span class="variable">$result</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>判断数字型注入的方法如下</strong><br> <strong>1. 输入单引号，不正常返回</strong><br> 如果用户提交index.php?id&#x3D;1’，那么后面的SQL语句就变成为SELECT * FROM users WHERE id&#x3D;1’ LIMIT0,1,SQL语句本身存在语法错误，会有不正常的结果返回。<br> <strong>2. 输入and 1&#x3D;1，正常返回</strong><br> 如果用户提交index.php?id&#x3D;1 and 1&#x3D;1，那么后面的SQL语句就变成为SELECT * FROM users WHERE id&#x3D;1 and 1&#x3D;1 LIMIT 0,1，会有正常的结果返回。<br> <strong>3. 输入and 1&#x3D;2，不正常返回</strong><br> SQL语句变为SELECT * FROM users WHERE id&#x3D;1 and 1&#x3D;2 LIMIT 0,1,会有不正常的结果返回。</p>
+<h2 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h2><p>字符型注入就是注入点的数据类型是字符型。字符型注入与数字型注入的区别就是字符型注入要用一对单引号引起来。字符型注入的典型示例代码如下：</p>
+<div class="highlight-container" data-rel="Php"><figure class="iseeu highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;id&#x27;</span>];</span><br><span class="line"><span class="variable">$sql</span> = <span class="string">&quot;select * from users where id=&#x27;<span class="subst">$id</span>&#x27; limit 0,1;</span></span><br><span class="line"><span class="string"><span class="subst">$result</span> = mysql_query(<span class="subst">$sql</span>);</span></span><br><span class="line"><span class="string"><span class="subst">$row</span> = mysql_fetch_array(<span class="subst">$result</span>);</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>判断字符型注入的方法如下</strong><br> <strong>1. 输入单引号，不正常返回</strong><br> 输入单引号后，SQL语句变为select * from users where id&#x3D;1’ limit 0,1，SQL语句本身存在语法错误，会有不正常的结果返回<br> <strong>2. 输入’ and ‘1’&#x3D;’1，正常返回</strong><br> SQL语句变为select * from users where id&#x3D;’1’ and ‘1’&#x3D;’1’ limit 0,1，会有正常结果返回。<br> <strong>3. 输入’ and ‘1’&#x3D;’2，会不正常返回</strong><br> SQL语句变为select * from users where id&#x3D;’1’ and ‘1’&#x3D;’2’ limit 0,1，会有不正常的结果返回</p>
 
         </div>
 
@@ -574,18 +526,18 @@
             <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> PointRend</li>
+        <li><strong>Title:</strong> SQL注入</li>
         <li><strong>Author:</strong> Bamboo</li>
         <li><strong>Created at
-                :</strong> 2024-03-22 12:25:01</li>
+                :</strong> 2024-11-02 14:36:45</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2024-10-18 16:46:07
+                    :</strong> 2024-11-02 14:38:07
             </li>
         
         <li>
-            <strong>Link:</strong> https://bcybamboo.github.io/2024/03/22/PointRend/
+            <strong>Link:</strong> https://bcybamboo.github.io/2024/11/02/SQL注入/
         </li>
         <li>
             <strong>
@@ -604,43 +556,20 @@
         
 
         
-            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
-                
-                    <li class="tag-item mx-0.5">
-                        <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">#论文阅读</a>&nbsp;
-                    </li>
-                
-            </ul>
-        
 
         
 
         
             <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
                 
-                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2024/04/24/%E7%BB%86%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">deep Learning知识点</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
                         <a class="next"
                         rel="next"
-                        href="/2024/03/16/LPSNet/"
+                        href="/2024/10/18/python%E7%AC%94%E8%AE%B0/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">LPSNet</span>
+                                <span class="post-nav-title-item">python笔记</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -703,8 +632,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">On this page</div>
-        <div class="page-title">PointRend</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PointRend-Image-Segmentation-as-Rendering"><span class="nav-text">PointRend: Image Segmentation as Rendering </span></a></li></ol>
+        <div class="page-title">SQL注入</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5%E5%88%86%E7%B1%BB"><span class="nav-text">SQL注入分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="nav-text">数字型注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="nav-text">字符型注入</span></a></li></ol>
 
     </div>
 </div>
