@@ -839,4 +839,54 @@
 <p><strong>判断字符型注入的方法如下</strong><br> <strong>1. 输入单引号，不正常返回</strong><br> 输入单引号后，SQL语句变为select * from users where id&#x3D;1’ limit 0,1，SQL语句本身存在语法错误，会有不正常的结果返回<br> <strong>2. 输入’ and ‘1’&#x3D;’1，正常返回</strong><br> SQL语句变为select * from users where id&#x3D;’1’ and ‘1’&#x3D;’1’ limit 0,1，会有正常结果返回。<br> <strong>3. 输入’ and ‘1’&#x3D;’2，会不正常返回</strong><br> SQL语句变为select * from users where id&#x3D;’1’ and ‘1’&#x3D;’2’ limit 0,1，会有不正常的结果返回</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>FLANet</title>
+    <url>/2024/11/11/FLANet/</url>
+    <content><![CDATA[<p>全称:Fully Attentional Network for Semantic Segmentation</p>
+<p>全注意力模块代码:</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FullyAttentionalBlock</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, plane, norm_layer=SyncBatchNorm</span>):</span><br><span class="line">        <span class="built_in">super</span>(FullyAttentionalBlock, self).__init__()</span><br><span class="line">        <span class="comment">#用于在高度和宽度方向上编码特征的线性层</span></span><br><span class="line">        self.conv1 = nn.Linear(plane, plane)</span><br><span class="line">        self.conv2 = nn.Linear(plane, plane)</span><br><span class="line">        </span><br><span class="line">        self.conv = nn.Sequential(nn.Conv2d(plane, plane, <span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>, bias=<span class="literal">False</span>),</span><br><span class="line">                                  norm_layer(plane),</span><br><span class="line">                                  nn.ReLU())</span><br><span class="line"></span><br><span class="line">        self.softmax = nn.Softmax(dim=-<span class="number">1</span>)</span><br><span class="line">        self.gamma = nn.Parameter(torch.zeros(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        batch_size, _, height, width = x.size()</span><br><span class="line"></span><br><span class="line">        feat_h = x.permute(<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>).contiguous().view(batch_size * width, -<span class="number">1</span>, height)</span><br><span class="line">        feat_w = x.permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>).contiguous().view(batch_size * height, -<span class="number">1</span>, width)</span><br><span class="line">        encode_h = self.conv1(F.avg_pool2d(x, [<span class="number">1</span>, width]).view(batch_size, -<span class="number">1</span>, height).permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>).contiguous())</span><br><span class="line">        encode_w = self.conv2(F.avg_pool2d(x, [height, <span class="number">1</span>]).view(batch_size, -<span class="number">1</span>, width).permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>).contiguous())</span><br><span class="line"></span><br><span class="line">        energy_h = torch.matmul(feat_h, encode_h.repeat(width, <span class="number">1</span>, <span class="number">1</span>))<span class="comment">#通过矩阵乘法计算高度方向的能量分数。</span></span><br><span class="line">        energy_w = torch.matmul(feat_w, encode_w.repeat(height, <span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">        full_relation_h = self.softmax(energy_h)  <span class="comment"># [b*w, c, c]   获得高度方向的注意力权重</span></span><br><span class="line">        full_relation_w = self.softmax(energy_w)</span><br><span class="line"></span><br><span class="line">        full_aug_h = torch.bmm(full_relation_h, feat_h).view(batch_size, width, -<span class="number">1</span>, height).permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>)<span class="comment">#使用批量矩阵乘法 (torch.bmm) 将高度方向的注意力应用于 feat_h</span></span><br><span class="line">        full_aug_w = torch.bmm(full_relation_w, feat_w).view(batch_size, height, -<span class="number">1</span>, width).permute(<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">        out = self.gamma * (full_aug_h + full_aug_w) + x </span><br><span class="line">        out = self.conv(out)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2><p>在原来可以通过压缩空间维度或通过压缩通道的相似图来描述沿通道或空间维度的特征关系，但是这样会沿着其他维度压缩特征依赖性，就会导致注意力缺失，对小类别的结果较差或者大对象内分割不一致。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在FLANet中，将空间和通道注意力编码到在单个相似图中，同时保持高计算效率。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241111113854239.png"
+                      alt="image-20241111113854239"
+                ></p>
+<p>空间NL可以增强细节的辨别力，而通道NL则有利于保持大对象内部的语义一致性空间NL可以增强细节的辨别力，而通道NL则有利于保持大对象内部的语义一致性。</p>
+<p>而且单纯把两个NL模块堆叠起来使用还是会出现注意力缺失的问题，注意力缺失问题会损害特征表示能力，并且不能通过简单地堆叠不同的NL块来解决。，但是FLA解决了这一问题。</p>
+<p>FLA基本思想:在计算通道注意力图时利用全局上下文信息来接收空间响应，从而能够在单个注意力单元中实现充分的注意力，并且具有较高的计算效率。具体来说，我们首先使每个空间位置能够从具有相同水平和垂直坐标的全局上下文中获取特征响应。其次，我们使用自注意力机制来捕获任意两个通道图之间的完全注意力相似性以及相关的空间位置,最后，通过整合所有通道图和相关全局线索之间的特征，使用生成的完全注意相似性来重新加权每个通道图。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/image-20241111114639873.png"
+                      alt="image-20241111114639873"
+                ></p>
+<p>为了避免增加额外的计算负担，我们尝试利用全局平均池化结果作为全局上下文先验，将空间交互引入通道NL机制。</p>
+<p>具体计算过程：</p>
+<p>给定输入特征图 Fin ∈ RC×H×W ，其中 C 是通道数，H 和 W 是输入张量的空间维度。首先，我们将 Fin 输入到底部的两个平行路径（即构建），每个路径都包含一个全局平均池化层，后面跟着一个线性层。在选择池化窗口的大小时，我们考虑了以下两个方面。首先，为了获得更丰富的全局上下文先验，我们选择在高度和宽度方向上使用不相等的全局池化大小而不是内核像3×3这样的窗口。其次，为了确保每个空间位置都与具有相同水平或垂直坐标的相应全局先验连接，即在计算通道关系时保持空间一致性，我们选择保留一维的长度持续的。因此，我们在这两个路径中分别采用大小为 H × 1 和 1 × W 的池化窗口。这给出 ˆ Qw ∈ RC×1×W 和 ˆ Qh ∈ RC×H×1。之后，我们重复 ^ Qw 和 ^ Qh 形成全局特征 Qw ∈ RC×H×W 和 Qh ∈ RC×H×W 。请注意，Qw和Qh分别表示水平和垂直方向上的全局先验，它们将用于实现相应维度上的空间交互。此外，我们沿 H 维度切割 Qw，从中我们可以生成一组大小为 RC×W 的 H 切片。同样，我们沿着W维度切割Qh。然后我们合并这两个组以形成最终的全局上下文 Q ∈ R(H+W )×C×S。剪切和合并操作如图3 所示。同时，我们沿 H 维度切割输入特征 Fin，产生一组大小为 RC×W 的 H 切片。同样，我们沿着 W 维度进行此操作。与 Q 的合并过程一样，这两组被整合形成特征 K ∈ R(H+W )×S×C 。以同样的方式，我们可以生成特征图V ∈ R(H+W )×C×S。</p>
+<h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献:"></a>贡献:</h3><ul>
+<li>发现非局部自注意力方法中存在注意力缺失问题，这会损害特征表示的完整性。 </li>
+<li>我们将自注意力机制重新表述为完全注意力方式，以生成密集且全面的特征依赖关系，从而有效且高效地解决注意力缺失问题.</li>
+<li>实验广泛。</li>
+</ul>
+<h3 id="不足"><a href="#不足" class="headerlink" title="不足:"></a>不足:</h3><p>极高的计算量限制了其实际应用.</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>VAE</title>
+    <url>/2024/11/10/VAE/</url>
+    <content><![CDATA[<p>VAE 是一种生成式人工智能算法，它利用深度学习生成新内容、检测异常并去除噪音。</p>
+<p>适合生成用于训练其他人工智能算法的合成时间序列数据，也适用于生成文本、图像和视频。不过，在生成不同类型的内容，它们更有可能成为其他模型的补充，如 GAN、稳定扩散（扩散模型的一种创新）和转换器。</p>
+<p>VAE结合了两种类型的神经网络，一个网络（编码器）能够找到将原始数据编码到潜在空间的更好方法，第二个网络（解码器）能找到将这些潜在表征转化成新内容的更好方法。GAN类似，第一个神经网络找到生成虚假内容的更好方法，第二个神经网络找到检测虚假内容的更好方法。</p>
+<h3 id="自动编码器介绍"><a href="#自动编码器介绍" class="headerlink" title="自动编码器介绍"></a>自动编码器介绍</h3><p>自动编码器有助于创建用于压缩数据和检测异常的编解码器。早期应用于降维和特征学习，目前可集成到其他AI或机器学习算法中提高精度和性能。（比如提取人声和音乐）</p>
+<h3 id="自动编码器的类型"><a href="#自动编码器的类型" class="headerlink" title="自动编码器的类型"></a>自动编码器的类型</h3><p>基本自动编码器有几种类型，包括以下几种：</p>
+<ul>
+<li><strong>稀疏自动编码器。</strong>这是最古老和最流行的方法之一。它们适用于<strong>特征提取、降维、异常检测和迁移学习</strong>。它们使用技术来鼓励神经网络仅使用中间神经元的子集。这些未使用的神经元的剩余部分使它们能够灵活地识别和学习更有效的数据表示。</li>
+<li><strong>去噪自动编码器</strong>。它们学习<strong>从嘈杂的数据流中重建原始数据</strong>的方法。它们通常用于清理低光图像、识别语音和预处理物联网数据。</li>
+<li><strong>收缩式自动编码器。</strong>它们专门学习一种能够<strong>适应输入数据细微变化</strong>的表示。这有助于它们更好地适应未见数据。研究人员使用它们通过突出显示数据集中负责结果的最显着特征来提高神经网络模型的可解释性。</li>
+</ul>
+]]></content>
+  </entry>
 </search>
