@@ -1018,6 +1018,8 @@
                       alt="image-20241020180931606"
                 ></p>
 <p>gdb说明c语言也是一个状态机</p>
+<hr>
+<p>好吧，又没时间看了</p>
 ]]></content>
       <tags>
         <tag>操作系统</tag>
@@ -1086,7 +1088,7 @@
   <entry>
     <title>实时语义分割</title>
     <url>/2025/02/20/%E5%AE%9E%E6%97%B6%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/</url>
-    <content><![CDATA[<p>k看了一篇24年的综述，所以整理了一下</p>
+    <content><![CDATA[<p>看了一篇24年的综述，所以整理了一下</p>
 <p>链接：<a class="link"   href="http://cjig.cn/zh/article/doi/10.11834/jig.230659/" >http://cjig.cn/zh/article/doi/10.11834/jig.230659/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>代码：<a class="link"   href="https://github.com/xzz777/Awesome-Real-time-Semantic-Segmentation" >https://github.com/xzz777/Awesome-Real-time-Semantic-Segmentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <hr>
