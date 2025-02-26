@@ -93,6 +93,9 @@
 
 <p>在本地的conda环境AAA，克隆给新环境BBB</p>
 ]]></content>
+      <tags>
+        <tag>工具使用</tag>
+      </tags>
   </entry>
   <entry>
     <title>如何读论文</title>
@@ -873,6 +876,9 @@
 </ul>
 <h3 id="不足"><a href="#不足" class="headerlink" title="不足:"></a>不足:</h3><p>极高的计算量限制了其实际应用.</p>
 ]]></content>
+      <tags>
+        <tag>论文阅读</tag>
+      </tags>
   </entry>
   <entry>
     <title>VAE</title>
@@ -1015,6 +1021,15 @@
 ]]></content>
       <tags>
         <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git简单使用</title>
+    <url>/2025/02/22/git%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>记录一下常用的命令，每次要用的时候都忘记</p>
+]]></content>
+      <tags>
+        <tag>工具使用</tag>
       </tags>
   </entry>
 </search>
