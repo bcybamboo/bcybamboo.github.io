@@ -1160,7 +1160,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ModelCompression.md</title>
+    <title>ModelCompression</title>
     <url>/2025/02/26/ModelCompression/</url>
     <content><![CDATA[<h2 id="模型压缩通用方法"><a href="#模型压缩通用方法" class="headerlink" title="模型压缩通用方法"></a>模型压缩通用方法</h2><p>模型压缩是指将原本的大网络模型通过一些技术手段，压缩成为具有更好的实时性或参数量更小的模型。常见的模型压缩技术包括网络剪枝、神经架构搜索、知识蒸馏和量化。</p>
 <p><strong>网络剪枝（network pruning）</strong>是指去掉网络模型中不必要的参数。网络剪枝的一般步骤是：训练一个大网络、评估每个参数的重要性、去掉不重要的参数以及微调去掉参数后的网络以恢复剪枝损失的部分精度。剪枝可以利用大模型本身容易训练到较高精度的优势，以最小的精度损失代价来获得更小的模型。</p>
