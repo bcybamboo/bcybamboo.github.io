@@ -26,7 +26,7 @@
 <meta property="og:description" content="false">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-22T06:58:17.000Z">
-<meta property="article:modified_time" content="2025-02-26T10:36:00.370Z">
+<meta property="article:modified_time" content="2025-03-07T08:07:53.975Z">
 <meta property="article:author" content="Bamboo">
 <meta property="article:tag" content="工具使用">
 <meta name="twitter:card" content="summary">
@@ -475,8 +475,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-26 18:36</span>
-            <span class="mobile">2025-02-26 18:36</span>
+            <span class="desktop">2025-03-07 16:07:53</span>
+            <span class="mobile">2025-03-07 16:07:53</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -498,7 +498,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>19 Words</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>142 Words</span>
         </span>
     
     
@@ -523,6 +523,28 @@
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <p>记录一下常用的命令，每次要用的时候都忘记</p>
+<p>初始化</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></div>
+
+<p>存到本地</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt; url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后cd进入拉取的文件夹中</p>
+<p>设置分支</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure></div>
+
+<p>连接远程仓库</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>查看是否连接成功</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></div>
+
+<p>然后可以在本地进行更改文件</p>
+<p>如果是共创的，更改文件前先拉取</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="上传过程"><a href="#上传过程" class="headerlink" title="上传过程"></a>上传过程</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;备注&quot;</span><br><span class="line">git push -u origin main(如果和前面设置的分支一致可以直接git push)</span><br></pre></td></tr></table></figure></div>
+
 
         </div>
 
@@ -537,7 +559,7 @@
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-02-26 18:36:00
+                    :</strong> 2025-03-07 16:07:53
             </li>
         
         <li>
@@ -660,7 +682,7 @@
     <div class="post-toc">
         <div class="toc-title">On this page</div>
         <div class="page-title">git简单使用</div>
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E8%BF%87%E7%A8%8B"><span class="nav-text">上传过程</span></a></li></ol>
 
     </div>
 </div>
@@ -697,7 +719,7 @@
                     </span>
                     
                         <span>
-                            17k words in total
+                            17.2k words in total
                         </span>
                     
                 </p>

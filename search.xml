@@ -1029,6 +1029,28 @@
     <title>git简单使用</title>
     <url>/2025/02/22/git%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>记录一下常用的命令，每次要用的时候都忘记</p>
+<p>初始化</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></div>
+
+<p>存到本地</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone &lt; url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后cd进入拉取的文件夹中</p>
+<p>设置分支</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure></div>
+
+<p>连接远程仓库</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;url&gt;</span><br></pre></td></tr></table></figure></div>
+
+<p>查看是否连接成功</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></div>
+
+<p>然后可以在本地进行更改文件</p>
+<p>如果是共创的，更改文件前先拉取</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="上传过程"><a href="#上传过程" class="headerlink" title="上传过程"></a>上传过程</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;备注&quot;</span><br><span class="line">git push -u origin main(如果和前面设置的分支一致可以直接git push)</span><br></pre></td></tr></table></figure></div>
+
 ]]></content>
       <tags>
         <tag>工具使用</tag>
