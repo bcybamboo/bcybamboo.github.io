@@ -1049,12 +1049,27 @@
 <p>如果是共创的，更改文件前先拉取</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure></div>
 
-<h2 id="上传过程"><a href="#上传过程" class="headerlink" title="上传过程"></a>上传过程</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;备注&quot;</span><br><span class="line">git push -u origin main(如果和前面设置的分支一致可以直接git push)</span><br></pre></td></tr></table></figure></div>
+<h2 id="上传流程"><a href="#上传流程" class="headerlink" title="上传流程"></a>上传流程</h2><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;备注&quot;</span><br><span class="line">git push -u origin main(如果和前面设置的分支一致可以直接git push)</span><br></pre></td></tr></table></figure></div>
 
 <h2 id="上传大文件"><a href="#上传大文件" class="headerlink" title="上传大文件"></a>上传大文件</h2><p>遇到需要上传100MB以上大小的文件，就需要用到Git LFS</p>
 <p>先下载<a class="link"   href="https://git-lfs.github.com/" >客户端 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>，然后打开Git Bash，进入需要上传大文件的位置cd进去</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">#初始化</span><br><span class="line">git init</span><br><span class="line">#安装git lfs</span><br><span class="line">git lfs install</span><br><span class="line">#将需要上传的大文件放进文件夹中，跟踪一下文件或指定文件类型（以model.h5为例）</span><br><span class="line">git lfs track &quot;*.h5&quot; 或者 git lfs track &quot;model.h5&quot;</span><br><span class="line">#添加.gitattributes（配置文件，缺少它执行其他git操作可能会有问题）</span><br><span class="line">git add .gitattributes</span><br><span class="line">#后续就是正常的上传，上传前最好先pull</span><br></pre></td></tr></table></figure></div>
+<p>初始化</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></div>
 
+<p>安装git lfs</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git lfs install</span><br></pre></td></tr></table></figure></div>
+
+<p>将需要上传的大文件放进文件夹中，跟踪一下文件或指定文件类型（以model.h5为例）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git lfs track &quot;*.h5&quot; 或者 git lfs track &quot;model.h5&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>添加.gitattributes（配置文件，缺少它执行其他git操作可能会有问题）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure></div>
+
+<p>后续就是正常的上传，上传前最好先pull</p>
+<p>在第二次使用时，流程就是先cd进有大文件的位置，然后track一下</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git lfs track &quot;文件名.后缀&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>然后按照上传流程上传即可</p>
 ]]></content>
       <tags>
         <tag>工具使用</tag>
