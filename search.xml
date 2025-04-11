@@ -880,10 +880,8 @@
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .gitattributes</span><br></pre></td></tr></table></figure></div>
 
 <p>后续就是正常的上传，上传前最好先pull</p>
-<p>在第二次使用时，流程就是先cd进有大文件的位置，然后track一下</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">git lfs track &quot;文件名.后缀&quot;</span><br></pre></td></tr></table></figure></div>
-
-<p>然后按照上传流程上传即可</p>
+<hr>
+<p>有坑哇，LFS超出额度需要收费，而且上传到缓存区然后删除真的很麻烦，非必要请不要使用！</p>
 ]]></content>
       <tags>
         <tag>工具使用</tag>
@@ -1245,6 +1243,140 @@
                       alt="image-20240116011233467"
                 ></p>
 <p><strong>dropout程序导致两个神经元不一定每次都在一个dropout网络中出现。这样权值的更新不再依赖于有固定关系的隐含节点的共同作用，阻止了某些特征仅仅在其它特定特征下才有效果的情况 。迫使网络去学习更加鲁棒的特征</strong></p>
+]]></content>
+      <tags>
+        <tag>notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python笔记</title>
+    <url>/2024/10/18/python%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>python的运算符用于内置类，但是相同的运算符对不同类型有不同的行为，python中的这一功能允许同一运算符根据上下文具有不同的语义，称为运算符过载。</p>
+<h3 id="Python中的特殊函数"><a href="#Python中的特殊函数" class="headerlink" title="Python中的特殊函数"></a>Python中的特殊函数</h3><p>以双下划线__开头的类函数在Python中称为特殊函数。每次我们创建该类的新对象时都会调用它。Python中有很多特殊函数。</p>
+<p>在类中定义 <code>__str()__</code>方法，可以控制他的打印输出方式。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point:</span><br><span class="line">    def __init__(self, x = 0, y = 0):</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">    </span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;(&#123;0&#125;,&#123;1&#125;)&quot;.format(self.x,self.y)</span><br></pre></td></tr></table></figure></div>
+
+<p>try：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; p1 = Point(2,3)</span><br><span class="line">&gt;&gt;&gt; print(p1)</span><br><span class="line">(2,3)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="重载-（实现-add-函数）"><a href="#重载-（实现-add-函数）" class="headerlink" title="重载 +（实现 __add__()函数）"></a>重载 <code>+</code>（实现 <code>__add__()</code>函数）</h3><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Point:</span><br><span class="line">    def __init__(self, x = 0, y = 0):</span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">    </span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;(&#123;0&#125;,&#123;1&#125;)&quot;.format(self.x,self.y)</span><br><span class="line">    </span><br><span class="line">    def __add__(self,other):</span><br><span class="line">        x = self.x + other.x</span><br><span class="line">        y = self.y + other.y</span><br><span class="line">        return Point(x,y)</span><br></pre></td></tr></table></figure></div>
+
+<p>try:</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; p1 = Point(2,3)</span><br><span class="line">&gt;&gt;&gt; p2 = Point(-1,2)</span><br><span class="line">&gt;&gt;&gt; print(p1 + p2)</span><br><span class="line">(1,5)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="python运算符重载的特殊函数"><a href="#python运算符重载的特殊函数" class="headerlink" title="python运算符重载的特殊函数"></a>python运算符重载的特殊函数</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">表达</th>
+<th align="left">在内部</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">相加（+）</td>
+<td align="left">p1 + p2</td>
+<td align="left">p1 .__ add __（p2）</td>
+</tr>
+<tr>
+<td align="left">相减（-）</td>
+<td align="left">p1-p2</td>
+<td align="left">p1 .__ sub __（p2）</td>
+</tr>
+<tr>
+<td align="left">相乘（*）</td>
+<td align="left">p1 * p2</td>
+<td align="left">p1 .__ mul __（p2）</td>
+</tr>
+<tr>
+<td align="left">求幂（**）</td>
+<td align="left">p1 ** p2</td>
+<td align="left">p1 .__ pow __（p2）</td>
+</tr>
+<tr>
+<td align="left">相除（&#x2F;）</td>
+<td align="left">p1 &#x2F; p2</td>
+<td align="left">p1 .__ truediv __（p2）</td>
+</tr>
+<tr>
+<td align="left">整除（&#x2F;&#x2F;）</td>
+<td align="left">p1 &#x2F;&#x2F; p2</td>
+<td align="left">p1 .__ floordiv __（p2）</td>
+</tr>
+<tr>
+<td align="left">求模 （%）</td>
+<td align="left">p1％p2</td>
+<td align="left">p1 .__ mod __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位左移（&lt;&lt;）</td>
+<td align="left">p1 &lt;&lt; p2</td>
+<td align="left">p1 .__ lshift __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位右移（&gt;&gt;）</td>
+<td align="left">p1 &gt;&gt; p2</td>
+<td align="left">p1 .__ rshift __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位与（and）</td>
+<td align="left">p1 and p2</td>
+<td align="left">p1 .__ and __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位或（or）</td>
+<td align="left">p1 | 2</td>
+<td align="left">p1 .__ or __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位异或（^）</td>
+<td align="left">p1 ^ p2</td>
+<td align="left">p1 .__ xor __（p2）</td>
+</tr>
+<tr>
+<td align="left">按位否（~）</td>
+<td align="left">〜p1</td>
+<td align="left">p1 .__ invert __()</td>
+</tr>
+</tbody></table>
+<h3 id="比较运算符重载"><a href="#比较运算符重载" class="headerlink" title="比较运算符重载"></a>比较运算符重载</h3><table>
+<thead>
+<tr>
+<th align="left">操作符</th>
+<th align="left">表达式</th>
+<th align="left">内部</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">小于（&lt;）</td>
+<td align="left">p1 &lt;p2</td>
+<td align="left">p1 .__ lt __（p2）</td>
+</tr>
+<tr>
+<td align="left">小于等于（&lt;&#x3D;）</td>
+<td align="left">p1 &lt;&#x3D; p2</td>
+<td align="left">p1 .__ le __（p2）</td>
+</tr>
+<tr>
+<td align="left">等于（&#x3D;&#x3D;）</td>
+<td align="left">p1 &#x3D;&#x3D; p2</td>
+<td align="left">p1 .__ eq __（p2）</td>
+</tr>
+<tr>
+<td align="left">不等于（!&#x3D;）</td>
+<td align="left">p1！&#x3D; p2</td>
+<td align="left">p1 .__ ne __（p2）</td>
+</tr>
+<tr>
+<td align="left">大于（&gt;）</td>
+<td align="left">p1&gt; p2</td>
+<td align="left">p1 .__ gt __（p2）</td>
+</tr>
+<tr>
+<td align="left">大于等于（&gt;&#x3D;）</td>
+<td align="left">p1&gt; &#x3D; p2</td>
+<td align="left">p1 .__ ge __（p2）</td>
+</tr>
+</tbody></table>
 ]]></content>
       <tags>
         <tag>notes</tag>
