@@ -1,83 +1,658 @@
-<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="false"/><title>RTSeg
--
-Bamboo
--
-
-</title><link rel="icon" href="/img/favicon.ico"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Bamboo">
+    
+    <title>
+        
+            RTSeg |
+        
+        Bamboo Traces
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet" href="/css/helpers.css">
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"bcybamboo.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Bamboo Traces","author":"Bamboo","avatar":null,"logo":null,"favicon":"/images/logo.svg"},"menu":{"home":"/                       || fa-solid fa-home","archives":"/archives           || fa-solid fa-box-archive","tags":"/tags                   || fa-solid fa-tags","categories":"/categories       || fa-solid fa-layer-group"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
-<script src="/js/clipboard/clipboard.min.js"></script>
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
 
 
-<script src="/js/bootstrap.js"></script>
 
-<script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.2.0"></head><body><div class="loading-wrapper" data-loading="data-loading"><div class="loading"><span></span><span></span><span></span></div></div><div class="page" data-filter="data-filter"><div class="head" data-show="data-show"><header class="head-header"><div class="head-author"><a class="head-author-link" href="/">Bamboo</a></div><div class="head-right"><button class="bar-wrap" id="bar-wrap-toggle" title="menu button"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button><div class="head-item"><a class="search-button head-item-link"><span>Search</span>
-<i class="icon icon-search"></i></a></div><div class="head-item"><a class="head-item-link" href="/about">关于</a></div></div></header>
-<div class="menubar-head" id="menubar"><ul class="menubar-ul"><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts/">Posts1</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts2/">Posts2</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts3/">Posts3</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><i class="icon icon-archive"></i>
-<a class="menubar-link" href="/archives">Archives</a></li><li class="menubar-item"><i class="icon icon-tags"></i>
-<a class="menubar-link" href="/tags">Tags</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><a class="menubar-link" href="/about"><span>关于</span></a></li></ul><div class="menu-search-box search-button"><div>Search</div>
-<i class="icon icon-search"></i></div></div></div><div class="main" data-page="post"><article class="post" id="post"><header class="post-head"><h1 class="post-title"><a class="title" href="/2023/11/16/RTSeg/">RTSeg</a></h1></header><div class="post-meta"><div class="post-date"><time class="post-time" itemprop="datePublished" title="2023-11-16 22:27:32" datetime="2023-11-16T14:27:32.000Z">2023-11-16</time></div>|
-<div class="post-tag"><ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a></li></ul></div>
-<div class="post-visit"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>hits</span></div></div><div class="post-info"><div class="post-word-count">This article contains 899 words.</div>
-<div class="post-cc">Copyright: 署名
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
 
-|
-<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/2.5/cn/">CC BY-NC-SA 2.5 CN</a></div></div><div class="article-entry" itemprop="articleBody"><h2 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1803.02758v5.pdf">RTSeg: Real-time Semantic Segmentation Comparative Study</a></h2><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Bamboo Traces
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        RTSeg
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Bamboo</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-11-16 22:27:32</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Wed Feb 26 2025 18:36:57 GMT+0800">2025-02-26 18:36:57</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>899 Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><a href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study" class="headerlink" title="RTSeg: Real-time Semantic Segmentation Comparative Study"></a><a class="link"   target="_blank" rel="noopener" href="https://arxiv.org/pdf/1803.02758v5.pdf" >RTSeg: Real-time Semantic Segmentation Comparative Study<i class="fas fa-external-link-alt"></i></a></h2><p>这一篇更加关注计算效率，以下是一些些翻译加一些些理解。</p>
 <p>针对于编码和解码模块设计出了可以灵活替换的子模块，方便大家可以方便的替换编码或者解码模块，从而针对不同任务设计不同的网络结构。</p>
 <h2 id="ABSTRACT（摘要）"><a href="#ABSTRACT（摘要）" class="headerlink" title="ABSTRACT（摘要）"></a>ABSTRACT（摘要）</h2><p>Semantic segmentation benefits robotics related applications, especially autonomous driving. Most of the research on semantic segmentation only focuses on increasing the accuracy of segmentation models with little attention to computationally efficient solutions. The few work conducted in this direction does not provide principled methods to evaluate the different design choices for segmentation. In this paper, we address this gap by presenting a real-time semantic segmentation benchmarking framework with a decoupled design for feature extraction and decoding methods. The framework is comprised of different network architectures for feature extraction such as VGG16, Resnet18, MobileNet, and ShuffleNet. It is also comprised of multiple meta-architectures for segmentation that define the decoding methodology. These include SkipNet, UNet, and Dilation Frontend. Experimental results are presented on the Cityscapes dataset for urban scenes. The modular design allows novel architectures to emerge, that lead to 143x GFLOPs reduction in comparison to SegNet. This benchmarking framework is publicly available at 1 .</p>
 <p>在语义分割上大多数都是提升精度，但是很少关注计算效率高的解决方案，针对这一空白，提出了一个实时语义分割基准框架，对特征提取和解码进行了解耦设计。</p>
 <p>特征提取用了不同的网络结构：VGG16、Resnet18、MobileNet和ShuffleNet；解码是由多个用于分割的元架构定义的：SkipNet、UNet和Dilation Frontend。</p>
-<h2 id="INTRODUCTION（介绍）"><a href="#INTRODUCTION（介绍）" class="headerlink" title="INTRODUCTION（介绍）"></a>INTRODUCTION（介绍）</h2><p><img src="/images/image-20231101224230740.png" alt="image-20231101224230740"></p>
+<h2 id="INTRODUCTION（介绍）"><a href="#INTRODUCTION（介绍）" class="headerlink" title="INTRODUCTION（介绍）"></a>INTRODUCTION（介绍）</h2><p><img   src="/images/image-20231101224230740.png"  alt="image-20231101224230740"></p>
 <p>主要贡献：</p>
 <ol>
 <li>将特征提取模块和解码器进行了模块化解耦，并将器成为元架构（有助于理解网络不同部分对实时性能的影响）</li>
 <li>消融实验突出了精度和速度的平衡</li>
 <li>我们框架的模块化设计出现了两种新颖的分割架构，分别使用MobileNet [14] 和具有多种解码方法的 ShuffleNet [15]。与 SegNet 相比，ShuffleNet 减少了 143 倍的 GFLOPs。</li>
 </ol>
-<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf">SkipNet</a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img src="/images/hello.png" alt="屏幕截图 2023-11-14 172740"></p>
+<h3 id="SkipNet"><a href="#SkipNet" class="headerlink" title="SkipNet"></a><a class="link"   target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content_ECCV_2018/papers/Xin_Wang_SkipNet_Learning_Dynamic_ECCV_2018_paper.pdf" >SkipNet<i class="fas fa-external-link-alt"></i></a></h3><h3 id="解码器模块介绍"><a href="#解码器模块介绍" class="headerlink" title="解码器模块介绍"></a>解码器模块介绍</h3><p><img   src="/images/hello.png"  alt="屏幕截图 2023-11-14 172740"></p>
 <p> 图2（a）是SkipNet的解码结构，类似于FCN8s的结构，其中较高高分辨率的特征图通过1x1卷积来将通道数量减少到最终的类别数量，每一个通道都对应着一个类别。</p>
 <p>图2（b）是UNet的解码结构，Unet结构提供的解码方式为：利用反卷积，将与下采样阶段对应的特征图进行上采样。上采样的特征图与下采样中有相同分辨率的特征图进行融合。逐级向上采样提供的精度比一次8倍向上采样的精度更高。目前采用的融合方法是逐元素相加，concatenation的方法可以提供更高的准确率，因为其确保了网络能够学习特征的加权融合，但是这样会增加计算量(concatenation会改变通道数量)。上采样之后的特征最后会接一个1x1的卷积来输出最后的逐元素分类。</p>
 <p>对于Dilation Frontend的解码结构，文中并没有给出示意图，Dilation Frontend结构利用了空洞卷积来取代下采样。空洞卷积确保了网络能够保留足够的感受野的同时，不会降低特征图的分辨率。但是副作用就是计算量的增加，修改编码器网络使得下采样率从32变为8。下采样的减少是通过删除池化层或将步幅为2的卷积转换为步幅为1的卷积来完成的。然后，将池化或正常的卷积替换为两个空洞率为2和4的空洞卷积[3]。</p>
-</div></article><aside class="post-widget"><h4>In this article</h4><nav class="post-toc-wrap" id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><span class="post-toc-number">1.</span> <span class="post-toc-text">RTSeg: Real-time Semantic Segmentation Comparative Study</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ABSTRACT%EF%BC%88%E6%91%98%E8%A6%81%EF%BC%89"><span class="post-toc-number">2.</span> <span class="post-toc-text">ABSTRACT（摘要）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#INTRODUCTION%EF%BC%88%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="post-toc-number">3.</span> <span class="post-toc-text">INTRODUCTION（介绍）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SkipNet"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">SkipNet</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E7%A0%81%E5%99%A8%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">解码器模块介绍</span></a></li></ol></li></ol></nav></aside></div><footer class="footer-nav"><div class="footer"><div class="back-top" id="back-top" title="Back to top"><i class="icon icon-chevron-bar-up"></i></div><div class="footer-content"><div><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">?</span>
-PV
-</span><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv">?</span>
-UV</span></div>
 
-Copyright &copy;
-2020<span class="time-divide">-</span>2025
-Bamboo.
+                    
+                </div>
 
-Power by
-<a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
-and
-<a href="https://github.com/Cerallin/hexo-theme-yuzu" target="_blank" rel="external nofollow" title="v3.2.5">Theme Yuzu</a>.</div></div></footer>
-<script>window.config = {
-  url_root: '/',
-  meta_path: 'meta.json',
-};
-</script>
-<script src="/js/theme/back-to-top.js"></script>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/11/16/SkipNet/"
+                                   title="SkipNet"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">SkipNet</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                    </div>
+                
+
+                
+                    
 
 
-<script src="/js/theme/clipboard.js"></script>
 
 
-<script src="/js/theme/loading.js"></script>
 
 
-<script src="/js/theme/navbar.js"></script>
+                
+            </div>
+        </div>
 
-<script src="/js/theme/search.js"></script>
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><span class="nav-number">1.</span> <span class="nav-text">RTSeg: Real-time Semantic Segmentation Comparative Study</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABSTRACT%EF%BC%88%E6%91%98%E8%A6%81%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">ABSTRACT（摘要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INTRODUCTION%EF%BC%88%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">INTRODUCTION（介绍）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SkipNet"><span class="nav-number">3.1.</span> <span class="nav-text">SkipNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E5%99%A8%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.2.</span> <span class="nav-text">解码器模块介绍</span></a></li></ol></li></ol>
+    </div>
+</div>
 
-<script src="/js/theme/toc.js"></script>
-<script>window.onload = function () {
-  for (const moduleName in Theme) {
-    const module = Theme[moduleName];
-    module.register();
-  }
-};</script></div><div class="search-modal" id="search-modal"><div class="card"><div class="card-head"><div class="search-box"><input class="search-input" id="search-input" placeholder="search"/><div class="search-button" id="search-button"><div class="icon icon-search"></div></div></div><div class="close-button"><div class="icon icon-x"></div></div></div><div class="card-body"><div class="search-count">search.total<span id="search-count-num">0</span>search result(s) in total.</div><div class="search-result" id="search-result"></div></div></div></div></body></html>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Bamboo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">18.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RTSeg-Real-time-Semantic-Segmentation-Comparative-Study"><span class="nav-number">1.</span> <span class="nav-text">RTSeg: Real-time Semantic Segmentation Comparative Study</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABSTRACT%EF%BC%88%E6%91%98%E8%A6%81%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">ABSTRACT（摘要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#INTRODUCTION%EF%BC%88%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">INTRODUCTION（介绍）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SkipNet"><span class="nav-number">3.1.</span> <span class="nav-text">SkipNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81%E5%99%A8%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.2.</span> <span class="nav-text">解码器模块介绍</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

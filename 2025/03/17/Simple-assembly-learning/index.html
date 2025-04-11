@@ -1,33 +1,298 @@
-<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="false"/><title>汇编
--
-Bamboo
--
-
-</title><link rel="icon" href="/img/favicon.ico"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Bamboo">
+    
+    <title>
+        
+            汇编 |
+        
+        Bamboo Traces
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet" href="/css/helpers.css">
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"bcybamboo.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Bamboo Traces","author":"Bamboo","avatar":null,"logo":null,"favicon":"/images/logo.svg"},"menu":{"home":"/                       || fa-solid fa-home","archives":"/archives           || fa-solid fa-box-archive","tags":"/tags                   || fa-solid fa-tags","categories":"/categories       || fa-solid fa-layer-group"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
-<script src="/js/clipboard/clipboard.min.js"></script>
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
 
 
-<script src="/js/bootstrap.js"></script>
 
-<script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.2.0"></head><body><div class="loading-wrapper" data-loading="data-loading"><div class="loading"><span></span><span></span><span></span></div></div><div class="page" data-filter="data-filter"><div class="head" data-show="data-show"><header class="head-header"><div class="head-author"><a class="head-author-link" href="/">Bamboo</a></div><div class="head-right"><button class="bar-wrap" id="bar-wrap-toggle" title="menu button"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button><div class="head-item"><a class="search-button head-item-link"><span>Search</span>
-<i class="icon icon-search"></i></a></div><div class="head-item"><a class="head-item-link" href="/about">关于</a></div></div></header>
-<div class="menubar-head" id="menubar"><ul class="menubar-ul"><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts/">Posts1</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts2/">Posts2</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts3/">Posts3</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><i class="icon icon-archive"></i>
-<a class="menubar-link" href="/archives">Archives</a></li><li class="menubar-item"><i class="icon icon-tags"></i>
-<a class="menubar-link" href="/tags">Tags</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><a class="menubar-link" href="/about"><span>关于</span></a></li></ul><div class="menu-search-box search-button"><div>Search</div>
-<i class="icon icon-search"></i></div></div></div><div class="main" data-page="post"><article class="post" id="post"><header class="post-head"><h1 class="post-title"><a class="title" href="/2025/03/17/Simple-assembly-learning/">汇编</a></h1></header><div class="post-meta"><div class="post-date"><time class="post-time" itemprop="datePublished" title="2025-03-17 20:26:33" datetime="2025-03-17T12:26:33.000Z">2025-03-17</time></div>|
-<div class="post-tag"></div>
-<div class="post-visit"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>hits</span></div></div><div class="post-info"><div class="post-word-count">This article contains 1,012 words.</div>
-<div class="post-cc">Copyright: 署名
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
 
-|
-<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/2.5/cn/">CC BY-NC-SA 2.5 CN</a></div></div><div class="article-entry" itemprop="articleBody"><p>这里简单记录一下汇编的学习，本地环境为Windows，使用的工具有<code>DOSBox</code>、<code>MASM5</code>…</p>
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Bamboo Traces
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        汇编
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Bamboo</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-17 20:26:33</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Apr 11 2025 16:40:42 GMT+0800">2025-04-11 16:40:42</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>这里简单记录一下汇编的学习，本地环境为Windows，使用的工具有<code>DOSBox</code>、<code>MASM5</code>…</p>
 <h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><p>8086汇编语言需要在DOS环境下进行，因此需要在电脑上安装一个DOS虚拟机。虚拟机软件选用<code>DOSBox-x 0.83.19</code>，该软件为绿色软件，将压缩包解压后运行文件夹中的<code>DosBox-x</code>程序即可。</p>
 <p>DOS环境搭好后需要安装宏汇编开发包<code>MASM5</code>，具体方法为：</p>
 <p>\1) 在本机硬盘上创建一个DOS目录，如<code>D:\DOS</code> ；</p>
@@ -54,67 +319,360 @@ Bamboo
 <p>以下是我输入的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">assume cs:codesg</span><br><span class="line">codesg segment</span><br><span class="line">mov ax, 2000H</span><br><span class="line">mov ss,ax</span><br><span class="line">mov sp, 0</span><br><span class="line">add sp, 10</span><br><span class="line">pop ax</span><br><span class="line">pop bx</span><br><span class="line">push ax</span><br><span class="line">push bx</span><br><span class="line">pop ax</span><br><span class="line">pop bx</span><br><span class="line"></span><br><span class="line">mov ax, 4c00H</span><br><span class="line">int 21H</span><br><span class="line"></span><br><span class="line">codesg ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../images/image-20250317210239105.png" alt="image-20250317210239105"></p>
+<p><img   src="/../images/image-20250317210239105.png"  alt="image-20250317210239105"></p>
 <h2 id="连接文件"><a href="#连接文件" class="headerlink" title="连接文件"></a>连接文件</h2><p>在汇编完成的语句后输入link，之后再输入文件名，连续敲回车，显示<code>LINK:warning L4021:no stack segment</code>表明连接成功，可以看到后缀为.exe的文件</p>
 <p>同样也可以直接输入 <code>link [文件名]</code></p>
-<p><img src="/../images/image-20250317210338428.png" alt="image-20250317210338428"></p>
+<p><img   src="/../images/image-20250317210338428.png"  alt="image-20250317210338428"></p>
 <h2 id="调试文件"><a href="#调试文件" class="headerlink" title="调试文件"></a>调试文件</h2><p>输入debug [文件名].exe就可以进入调试，在短横线后输入命令即可。</p>
 <p>以下为常用命令：</p>
 <h3 id="r：查看、改变寄存器的内容"><a href="#r：查看、改变寄存器的内容" class="headerlink" title="r：查看、改变寄存器的内容"></a>r：查看、改变寄存器的内容</h3><p>查看就输入r，修改就输入r [需要修改的寄存器名字] ，然后输入修改的数值即可完成。</p>
-<p><img src="/../images/image-20250317211332992.png" alt="image-20250317211332992"></p>
+<p><img   src="/../images/image-20250317211332992.png"  alt="image-20250317211332992"></p>
 <h3 id="d：查看内存中的内容"><a href="#d：查看内存中的内容" class="headerlink" title="d：查看内存中的内容"></a>d：查看内存中的内容</h3><p>直接输入d，可以查看预设地址内存处的128个字节的内容</p>
-<p><img src="/../images/image-20250317211304283.png" alt="image-20250317211304283"></p>
+<p><img   src="/../images/image-20250317211304283.png"  alt="image-20250317211304283"></p>
 <p>也可以查看指定段的，输入d [后]:[前]</p>
-<p><img src="/../images/image-20250317211548029.png" alt="image-20250317211548029"></p>
+<p><img   src="/../images/image-20250317211548029.png"  alt="image-20250317211548029"></p>
 <h3 id="e：修改内存单元中的内容"><a href="#e：修改内存单元中的内容" class="headerlink" title="e：修改内存单元中的内容"></a>e：修改内存单元中的内容</h3><p>可以写入数据、指令，内存中，数据和指令都是机器码，没什么区别</p>
 <h4 id="写入数据（需要指明地址和要写入的地址）"><a href="#写入数据（需要指明地址和要写入的地址）" class="headerlink" title="写入数据（需要指明地址和要写入的地址）"></a>写入数据（需要指明地址和要写入的地址）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e  [地址] [数据](数据如果有多个，中间要加空格)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../images/image-20250317212701926.png" alt="image-20250317212701926"></p>
+<p><img   src="/../images/image-20250317212701926.png"  alt="image-20250317212701926"></p>
 <h4 id="逐个询问修改数据"><a href="#逐个询问修改数据" class="headerlink" title="逐个询问修改数据"></a>逐个询问修改数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e [地址]</span><br></pre></td></tr></table></figure>
 
 <p>输入这个地址就会告诉你这个地址的内容，修改就在后面写上需要修改的数据，如果想对下一个字节进行修改，敲<strong>空格</strong>即可跳到下一个地址</p>
-<p><img src="/../images/image-20250317213420282.png" alt="image-20250317213420282"></p>
-<h3 id="u：将内存中的机器指令翻译成汇编指令"><a href="#u：将内存中的机器指令翻译成汇编指令" class="headerlink" title="u：将内存中的机器指令翻译成汇编指令"></a>u：将内存中的机器指令翻译成汇编指令</h3><p><img src="/../images/image-20250317213938675.png" alt="image-20250317213938675"></p>
+<p><img   src="/../images/image-20250317213420282.png"  alt="image-20250317213420282"></p>
+<h3 id="u：将内存中的机器指令翻译成汇编指令"><a href="#u：将内存中的机器指令翻译成汇编指令" class="headerlink" title="u：将内存中的机器指令翻译成汇编指令"></a>u：将内存中的机器指令翻译成汇编指令</h3><p><img   src="/../images/image-20250317213938675.png"  alt="image-20250317213938675"></p>
 <h3 id="a：以汇编的指令格式在内存中写入机器指令"><a href="#a：以汇编的指令格式在内存中写入机器指令" class="headerlink" title="a：以汇编的指令格式在内存中写入机器指令"></a>a：以汇编的指令格式在内存中写入机器指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a [写入的地址]</span><br><span class="line">[内容]</span><br><span class="line">...(按回车退出)</span><br></pre></td></tr></table></figure>
 
-<h3 id="t：单步运行"><a href="#t：单步运行" class="headerlink" title="t：单步运行"></a>t：单步运行</h3><p><img src="/../images/image-20250317214523035.png" alt="image-20250317214523035"></p>
+<h3 id="t：单步运行"><a href="#t：单步运行" class="headerlink" title="t：单步运行"></a>t：单步运行</h3><p><img   src="/../images/image-20250317214523035.png"  alt="image-20250317214523035"></p>
 <p>注意观察每次输入t指令后，ax，bx的值变化。可以观察出t命令是使用一次执行一次汇编指令。</p>
 <h3 id="q：退出debug"><a href="#q：退出debug" class="headerlink" title="q：退出debug"></a>q：退出debug</h3><p>​	</p>
-</div></article><aside class="post-widget"><h4>In this article</h4><nav class="post-toc-wrap" id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境安装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="post-toc-number">2.</span> <span class="post-toc-text">单代码段程序的编写</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">编写汇编程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">汇编文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">连接文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">调试文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">r：查看、改变寄存器的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">d：查看内存中的内容</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="post-toc-number">2.4.3.</span> <span class="post-toc-text">e：修改内存单元中的内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="post-toc-number">2.4.3.1.</span> <span class="post-toc-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="post-toc-number">2.4.3.2.</span> <span class="post-toc-text">逐个询问修改数据</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="post-toc-number">2.4.4.</span> <span class="post-toc-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="post-toc-number">2.4.5.</span> <span class="post-toc-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="post-toc-number">2.4.6.</span> <span class="post-toc-text">t：单步运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="post-toc-number">2.4.7.</span> <span class="post-toc-text">q：退出debug</span></a></li></ol></li></ol></li></ol></nav></aside></div><footer class="footer-nav"><div class="footer"><div class="back-top" id="back-top" title="Back to top"><i class="icon icon-chevron-bar-up"></i></div><div class="footer-content"><div><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">?</span>
-PV
-</span><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv">?</span>
-UV</span></div>
 
-Copyright &copy;
-2020<span class="time-divide">-</span>2025
-Bamboo.
+                    
+                </div>
 
-Power by
-<a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
-and
-<a href="https://github.com/Cerallin/hexo-theme-yuzu" target="_blank" rel="external nofollow" title="v3.2.5">Theme Yuzu</a>.</div></div></footer>
-<script>window.config = {
-  url_root: '/',
-  meta_path: 'meta.json',
-};
-</script>
-<script src="/js/theme/back-to-top.js"></script>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/03/07/attention-use/"
+                                   title="attention_use"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">attention_use</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
-<script src="/js/theme/clipboard.js"></script>
 
 
-<script src="/js/theme/loading.js"></script>
 
 
-<script src="/js/theme/navbar.js"></script>
+                
+            </div>
+        </div>
 
-<script src="/js/theme/search.js"></script>
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">调试文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.1.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.4.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.5.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.4.6.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.4.7.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
 
-<script src="/js/theme/toc.js"></script>
-<script>window.onload = function () {
-  for (const moduleName in Theme) {
-    const module = Theme[moduleName];
-    module.register();
-  }
-};</script></div><div class="search-modal" id="search-modal"><div class="card"><div class="card-head"><div class="search-box"><input class="search-input" id="search-input" placeholder="search"/><div class="search-button" id="search-button"><div class="icon icon-search"></div></div></div><div class="close-button"><div class="icon icon-x"></div></div></div><div class="card-body"><div class="search-count">search.total<span id="search-count-num">0</span>search result(s) in total.</div><div class="search-result" id="search-result"></div></div></div></div></body></html>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Bamboo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">18.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">调试文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.1.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.4.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.5.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.4.6.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.4.7.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

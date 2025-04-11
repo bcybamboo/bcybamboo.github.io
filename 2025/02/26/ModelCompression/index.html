@@ -1,33 +1,307 @@
-<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content="false"/><title>ModelCompression
--
-Bamboo
--
-
-</title><link rel="icon" href="/img/favicon.ico"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Bamboo">
+    
+    <title>
+        
+            ModelCompression |
+        
+        Bamboo Traces
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet" href="/css/helpers.css">
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"bcybamboo.github.io","root":"/","language":"en","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"Bamboo Traces","author":"Bamboo","avatar":null,"logo":null,"favicon":"/images/logo.svg"},"menu":{"home":"/                       || fa-solid fa-home","archives":"/archives           || fa-solid fa-box-archive","tags":"/tags                   || fa-solid fa-tags","categories":"/categories       || fa-solid fa-layer-group"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":true},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":false},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original post title","author":"Original post author","link":"Original post link"}
+  </script>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
-<script src="/js/clipboard/clipboard.min.js"></script>
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
 
 
-<script src="/js/bootstrap.js"></script>
 
-<script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 7.2.0"></head><body><div class="loading-wrapper" data-loading="data-loading"><div class="loading"><span></span><span></span><span></span></div></div><div class="page" data-filter="data-filter"><div class="head" data-show="data-show"><header class="head-header"><div class="head-author"><a class="head-author-link" href="/">Bamboo</a></div><div class="head-right"><button class="bar-wrap" id="bar-wrap-toggle" title="menu button"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button><div class="head-item"><a class="search-button head-item-link"><span>Search</span>
-<i class="icon icon-search"></i></a></div><div class="head-item"><a class="head-item-link" href="/about">关于</a></div></div></header>
-<div class="menubar-head" id="menubar"><ul class="menubar-ul"><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts/">Posts1</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts2/">Posts2</a></li><li class="menubar-item"><i class="icon icon-chevron-right"></i>
-<a class="menubar-link" href="/categories/Posts3/">Posts3</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><i class="icon icon-archive"></i>
-<a class="menubar-link" href="/archives">Archives</a></li><li class="menubar-item"><i class="icon icon-tags"></i>
-<a class="menubar-link" href="/tags">Tags</a></li><li class="menubar-item" data-border="data-border"></li><li class="menubar-item"><a class="menubar-link" href="/about"><span>关于</span></a></li></ul><div class="menu-search-box search-button"><div>Search</div>
-<i class="icon icon-search"></i></div></div></div><div class="main" data-page="post"><article class="post" id="post"><header class="post-head"><h1 class="post-title"><a class="title" href="/2025/02/26/ModelCompression/">ModelCompression</a></h1></header><div class="post-meta"><div class="post-date"><time class="post-time" itemprop="datePublished" title="2025-02-26 18:45:53" datetime="2025-02-26T10:45:53.000Z">2025-02-26</time></div>|
-<div class="post-tag"></div>
-<div class="post-visit"><span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span>hits</span></div></div><div class="post-info"><div class="post-word-count">This article contains 2,465 words.</div>
-<div class="post-cc">Copyright: 署名
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
 
-|
-<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/2.5/cn/">CC BY-NC-SA 2.5 CN</a></div></div><div class="article-entry" itemprop="articleBody"><h2 id="模型压缩通用方法"><a href="#模型压缩通用方法" class="headerlink" title="模型压缩通用方法"></a>模型压缩通用方法</h2><p>模型压缩是指将原本的大网络模型通过一些技术手段，压缩成为具有更好的实时性或参数量更小的模型。常见的模型压缩技术包括网络剪枝、神经架构搜索、知识蒸馏和量化。</p>
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Bamboo Traces
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                HOME
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                ARCHIVES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                TAGS
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                CATEGORIES
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            HOME
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            ARCHIVES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            TAGS
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            CATEGORIES
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        ModelCompression
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Bamboo</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-26 18:45:53</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Apr 11 2025 16:48:45 GMT+0800">2025-04-11 16:48:45</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/tools/">tools</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k Words</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 Mins</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="模型压缩通用方法"><a href="#模型压缩通用方法" class="headerlink" title="模型压缩通用方法"></a>模型压缩通用方法</h2><p>模型压缩是指将原本的大网络模型通过一些技术手段，压缩成为具有更好的实时性或参数量更小的模型。常见的模型压缩技术包括网络剪枝、神经架构搜索、知识蒸馏和量化。</p>
 <p><strong>网络剪枝（network pruning）</strong>是指去掉网络模型中不必要的参数。网络剪枝的一般步骤是：训练一个大网络、评估每个参数的重要性、去掉不重要的参数以及微调去掉参数后的网络以恢复剪枝损失的部分精度。剪枝可以利用大模型本身容易训练到较高精度的优势，以最小的精度损失代价来获得更小的模型。</p>
 <ul>
 <li>如何确定要保留什么结构以及修剪哪些结构？</li>
@@ -46,7 +320,7 @@ Bamboo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.utils.prune <span class="keyword">as</span> prune</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleCNN</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(SimpleCNN, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">16</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">32</span> * <span class="number">8</span> * <span class="number">8</span>, <span class="number">10</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = self.pool(self.relu(self.conv1(x)))</span><br><span class="line">        x = self.pool(self.relu(self.conv2(x)))</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">32</span> * <span class="number">8</span> * <span class="number">8</span>)</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">count_parameters</span>(<span class="params">model</span>):</span><br><span class="line">    total_params = <span class="number">0</span></span><br><span class="line">    zero_params = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> name, module <span class="keyword">in</span> model.named_modules():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(module, (nn.Conv2d, nn.Linear)):</span><br><span class="line">            <span class="comment"># 检查是否已经被剪枝</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">hasattr</span>(module, <span class="string">&#x27;weight_mask&#x27;</span>):</span><br><span class="line">                total_params += module.weight_mask.numel()</span><br><span class="line">                zero_params += torch.<span class="built_in">sum</span>(module.weight_mask == <span class="number">0</span>).item()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                total_params += module.weight.numel()</span><br><span class="line">                zero_params += torch.<span class="built_in">sum</span>(module.weight == <span class="number">0</span>).item()</span><br><span class="line">    <span class="keyword">return</span> total_params, zero_params</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">apply_pruning</span>(<span class="params">model, pruning_ratio</span>):</span><br><span class="line">    <span class="keyword">for</span> name, module <span class="keyword">in</span> model.named_modules():</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(module, (nn.Conv2d, nn.Linear)):</span><br><span class="line">            prune.l1_unstructured(</span><br><span class="line">                module,</span><br><span class="line">                name=<span class="string">&#x27;weight&#x27;</span>,</span><br><span class="line">                amount=pruning_ratio</span><br><span class="line">            )</span><br><span class="line">            <span class="comment"># 打印每层的剪枝统计</span></span><br><span class="line">            mask = module.weight_mask</span><br><span class="line">            total = mask.numel()</span><br><span class="line">            zeros = torch.<span class="built_in">sum</span>(mask == <span class="number">0</span>).item()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Layer <span class="subst">&#123;name&#125;</span>:&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;总参数: <span class="subst">&#123;total&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;被剪枝参数: <span class="subst">&#123;zeros&#125;</span>&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;层压缩率: <span class="subst">&#123;zeros/total*<span class="number">100</span>:<span class="number">.2</span>f&#125;</span>%\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码</span></span><br><span class="line">model = SimpleCNN()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;剪枝前参数统计：&quot;</span>)</span><br><span class="line">total, zeros = count_parameters(model)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;总参数数量: <span class="subst">&#123;total&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;零参数数量: <span class="subst">&#123;zeros&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;初始压缩率: <span class="subst">&#123;zeros/total*<span class="number">100</span>:<span class="number">.2</span>f&#125;</span>%\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 应用90%的剪枝率</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;应用50%剪枝...&quot;</span>)</span><br><span class="line">apply_pruning(model, <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\n剪枝后总体参数统计：&quot;</span>)</span><br><span class="line">total, zeros = count_parameters(model)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;总参数数量: <span class="subst">&#123;total&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;零参数数量: <span class="subst">&#123;zeros&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;最终压缩率: <span class="subst">&#123;zeros/total*<span class="number">100</span>:<span class="number">.2</span>f&#125;</span>%&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>量化是将模型的权重从32位浮点数转换为低位数值（如8位整数）的过程。</p>
-<p>可参考代码：<a target="_blank" rel="noopener" href="https://github.com/BastianChen/Model-Compression-Demo/tree/master/quantization">https://github.com/BastianChen/Model-Compression-Demo/tree/master/quantization</a></p>
+<p>可参考代码：<a class="link"   target="_blank" rel="noopener" href="https://github.com/BastianChen/Model-Compression-Demo/tree/master/quantization" >https://github.com/BastianChen/Model-Compression-Demo/tree/master/quantization<i class="fas fa-external-link-alt"></i></a></p>
 <p>知识蒸馏这是一种将大模型（教师模型）的知识转移到小模型（学生模型）的方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms <span class="keyword">as</span> transforms</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 教师模型（与之前的SimpleCNN相同）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TeacherCNN</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(TeacherCNN, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">16</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">16</span>, <span class="number">32</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">32</span> * <span class="number">8</span> * <span class="number">8</span>, <span class="number">10</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = self.pool(self.relu(self.conv1(x)))</span><br><span class="line">        x = self.pool(self.relu(self.conv2(x)))</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">32</span> * <span class="number">8</span> * <span class="number">8</span>)</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 学生模型（更小的网络）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StudentCNN</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">super</span>(StudentCNN, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">8</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">8</span>, <span class="number">16</span>, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">16</span> * <span class="number">8</span> * <span class="number">8</span>, <span class="number">10</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = self.pool(self.relu(self.conv1(x)))</span><br><span class="line">        x = self.pool(self.relu(self.conv2(x)))</span><br><span class="line">        x = x.view(-<span class="number">1</span>, <span class="number">16</span> * <span class="number">8</span> * <span class="number">8</span>)</span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DistillationLoss</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, temperature=<span class="number">3.0</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(DistillationLoss, self).__init__()</span><br><span class="line">        self.temperature = temperature</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, student_outputs, teacher_outputs, labels, alpha=<span class="number">0.5</span></span>):</span><br><span class="line">        <span class="comment"># 软目标损失</span></span><br><span class="line">        soft_targets = F.softmax(teacher_outputs / self.temperature, dim=<span class="number">1</span>)</span><br><span class="line">        soft_prob = F.log_softmax(student_outputs / self.temperature, dim=<span class="number">1</span>)</span><br><span class="line">        soft_targets_loss = -torch.<span class="built_in">sum</span>(soft_targets * soft_prob) * (self.temperature ** <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 硬目标损失</span></span><br><span class="line">        hard_loss = F.cross_entropy(student_outputs, labels)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 组合损失</span></span><br><span class="line">        loss = (alpha * soft_targets_loss) + ((<span class="number">1</span> - alpha) * hard_loss)</span><br><span class="line">        <span class="keyword">return</span> loss</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">load_cifar10</span>(<span class="params">batch_size=<span class="number">128</span></span>):</span><br><span class="line">    transform = transforms.Compose([</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">        transforms.Normalize((<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>), (<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>))</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    trainset = torchvision.datasets.CIFAR10(root=<span class="string">&#x27;./data&#x27;</span>, train=<span class="literal">True</span>,</span><br><span class="line">                                            download=<span class="literal">True</span>, transform=transform)</span><br><span class="line">    trainloader = DataLoader(trainset, batch_size=batch_size,</span><br><span class="line">                             shuffle=<span class="literal">True</span>, num_workers=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    testset = torchvision.datasets.CIFAR10(root=<span class="string">&#x27;./data&#x27;</span>, train=<span class="literal">False</span>,</span><br><span class="line">                                           download=<span class="literal">True</span>, transform=transform)</span><br><span class="line">    testloader = DataLoader(testset, batch_size=batch_size,</span><br><span class="line">                            shuffle=<span class="literal">False</span>, num_workers=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> trainloader, testloader</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_model</span>(<span class="params">model, dataloader, device</span>):</span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    correct = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> data, labels <span class="keyword">in</span> dataloader:</span><br><span class="line">            data, labels = data.to(device), labels.to(device)</span><br><span class="line">            outputs = model(data)</span><br><span class="line">            _, predicted = torch.<span class="built_in">max</span>(outputs.data, <span class="number">1</span>)</span><br><span class="line">            total += labels.size(<span class="number">0</span>)</span><br><span class="line">            correct += (predicted == labels).<span class="built_in">sum</span>().item()</span><br><span class="line">    <span class="keyword">return</span> <span class="number">100</span> * correct / total</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">train_with_distillation</span>(<span class="params">teacher_model, student_model, train_loader, test_loader,</span></span><br><span class="line"><span class="params">                            device, epochs=<span class="number">10</span>, temperature=<span class="number">3.0</span>, alpha=<span class="number">0.5</span></span>):</span><br><span class="line">    teacher_model.to(device)</span><br><span class="line">    student_model.to(device)</span><br><span class="line"></span><br><span class="line">    teacher_model.<span class="built_in">eval</span>()</span><br><span class="line">    student_model.train()</span><br><span class="line"></span><br><span class="line">    optimizer = torch.optim.Adam(student_model.parameters())</span><br><span class="line">    distillation_criterion = DistillationLoss(temperature=temperature)</span><br><span class="line"></span><br><span class="line">    best_acc = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(epochs):</span><br><span class="line">        running_loss = <span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> batch_idx, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(train_loader):</span><br><span class="line">            data, target = data.to(device), target.to(device)</span><br><span class="line"></span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取教师模型的输出</span></span><br><span class="line">            <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">                teacher_output = teacher_model(data)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取学生模型的输出</span></span><br><span class="line">            student_output = student_model(data)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 计算蒸馏损失</span></span><br><span class="line">            loss = distillation_criterion(student_output, teacher_output,</span><br><span class="line">                                          target, alpha=alpha)</span><br><span class="line"></span><br><span class="line">            loss.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line"></span><br><span class="line">            running_loss += loss.item()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> batch_idx % <span class="number">100</span> == <span class="number">99</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&#x27;Epoch: <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>, Batch: <span class="subst">&#123;batch_idx + <span class="number">1</span>&#125;</span>, &#x27;</span></span><br><span class="line">                      <span class="string">f&#x27;Loss: <span class="subst">&#123;running_loss / <span class="number">100</span>:<span class="number">.4</span>f&#125;</span>&#x27;</span>)</span><br><span class="line">                running_loss = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 评估模型</span></span><br><span class="line">        student_acc = evaluate_model(student_model, test_loader, device)</span><br><span class="line">        teacher_acc = evaluate_model(teacher_model, test_loader, device)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;\nEpoch <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>:&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;Teacher Accuracy: <span class="subst">&#123;teacher_acc:<span class="number">.2</span>f&#125;</span>%&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&#x27;Student Accuracy: <span class="subst">&#123;student_acc:<span class="number">.2</span>f&#125;</span>%&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> student_acc &gt; best_acc:</span><br><span class="line">            best_acc = student_acc</span><br><span class="line">            torch.save(student_model.state_dict(), <span class="string">&#x27;best_student_model.pth&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> student_model</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用示例</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    device = torch.device(<span class="string">&quot;cuda&quot;</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">&quot;cpu&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加载数据</span></span><br><span class="line">    train_loader, test_loader = load_cifar10()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建模型</span></span><br><span class="line">    teacher_model = TeacherCNN()</span><br><span class="line">    student_model = StudentCNN()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 训练教师模型（这里假设已经训练好了）</span></span><br><span class="line">    <span class="comment"># 实际使用时需要先训练教师模型</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 进行知识蒸馏</span></span><br><span class="line">    student_model = train_with_distillation(</span><br><span class="line">        teacher_model=teacher_model,</span><br><span class="line">        student_model=student_model,</span><br><span class="line">        train_loader=train_loader,</span><br><span class="line">        test_loader=test_loader,</span><br><span class="line">        device=device,</span><br><span class="line">        epochs=<span class="number">10</span>,</span><br><span class="line">        temperature=<span class="number">3.0</span>,</span><br><span class="line">        alpha=<span class="number">0.5</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 比较模型大小</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">count_parameters</span>(<span class="params">model</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sum</span>(p.numel() <span class="keyword">for</span> p <span class="keyword">in</span> model.parameters())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    teacher_params = count_parameters(teacher_model)</span><br><span class="line">    student_params = count_parameters(student_model)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;\n模型大小比较：&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;教师模型参数数量: <span class="subst">&#123;teacher_params:,&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;学生模型参数数量: <span class="subst">&#123;student_params:,&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;压缩率: <span class="subst">&#123;(<span class="number">1</span> - student_params / teacher_params) * <span class="number">100</span>:<span class="number">.2</span>f&#125;</span>% &quot;</span>)</span><br></pre></td></tr></table></figure>
 
@@ -86,41 +360,358 @@ Bamboo
 <p><strong>神经架构搜索（neural architecture search， NAS）</strong>是一种利用强化学习方法同时学习模型架构和相应参数的方法。简单来说，就是在一个定义好的搜索空间内，通过一定的搜索策略，得到最终表现最好的网络。通过加入准确率、推理延迟等指标，网络架构搜索产生的网络结构在轻量化应用中能获得更高的竞争力。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets, transforms</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义搜索空间</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConvBlock</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels, out_channels, kernel_size</span>):</span><br><span class="line">        <span class="built_in">super</span>(ConvBlock, self).__init__()</span><br><span class="line">        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size, padding=kernel_size//<span class="number">2</span>)</span><br><span class="line">        self.relu = nn.ReLU()</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = self.conv(x)</span><br><span class="line">        x = self.relu(x)</span><br><span class="line">        x = self.pool(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义候选架构</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_model</span>(<span class="params">kernel_size, channels</span>):</span><br><span class="line">    model = nn.Sequential(</span><br><span class="line">        ConvBlock(<span class="number">1</span>, channels[<span class="number">0</span>], kernel_size),</span><br><span class="line">        ConvBlock(channels[<span class="number">0</span>], channels[<span class="number">1</span>], kernel_size),</span><br><span class="line">        nn.Flatten(),</span><br><span class="line">        nn.Linear(channels[<span class="number">1</span>] * <span class="number">7</span> * <span class="number">7</span>, <span class="number">10</span>)  <span class="comment"># 假设输入是 28x28</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据</span></span><br><span class="line">transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((<span class="number">0.5</span>,), (<span class="number">0.5</span>,))])</span><br><span class="line">train_data = datasets.MNIST(root=<span class="string">&#x27;./data&#x27;</span>, train=<span class="literal">True</span>, download=<span class="literal">True</span>, transform=transform)</span><br><span class="line">train_loader = DataLoader(train_data, batch_size=<span class="number">64</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 随机搜索策略</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_search</span>(<span class="params">search_space, num_trials=<span class="number">10</span></span>):</span><br><span class="line">    best_accuracy = <span class="number">0</span></span><br><span class="line">    best_model = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_trials):</span><br><span class="line">        <span class="comment"># 随机选择超参数</span></span><br><span class="line">        kernel_size = search_space[<span class="string">&#x27;kernel_sizes&#x27;</span>][torch.randint(<span class="number">0</span>, <span class="built_in">len</span>(search_space[<span class="string">&#x27;kernel_sizes&#x27;</span>]), (<span class="number">1</span>,)).item()]</span><br><span class="line">        channels = [search_space[<span class="string">&#x27;channels&#x27;</span>][torch.randint(<span class="number">0</span>, <span class="built_in">len</span>(search_space[<span class="string">&#x27;channels&#x27;</span>]), (<span class="number">1</span>,)).item() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建模型</span></span><br><span class="line">        model = create_model(kernel_size, channels)</span><br><span class="line">        optimizer = optim.Adam(model.parameters(), lr=<span class="number">0.001</span>)</span><br><span class="line">        criterion = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 训练模型</span></span><br><span class="line">        <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):  <span class="comment"># 简单训练 2 个 epoch</span></span><br><span class="line">            <span class="keyword">for</span> inputs, labels <span class="keyword">in</span> train_loader:</span><br><span class="line">                optimizer.zero_grad()</span><br><span class="line">                outputs = model(inputs)</span><br><span class="line">                loss = criterion(outputs, labels)</span><br><span class="line">                loss.backward()</span><br><span class="line">                optimizer.step()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 评估模型</span></span><br><span class="line">        correct = <span class="number">0</span></span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            <span class="keyword">for</span> inputs, labels <span class="keyword">in</span> train_loader:</span><br><span class="line">                outputs = model(inputs)</span><br><span class="line">                _, predicted = torch.<span class="built_in">max</span>(outputs, <span class="number">1</span>)</span><br><span class="line">                total += labels.size(<span class="number">0</span>)</span><br><span class="line">                correct += (predicted == labels).<span class="built_in">sum</span>().item()</span><br><span class="line">        accuracy = correct / total</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 更新最佳模型</span></span><br><span class="line">        <span class="keyword">if</span> accuracy &gt; best_accuracy:</span><br><span class="line">            best_accuracy = accuracy</span><br><span class="line">            best_model = model</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> best_model, best_accuracy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义搜索空间</span></span><br><span class="line">search_space = &#123;</span><br><span class="line">    <span class="string">&#x27;kernel_sizes&#x27;</span>: [<span class="number">3</span>, <span class="number">5</span>],</span><br><span class="line">    <span class="string">&#x27;channels&#x27;</span>: [<span class="number">16</span>, <span class="number">32</span>, <span class="number">64</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行随机搜索</span></span><br><span class="line">best_model, best_accuracy = random_search(search_space)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Best Accuracy: <span class="subst">&#123;best_accuracy:<span class="number">.4</span>f&#125;</span>&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(best_model)</span><br></pre></td></tr></table></figure>
 
-</div></article><aside class="post-widget"><h4>In this article</h4><nav class="post-toc-wrap" id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">1.</span> <span class="post-toc-text">模型压缩通用方法</span></a></li></ol></nav></aside></div><footer class="footer-nav"><div class="footer"><div class="back-top" id="back-top" title="Back to top"><i class="icon icon-chevron-bar-up"></i></div><div class="footer-content"><div><span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv">?</span>
-PV
-</span><span id="busuanzi_container_site_uv"><span id="busuanzi_value_site_uv">?</span>
-UV</span></div>
 
-Copyright &copy;
-2020<span class="time-divide">-</span>2025
-Bamboo.
+                    
+                </div>
 
-Power by
-<a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>
-and
-<a href="https://github.com/Cerallin/hexo-theme-yuzu" target="_blank" rel="external nofollow" title="v3.2.5">Theme Yuzu</a>.</div></div></footer>
-<script>window.config = {
-  url_root: '/',
-  meta_path: 'meta.json',
-};
-</script>
-<script src="/js/theme/back-to-top.js"></script>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/tools/">tools</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="Share to WeChat"
+            data-tooltip-img-tip="Scan by WeChat"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="Share to WeiBo"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/07/attention-use/"
+                                   title="attention_use"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">attention_use</span>
+                                        <span class="post-nav-item">Prev posts</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/02/22/git%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"
+                                   title="git简单使用"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">git简单使用</span>
+                                        <span class="post-nav-item">Next posts</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
 
 
-<script src="/js/theme/clipboard.js"></script>
 
 
-<script src="/js/theme/loading.js"></script>
 
 
-<script src="/js/theme/navbar.js"></script>
+                
+            </div>
+        </div>
 
-<script src="/js/theme/search.js"></script>
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">模型压缩通用方法</span></a></li></ol>
+    </div>
+</div>
 
-<script src="/js/theme/toc.js"></script>
-<script>window.onload = function () {
-  for (const moduleName in Theme) {
-    const module = Theme[moduleName];
-    module.register();
-  }
-};</script></div><div class="search-modal" id="search-modal"><div class="card"><div class="card-head"><div class="search-box"><input class="search-input" id="search-input" placeholder="search"/><div class="search-button" id="search-button"><div class="icon icon-search"></div></div></div><div class="close-button"><div class="icon icon-x"></div></div></div><div class="card-body"><div class="search-count">search.total<span id="search-count-num">0</span>search result(s) in total.</div><div class="search-result" id="search-result"></div></div></div></div></body></html>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Bamboo</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        Powered by&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;&&nbsp;Theme&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">Total words</span>
+                    <span class="item-value border-box word">18.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">Unique Visitor</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">Page View</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9%E9%80%9A%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">模型压缩通用方法</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/share.min.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
