@@ -9,7 +9,7 @@
     
     <title>
         
-            汇编 |
+            汇编与逆向 |
         
         Bamboo Traces
     </title>
@@ -223,7 +223,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        汇编
+                        汇编与逆向
                     </div>
                 
 
@@ -253,7 +253,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 11 2025 16:40:42 GMT+0800">2025-04-11 16:40:42</span>
+                    <span class="datetime" data-updated="Tue May 27 2025 00:10:48 GMT+0800">2025-05-27 00:10:48</span>
                 </span>
             
         
@@ -265,12 +265,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.4k Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>17 Mins</span>
             </span>
         
         
@@ -292,8 +292,246 @@
                     
 
                     
-                         <p>这里简单记录一下汇编的学习，本地环境为Windows，使用的工具有<code>DOSBox</code>、<code>MASM5</code>…</p>
-<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><p>8086汇编语言需要在DOS环境下进行，因此需要在电脑上安装一个DOS虚拟机。虚拟机软件选用<code>DOSBox-x 0.83.19</code>，该软件为绿色软件，将压缩包解压后运行文件夹中的<code>DosBox-x</code>程序即可。</p>
+                         <h1 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h1><h2 id="寄存器-（14个）"><a href="#寄存器-（14个）" class="headerlink" title="寄存器 （14个）"></a>寄存器 （14个）</h2><p><strong>通用寄存器：AX,BX,CX,DX</strong></p>
+<p>其中为了保证8位CPU和16位CPU的兼容性，这四个寄存器都可以分成两个独立的8位寄存器使用</p>
+<p>AX &#x3D; AH(高8位) + AL(低8位)    其余同理。</p>
+<p><strong>段寄存器：CS(代码段使用的寄存器),DS(数据段使用的寄存器),SS(堆栈段使用的寄存器),ES(附加段使用的寄存器)</strong></p>
+<p><strong>指针寄存器：SP(堆栈内的偏移值),BP(寻址，默认在堆栈段寻找),SI(寻址，默认在数据段寻找),DI(寻址，默认在数据段寻找),IP(存储要执行的下一条指令的偏移地址)</strong></p>
+<p><strong>标志寄存器：PSW</strong></p>
+<p>其中，BX、BP、SI、DI可用来寻址</p>
+<p>其中标志寄存器涉及到的通用标志位是：</p>
+<p><strong>零标志位（ZF）</strong>：结果为0，则ZF &#x3D;1 ；结果为1，则ZF&#x3D;0</p>
+<p><strong>奇偶标志位（PF）</strong>：1的个数为偶数，则PF &#x3D;1；个数为奇数，则PF &#x3D;0</p>
+<p><strong>符号标志位（SF）</strong>：结果为负，则SF &#x3D;1；结果为正，则SF&#x3D;0</p>
+<p><strong>进位标志位（CF）</strong>：无符号数运算的进位值或借位值</p>
+<p><strong>溢出标志位（OF）</strong>：有符号数运算，溢出为1，无溢出为0   </p>
+<p>OF&#x3D; 最高位进位（符号位）<strong>异或</strong> 次高位进位（数值最高位）</p>
+<p><strong>方向标志位（DF）</strong> ： 在串处理指令中控制每次操作后si、di的递减。</p>
+<h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><p>大多数汇编语言指令都需要处理操作数。操作数地址提供了要处理的数据存储的位置。有些指令不需要操作数，而另一些指令则需要一个，两个或三个操作数。当一条指令需要两个操作数时，第一个操作数通常是目的地，它在寄存器或存储器位置中包含数据，第二个操作数是源。源包含要传递的数据（立即寻址）或数据的地址（在寄存器或存储器中）。通常，操作后源数据保持不变。</p>
+<ol>
+<li>[idata]用一个常量来表示地址，可用于直接定位一个内存单元   </li>
+<li>[bx]用一个变量来表示内存地址，可用于间接定位一个内存单元   </li>
+<li>[bx + idata] 用一个变量和常量表示地址，可在一个起始地址的基础上用变量间接定位一个内存单元</li>
+<li>[bx + si]用两个变量表示地址</li>
+<li>[bx + si + idata]用两个变量和一个常量表示地址</li>
+</ol>
+<p><img   src="/../images/image-20250526224250636.png"  alt="image-20250526224250636"></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov ax,[bx + 200]</span><br><span class="line">mov ax,[si + 123]</span><br><span class="line">mov ax,[di + 234]</span><br><span class="line">mov ax,[bx + si]</span><br><span class="line">mov ax,[bx + si +200]    --&gt;   mov ax,200[bx][si]   ;把200看成基址，然后形式类似于二维数组</span><br></pre></td></tr></table></figure>
+
+<p>mov指令可能具有以下形式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MOV  寄存器, 寄存器</span><br><span class="line">MOV  寄存器, 立即数</span><br><span class="line">MOV  寄存器, 内存</span><br><span class="line">MOV  内存, 立即数</span><br><span class="line">MOV  内存, 寄存器</span><br></pre></td></tr></table></figure>
+
+<p>物理地址与逻辑地址的转换：</p>
+<p>物理地址 &#x3D; 段地址 × 16 +偏移地址</p>
+<p>偏移地址–&gt; 段地址：偏移地址  </p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>目的</th>
+<th>储存空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>db</td>
+<td>定义字节</td>
+<td>分配1个字节</td>
+</tr>
+<tr>
+<td>dw</td>
+<td>定义字</td>
+<td>分配2个字节</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>定义双字</td>
+<td>分配4个字节</td>
+</tr>
+</tbody></table>
+<p>在数据段中使用如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data segment</span><br><span class="line">	db 1</span><br><span class="line">	dw 1</span><br><span class="line">	dd 1</span><br><span class="line">data ends</span><br></pre></td></tr></table></figure>
+
+<p><strong>dup</strong> 是一个操作符，和db、dw、dd等数据定义伪指令配合使用的，用来进行<strong>数据的重复</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db 3 dup (&#x27;abc&#x27;,&#x27;ABC&#x27;)</span><br><span class="line">;定义了18个字节--&gt;&#x27;abcABCabcABCabcABC&#x27;</span><br><span class="line">;相当于 db &#x27;abcABCabcABCabcABC&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>汇编程序可以分成三个段：数据段、代码段、堆栈段。</p>
+<p>注释以分号;开头</p>
+<p>其中汇编语句的格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[label] mnemonic [operands] [;comment]</span><br></pre></td></tr></table></figure>
+
+<h3 id="堆栈段"><a href="#堆栈段" class="headerlink" title="堆栈段"></a>堆栈段</h3><p><strong>push ax</strong> ： 将ax内容送入栈中，sp&#x3D;sp-2 指向偏移地址（进栈）</p>
+<p><strong>pop ax</strong> ： 将ss:sp指向的内存单元处数据<strong>送入ax寄存器</strong>中，sp&#x3D;sp+2指向当前栈顶下面的单元（出栈）</p>
+<p>当栈满的时候再使用push指令进栈以及当栈空的时候再使用pop指令出栈都会发生栈顶超界。</p>
+<p>pushf：将标志寄存器的值压栈</p>
+<p>popf：从栈中弹出数据，送入标志寄存器中</p>
+<p>初始化代码：（栈就是高地址往低地址生长的）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data,ss:stack</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">	...</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">stack segment</span><br><span class="line">	dw 0,0,0,0...,0  ;在内存分配16个字的空间</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,data</span><br><span class="line">	mov ds,ax  ;设置数据段段地址</span><br><span class="line">	mov ax,stack  </span><br><span class="line">	mov ss,ax     ;设置堆栈段段地址</span><br><span class="line">	mov sp,20h    ;栈初始化，空栈时栈底和栈顶指针sp都是20h(因为分配了16个字，所以是32个字节)</span><br><span class="line">	...</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h3 id="逻辑指令"><a href="#逻辑指令" class="headerlink" title="逻辑指令"></a><strong>逻辑指令</strong></h3><p><strong>and指令</strong> ： 按位进行与运算。(同时为1才能为1)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,01100011B</span><br><span class="line">and al,00111011B  ;作用：可用来给特定的位置清0，将相应位设为0，其余位不变</span><br><span class="line"></span><br><span class="line">执行后：al = 00101011</span><br></pre></td></tr></table></figure>
+
+<p><strong>or指令</strong> ： 按位进行或运算。（同时为0才能为0）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,01100011B</span><br><span class="line">or  al,00111011B  ;作用：可以给特定位置设1，将相应位置设为1，其余位设0</span><br><span class="line"></span><br><span class="line">执行后： al = 01111011B</span><br></pre></td></tr></table></figure>
+
+<p><strong>not指令</strong> : 按位进行非运算。（全部倒转，反码操作）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,01100011B</span><br><span class="line">not al</span><br><span class="line"></span><br><span class="line">执行后：al = 10011100B</span><br></pre></td></tr></table></figure>
+
+<p><strong>xor指令</strong> ： 按位进行异或运算。（异为1，同为0）</p>
+<p>特点：</p>
+<ul>
+<li>与自己异或为全0</li>
+<li>与自己相反的异或为全1</li>
+<li>所有值与0异或保持不变</li>
+<li>所有值与1异或则取反</li>
+</ul>
+<p>作用：</p>
+<ul>
+<li>数据部分取反</li>
+<li>同时清除寄存器及CF</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xor ax,ax  </span><br><span class="line">;执行之后 ax=0，CF=0  （清零操作）</span><br><span class="line">;相当于 mov ax,0  但是速度比mov快 </span><br></pre></td></tr></table></figure>
+
+<h3 id="算术指令"><a href="#算术指令" class="headerlink" title="算术指令"></a><strong>算术指令</strong></h3><p><strong>inc 指令</strong> ： 将操作数加1.（相当于c语言的num++）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inc bx		;32位寄存器  自增1</span><br><span class="line">inc dl		;16位寄存器  自增1</span><br><span class="line">inc [count] ;变量count  自增1</span><br></pre></td></tr></table></figure>
+
+<p><strong>dec 指令</strong> ： 将操作数减1.（相当于c语言的num–）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dec [value]</span><br></pre></td></tr></table></figure>
+
+<p><strong>add&#x2F;sub 指令</strong> ： 简单的加&#x2F;减法指令，用于对字节、字和双字大小的二进制数据进行简单的加&#x2F;减。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add/sub destination,source</span><br></pre></td></tr></table></figure>
+
+<p>add&#x2F;sub 指令可以发生在：</p>
+<ul>
+<li>寄存器 to 寄存器</li>
+<li>内存 to 寄存器</li>
+<li>寄存器 to 内存</li>
+<li>寄存器 to 常量数据</li>
+<li>内存 to 常量数据</li>
+</ul>
+<p><strong>adc 指令</strong> ： 带进位的加法指令，利用CF位上记录的进位值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">adc 操作对象1,操作对象2</span><br><span class="line"></span><br><span class="line">功能：</span><br><span class="line">adc ax,bx</span><br><span class="line">实际上实现的功能是：(ax) = (ax) + (bx) + CF</span><br></pre></td></tr></table></figure>
+
+<p><strong>sbb 指令</strong> ： 带错位减法指令，利用CF位上记录的借位值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">格式：</span><br><span class="line">sbb 操作对象1,操作对象2</span><br><span class="line"></span><br><span class="line">功能：</span><br><span class="line">sbb ax,bx</span><br><span class="line">实际上实现的功能是：(ax) = (ax) - (bx) - CF</span><br></pre></td></tr></table></figure>
+
+<p><strong>mul 指令</strong> ： 乘法指令，对应位数（同为8位或者16位）</p>
+<p>两个字节相乘（8位）：</p>
+<p>被乘数在AL寄存器中，乘数在存储器或者另一个寄存器中。</p>
+<p>结果放在AX中，高8位存储在AH中，低8位存储在AL中。</p>
+<p>两个单字相乘（16位）：</p>
+<p>被乘数在AX寄存器中，乘数在内存或其他存储器中。</p>
+<p>高阶（最左侧）部分存储在DX中，而低阶（最右侧）存储在AX中。</p>
+<p>例子：计算100*10</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov al,100</span><br><span class="line">mov bl,10</span><br><span class="line">mul bl</span><br><span class="line">结果：(ax) = 1000(03E8h)</span><br></pre></td></tr></table></figure>
+
+<p>例子：计算100*10000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mov ax,100</span><br><span class="line">mov bx,10000</span><br><span class="line">mul bx</span><br><span class="line">结果：(ax)=4240H,(dx)= 000FH</span><br><span class="line">(F4240H = 1000000)</span><br></pre></td></tr></table></figure>
+
+<p><strong>div 指令</strong> ： 除法指令。</p>
+<p>当除数为1个字节时：</p>
+<p>除数在寄存器或内存单元中，被除数在AX中。</p>
+<p>结果中的商放在AL中，余数放AH中。</p>
+<p>当除数为1个单字时：</p>
+<p>除数在寄存器或者内存单元中，被除数在DX和AX中。</p>
+<p>结果中的商放在AX中，余数放在DX中。</p>
+<p><strong>shl 指令</strong> ： 逻辑左移指令，将数据向左移位，最后移出的一位写入CF，最低位用0补充。</p>
+<p><strong>sal 指令</strong> ： 算术左移指令，本质与shl相同。</p>
+<p><strong>shr 指令</strong> ：逻辑右移指令，将数据向右移位，最后移出的一位写入CF，最高位用0补充。</p>
+<p><strong>sar 指令</strong> ：算术右移指令，将数据向右移位，最后移出的一位写入CF，最高位用最高位相同的数字补充。</p>
+<h3 id="串传送指令"><a href="#串传送指令" class="headerlink" title="串传送指令"></a>串传送指令</h3><h4 id="movsb（以字节为单位传送）"><a href="#movsb（以字节为单位传送）" class="headerlink" title="movsb（以字节为单位传送）"></a>movsb（以字节为单位传送）</h4><p>将ds:si指向的内存单元送入es:di中</p>
+<p>DF&#x3D;0则si&#x3D;si+1 ；DF&#x3D;1则si &#x3D;si -1</p>
+<h4 id="movsw-以字为单位传送"><a href="#movsw-以字为单位传送" class="headerlink" title="movsw(以字为单位传送)"></a>movsw(以字为单位传送)</h4><p>将ds:si指向的内存单元送入es:di中</p>
+<p>DF&#x3D;0则si&#x3D;si+2 ；DF&#x3D;1则si &#x3D;si -2</p>
+<p><strong>rep是根据cx的值重复执行后面的串传送指令</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rep movsb</span><br><span class="line">;相当于</span><br><span class="line">s:movsb</span><br><span class="line"> loop s</span><br></pre></td></tr></table></figure>
+
+<p>cld 指令：将标志寄存器DF置0</p>
+<p>std 指令：将标志寄存器DF置1</p>
+<p>例子：用串传送指令，将data段的第一个字符串复制到它后面的空间中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">assume ds:data,cs:code</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">	db &#x27;Welcome to masm!&#x27;</span><br><span class="line">	db 16 dup (0)</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,data</span><br><span class="line">	mov ds,ax</span><br><span class="line">	mov si,0  ;ds:si指向data:0</span><br><span class="line">	mov es,ax</span><br><span class="line">	mov di,16 ;es:di指向data:16</span><br><span class="line">	mov cx,16 ;rep16次</span><br><span class="line">	cld  ;DF=0,正向传送</span><br><span class="line">	rep movsb</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h2><p>汇编语言中的条件执行是通过几个循环和分支指令来完成的，这些指令可以更改程序中的控制流。</p>
+<p><strong>CMP 指令</strong> ： 比较两个操作数，从另一个操作数中减去一个操作数，以比较操作数是否相等。它不会干扰目标或源操作数。它与条件跳转指令一起用于决策。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CMP DX,00 ;将DX与0进行比较</span><br><span class="line">JE L7     ;如果相等，则跳转到L7</span><br><span class="line"></span><br><span class="line">L7:...</span><br></pre></td></tr></table></figure>
+
+<p>通常用于比较计数器值是否达到需要循环的次数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inc cx</span><br><span class="line">CMP cx,10  ;比较计数器是否达到10</span><br><span class="line">JLE LP1    ;如果小于等于10则跳转到LP1</span><br></pre></td></tr></table></figure>
+
+<h3 id="无条件跳转-：-JMP-指令"><a href="#无条件跳转-：-JMP-指令" class="headerlink" title="无条件跳转 ： JMP 指令"></a>无条件跳转 ： JMP 指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV  AX, 00    ; 将AX初始化为0</span><br><span class="line">MOV  BX, 00    ; 将BX初始化为0</span><br><span class="line">MOV  CX, 01    ; 初始化CX为1</span><br><span class="line">L20:</span><br><span class="line">ADD  AX, 01    ; 增量AX</span><br><span class="line">ADD  BX, AX    ; 将AX添加到BX</span><br><span class="line">SHL  CX, 1     ; 向左移动CX，这反过来使CX的值翻倍</span><br><span class="line">JMP  L20       ; 重复的语句</span><br></pre></td></tr></table></figure>
+
+<p>（机器码：EB）jmp short 标号，对IP的修改范围为-128~127</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">assume cs:codesg</span><br><span class="line">codesg segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,0</span><br><span class="line">	jmp short s</span><br><span class="line">	add ax,1</span><br><span class="line">  s:inc ax</span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br><span class="line">;在这个程序中其实ax只执行了一次ax+1操作</span><br></pre></td></tr></table></figure>
+
+<p>（机器码：E9）jmp near ptr 标号 ，修改范围为-32769~32767</p>
+<p>（机器码：EA）jmp far ptr 标号，(CS)&#x3D;标号所在段的段地址，（IP）&#x3D;标号所在段中的偏移地址</p>
+<h3 id="条件跳转"><a href="#条件跳转" class="headerlink" title="条件跳转"></a>条件跳转</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>描述</th>
+<th>检测的相关标志位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>je &#x2F; jz  (equal)</td>
+<td>等于则转移</td>
+<td>ZF &#x3D; 1</td>
+</tr>
+<tr>
+<td>jne &#x2F; jnz</td>
+<td>不等于则转移</td>
+<td>ZF &#x3D; 0</td>
+</tr>
+<tr>
+<td>jb  (below)</td>
+<td>低于则转移</td>
+<td>CF &#x3D; 1</td>
+</tr>
+<tr>
+<td>jnb</td>
+<td>不低于则转移</td>
+<td>CF &#x3D; 0</td>
+</tr>
+<tr>
+<td>ja    (above)</td>
+<td>高于则转移</td>
+<td>CF &#x3D; 0,ZF &#x3D; 0</td>
+</tr>
+<tr>
+<td>jna</td>
+<td>不高于则转移</td>
+<td>CF &#x3D; 1 或 ZF &#x3D; 1</td>
+</tr>
+</tbody></table>
+<h2 id="子程序"><a href="#子程序" class="headerlink" title="子程序"></a>子程序</h2><p><img   src="/../images/image-20250526233558707.png"  alt="image-20250526233558707"></p>
+<p><strong>call s</strong> ： 将当前IP或CS和IP压入栈中（压入栈中保留时IP已经指向下一条指令，所以保留的地址指向CALL的下一条指令，RET返回该地址可以继续执行），然后转移</p>
+<p><strong>call far ptr s</strong> : CS寄存器先进栈，IP寄存器后进栈</p>
+<p><strong>ret 指令</strong> ：返回指令，将栈顶一个字节弹出栈送进IP寄存器</p>
+<p><strong>retf 指令</strong> ： 先弹出的送入IP寄存器，后弹出的送入CS寄存器</p>
+<p><img   src="/../images/5c28a5ee9f36d0a6b03407889d8e5f7f_720.png"  alt="img"></p>
+<p><img   src="/../images/e1b95d3f05deeb4da7d84c779370c731_720.png"  alt="img"></p>
+<h2 id="相关程序"><a href="#相关程序" class="headerlink" title="相关程序"></a>相关程序</h2><h3 id="大小写字母转换"><a href="#大小写字母转换" class="headerlink" title="大小写字母转换"></a>大小写字母转换</h3><p>在ASCII编码中，61h表示“a”，41h表示“A”，相差20h。</p>
+<p>“A” : 41H &#x3D; 01000001B</p>
+<p>“a” : 61H &#x3D; 01100001B</p>
+<p>就是第五位不同，所以可以考虑使用xor操作将第5位清零或置一以实现转换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">	db &#x27;BaSiC&#x27;  ;位置在0，转大写</span><br><span class="line">	db &#x27;MinIX&#x27;  ;位置在5，转小写</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,data</span><br><span class="line">	mov ds,ax  ;设置数据段段地址</span><br><span class="line">	</span><br><span class="line">	mov bx,0  ;指针初始化</span><br><span class="line">	mov cx,5  ;循环次数</span><br><span class="line">  s1:mov al,0[bx]  ;读第一个字符</span><br><span class="line">	and al,11011111B  ;将第5位置0，转为大写字母</span><br><span class="line">	mov 0[bx],al   ;写回</span><br><span class="line">	mov al ,5[bx]  ;读一个字符</span><br><span class="line">	or al 00100000B  ;将第五位置1，转为小写字母</span><br><span class="line">	mov 5[bx],al    ;写回</span><br><span class="line">	inc bx  ;指向下一个字符</span><br><span class="line">	loop s1  ;第一次循环</span><br><span class="line">	</span><br><span class="line">	mov ax ,4c00h</span><br><span class="line">	int 21h</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串或内存块内容的批量复制"><a href="#字符串或内存块内容的批量复制" class="headerlink" title="字符串或内存块内容的批量复制"></a>字符串或内存块内容的批量复制</h3><p>例子：用si和di实现将字符串‘welcome to masm!’复制到他后面的数据区中。</p>
+<p>分析：原来数据位置在data:0开始，有16个字节，所以后面的偏移地址为16.用ds:si指向要复制的源始字符串，用ds:di指向复制的目的空间，使用循环进行复制。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code,ds:data</span><br><span class="line"></span><br><span class="line">data segment</span><br><span class="line">	db &#x27;welcome to masm!&#x27;</span><br><span class="line">	db &#x27;................&#x27;</span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,data</span><br><span class="line">	mov ds,ax  ;数据段的段地址</span><br><span class="line">	mov si,0</span><br><span class="line">	mov di,16</span><br><span class="line">	</span><br><span class="line">	mov cx,8</span><br><span class="line">  s:mov ax,[si]</span><br><span class="line">  	mov [di],ax</span><br><span class="line">  	add si,2</span><br><span class="line">  	add di,2</span><br><span class="line">  	loop s</span><br><span class="line">  	</span><br><span class="line">  	mov 4c00h</span><br><span class="line">  	int 21h</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>例子：内存块数据拷贝</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">	dw 0123h,0456h,0789h,0abch,0defh,0fedh,0cbah,0987h</span><br><span class="line">	start:</span><br><span class="line">		mov ax,0</span><br><span class="line">		mov ds,ax  ;段地址</span><br><span class="line">		mov bx,0   ;偏移地址</span><br><span class="line">		</span><br><span class="line">		mov cx,8 ;循环次数</span><br><span class="line">	   s:mov ax,[bx]  ;读取偏移地址的内容</span><br><span class="line">		mov cs:[bx],ax  ;写入内存</span><br><span class="line">		add bx,2</span><br><span class="line">		loop s</span><br><span class="line">		</span><br><span class="line">		mov ax,4c00h</span><br><span class="line">		int 21h</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+
+<h3 id="求一个或多个数的N次方"><a href="#求一个或多个数的N次方" class="headerlink" title="求一个或多个数的N次方"></a>求一个或多个数的N次方</h3><p>例子：计算2的12次方(但是这个add只局限于2的次方)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">	mov ax,2</span><br><span class="line">	mov cx,11</span><br><span class="line">  s:add ax,ax</span><br><span class="line">    loop s</span><br><span class="line">    </span><br><span class="line">    mov ax,4c00h</span><br><span class="line">    int 21h</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>例子：计算4的10次方（可以用于单个数的N次方）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">assume cs:code</span><br><span class="line"></span><br><span class="line">code segment</span><br><span class="line">start:</span><br><span class="line">	mov ax,4</span><br><span class="line">	mov cx,9</span><br><span class="line">  s:mov bx,4</span><br><span class="line">    mul bx</span><br><span class="line">    loop s</span><br><span class="line">    </span><br><span class="line">    mov ax,4c00h</span><br><span class="line">    int 21h</span><br><span class="line">code ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><p>本地环境为Windows，使用的工具有<code>DOSBox</code>、<code>MASM5</code>，8086汇编语言需要在DOS环境下进行，因此需要在电脑上安装一个DOS虚拟机。虚拟机软件选用<code>DOSBox-x 0.83.19</code>，该软件为绿色软件，将压缩包解压后运行文件夹中的<code>DosBox-x</code>程序即可。</p>
 <p>DOS环境搭好后需要安装宏汇编开发包<code>MASM5</code>，具体方法为：</p>
 <p>\1) 在本机硬盘上创建一个DOS目录，如<code>D:\DOS</code> ；</p>
 <p>\2) 将<code>MASM5.RAR</code>复制到该目录并解压 ；</p>
@@ -313,17 +551,17 @@
 <p>\4) 存盘退出，启动虚拟机即可</p>
 <p>可以在<code>DOS</code>盘下建立一个<code>exp</code>目录，将实验程序源代码都存在目录里。源代码的编写用任何文本编辑软件编写均可。</p>
 <p>至此汇编语言开发环境搭建完毕。</p>
-<h1 id="单代码段程序的编写"><a href="#单代码段程序的编写" class="headerlink" title="单代码段程序的编写"></a>单代码段程序的编写</h1><h2 id="编写汇编程序"><a href="#编写汇编程序" class="headerlink" title="编写汇编程序"></a>编写汇编程序</h2><p>在记事本中写入汇编程序，并修改后缀名为.asm，存放在建立的<code>D:\DOS:\exp</code>中</p>
-<h2 id="汇编文件"><a href="#汇编文件" class="headerlink" title="汇编文件"></a>汇编文件</h2><p>点开解压之后的dosbox文件夹，双击exe打开，cd到存放文件的地方，输入masm回车，在之后的语句输入上述已编写的asm文件名（不需要后缀）然后连续敲回车，显示<code>0 Warning/Severe Errors</code>表明汇编成功，生成一个后缀为.obj文件（也可以检查一下masm是否可用）</p>
+<h2 id="单代码段程序的编写"><a href="#单代码段程序的编写" class="headerlink" title="单代码段程序的编写"></a>单代码段程序的编写</h2><h3 id="编写汇编程序"><a href="#编写汇编程序" class="headerlink" title="编写汇编程序"></a>编写汇编程序</h3><p>在记事本中写入汇编程序，并修改后缀名为.asm，存放在建立的<code>D:\DOS:\exp</code>中</p>
+<h3 id="汇编文件"><a href="#汇编文件" class="headerlink" title="汇编文件"></a>汇编文件</h3><p>点开解压之后的dosbox文件夹，双击exe打开，cd到存放文件的地方，输入masm回车，在之后的语句输入上述已编写的asm文件名（不需要后缀）然后连续敲回车，显示<code>0 Warning/Severe Errors</code>表明汇编成功，生成一个后缀为.obj文件（也可以检查一下masm是否可用）</p>
 <p>还可以直接输入 <code>masm  [文件名]</code></p>
 <p>以下是我输入的例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">assume cs:codesg</span><br><span class="line">codesg segment</span><br><span class="line">mov ax, 2000H</span><br><span class="line">mov ss,ax</span><br><span class="line">mov sp, 0</span><br><span class="line">add sp, 10</span><br><span class="line">pop ax</span><br><span class="line">pop bx</span><br><span class="line">push ax</span><br><span class="line">push bx</span><br><span class="line">pop ax</span><br><span class="line">pop bx</span><br><span class="line"></span><br><span class="line">mov ax, 4c00H</span><br><span class="line">int 21H</span><br><span class="line"></span><br><span class="line">codesg ends</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 <p><img   src="/../images/image-20250317210239105.png"  alt="image-20250317210239105"></p>
-<h2 id="连接文件"><a href="#连接文件" class="headerlink" title="连接文件"></a>连接文件</h2><p>在汇编完成的语句后输入link，之后再输入文件名，连续敲回车，显示<code>LINK:warning L4021:no stack segment</code>表明连接成功，可以看到后缀为.exe的文件</p>
+<h3 id="连接文件"><a href="#连接文件" class="headerlink" title="连接文件"></a>连接文件</h3><p>在汇编完成的语句后输入link，之后再输入文件名，连续敲回车，显示<code>LINK:warning L4021:no stack segment</code>表明连接成功，可以看到后缀为.exe的文件</p>
 <p>同样也可以直接输入 <code>link [文件名]</code></p>
 <p><img   src="/../images/image-20250317210338428.png"  alt="image-20250317210338428"></p>
-<h2 id="调试文件"><a href="#调试文件" class="headerlink" title="调试文件"></a>调试文件</h2><p>输入debug [文件名].exe就可以进入调试，在短横线后输入命令即可。</p>
+<h3 id="调试文件"><a href="#调试文件" class="headerlink" title="调试文件"></a>调试文件</h3><p>输入debug [文件名].exe就可以进入调试，在短横线后输入命令即可。</p>
 <p>以下为常用命令：</p>
 <h3 id="r：查看、改变寄存器的内容"><a href="#r：查看、改变寄存器的内容" class="headerlink" title="r：查看、改变寄存器的内容"></a>r：查看、改变寄存器的内容</h3><p>查看就输入r，修改就输入r [需要修改的寄存器名字] ，然后输入修改的数值即可完成。</p>
 <p><img   src="/../images/image-20250317211332992.png"  alt="image-20250317211332992"></p>
@@ -440,7 +678,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">调试文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.1.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.4.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.5.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.4.6.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.4.7.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96"><span class="nav-number">1.</span> <span class="nav-text">汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8-%EF%BC%8814%E4%B8%AA%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">寄存器 （14个）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E6%AE%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">堆栈段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">逻辑指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.3.</span> <span class="nav-text">算术指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">串传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#movsb%EF%BC%88%E4%BB%A5%E5%AD%97%E8%8A%82%E4%B8%BA%E5%8D%95%E4%BD%8D%E4%BC%A0%E9%80%81%EF%BC%89"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">movsb（以字节为单位传送）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#movsw-%E4%BB%A5%E5%AD%97%E4%B8%BA%E5%8D%95%E4%BD%8D%E4%BC%A0%E9%80%81"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">movsw(以字为单位传送)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC-%EF%BC%9A-JMP-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.5.1.</span> <span class="nav-text">无条件跳转 ： JMP 指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC"><span class="nav-number">1.5.2.</span> <span class="nav-text">条件跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.6.</span> <span class="nav-text">子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">相关程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.1.</span> <span class="nav-text">大小写字母转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%96%E5%86%85%E5%AD%98%E5%9D%97%E5%86%85%E5%AE%B9%E7%9A%84%E6%89%B9%E9%87%8F%E5%A4%8D%E5%88%B6"><span class="nav-number">1.7.2.</span> <span class="nav-text">字符串或内存块内容的批量复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84N%E6%AC%A1%E6%96%B9"><span class="nav-number">1.7.3.</span> <span class="nav-text">求一个或多个数的N次方</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.1.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.4.</span> <span class="nav-text">调试文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.5.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.6.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.7.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.8.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.9.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.1.10.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.1.11.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -475,7 +713,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">24.4k</span>
+                    <span class="item-value border-box word">27.7k</span>
                 </span>
             
 
@@ -623,7 +861,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">调试文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.1.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.2.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.4.3.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.4.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.4.5.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.4.6.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.4.7.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96"><span class="nav-number">1.</span> <span class="nav-text">汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8-%EF%BC%8814%E4%B8%AA%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">寄存器 （14个）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">寻址方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%E6%A0%88%E6%AE%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">堆栈段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">逻辑指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.3.</span> <span class="nav-text">算术指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">串传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#movsb%EF%BC%88%E4%BB%A5%E5%AD%97%E8%8A%82%E4%B8%BA%E5%8D%95%E4%BD%8D%E4%BC%A0%E9%80%81%EF%BC%89"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">movsb（以字节为单位传送）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#movsw-%E4%BB%A5%E5%AD%97%E4%B8%BA%E5%8D%95%E4%BD%8D%E4%BC%A0%E9%80%81"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">movsw(以字为单位传送)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC-%EF%BC%9A-JMP-%E6%8C%87%E4%BB%A4"><span class="nav-number">1.5.1.</span> <span class="nav-text">无条件跳转 ： JMP 指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%B7%B3%E8%BD%AC"><span class="nav-number">1.5.2.</span> <span class="nav-text">条件跳转</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.6.</span> <span class="nav-text">子程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.7.</span> <span class="nav-text">相关程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.7.1.</span> <span class="nav-text">大小写字母转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%96%E5%86%85%E5%AD%98%E5%9D%97%E5%86%85%E5%AE%B9%E7%9A%84%E6%89%B9%E9%87%8F%E5%A4%8D%E5%88%B6"><span class="nav-number">1.7.2.</span> <span class="nav-text">字符串或内存块内容的批量复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E4%B8%80%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%9A%84N%E6%AC%A1%E6%96%B9"><span class="nav-number">1.7.3.</span> <span class="nav-text">求一个或多个数的N次方</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BB%A3%E7%A0%81%E6%AE%B5%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E5%86%99"><span class="nav-number">2.1.</span> <span class="nav-text">单代码段程序的编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">编写汇编程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">汇编文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.3.</span> <span class="nav-text">连接文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.4.</span> <span class="nav-text">调试文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#r%EF%BC%9A%E6%9F%A5%E7%9C%8B%E3%80%81%E6%94%B9%E5%8F%98%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.5.</span> <span class="nav-text">r：查看、改变寄存器的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d%EF%BC%9A%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.6.</span> <span class="nav-text">d：查看内存中的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E5%8D%95%E5%85%83%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-number">2.1.7.</span> <span class="nav-text">e：修改内存单元中的内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%88%E9%9C%80%E8%A6%81%E6%8C%87%E6%98%8E%E5%9C%B0%E5%9D%80%E5%92%8C%E8%A6%81%E5%86%99%E5%85%A5%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%89"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">写入数据（需要指明地址和要写入的地址）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%90%E4%B8%AA%E8%AF%A2%E9%97%AE%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">逐个询问修改数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u%EF%BC%9A%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4%E7%BF%BB%E8%AF%91%E6%88%90%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.8.</span> <span class="nav-text">u：将内存中的机器指令翻译成汇编指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%EF%BC%9A%E4%BB%A5%E6%B1%87%E7%BC%96%E7%9A%84%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E5%86%99%E5%85%A5%E6%9C%BA%E5%99%A8%E6%8C%87%E4%BB%A4"><span class="nav-number">2.1.9.</span> <span class="nav-text">a：以汇编的指令格式在内存中写入机器指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t%EF%BC%9A%E5%8D%95%E6%AD%A5%E8%BF%90%E8%A1%8C"><span class="nav-number">2.1.10.</span> <span class="nav-text">t：单步运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#q%EF%BC%9A%E9%80%80%E5%87%BAdebug"><span class="nav-number">2.1.11.</span> <span class="nav-text">q：退出debug</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
