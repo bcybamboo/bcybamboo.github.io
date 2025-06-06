@@ -253,7 +253,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 11 2025 16:39:06 GMT+0800">2025-04-11 16:39:06</span>
+                    <span class="datetime" data-updated="Fri Jun 06 2025 19:51:40 GMT+0800">2025-06-06 19:51:40</span>
                 </span>
             
         
@@ -274,7 +274,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>334 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>412 Words</span>
             </span>
         
         
@@ -312,6 +312,9 @@
 <p>设置分支</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
 
+<p>查看所有分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
 <p>连接远程仓库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;url&gt;</span><br></pre></td></tr></table></figure>
 
@@ -321,6 +324,12 @@
 <p>然后可以在本地进行更改文件</p>
 <p>如果是共创的，更改文件前先拉取</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p>不想处理冲突，强制推送</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin master</span><br><span class="line"></span><br><span class="line">注释： origin远程仓库名，master分支名，-f为force，意为：强行、强制。</span><br></pre></td></tr></table></figure>
+
+<p>将dev分支强制合并到main分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin dev:main</span><br><span class="line">注释：dev:main	本地 dev 分支推送到远程 main 分支</span><br></pre></td></tr></table></figure>
 
 <h2 id="上传流程"><a href="#上传流程" class="headerlink" title="上传流程"></a>上传流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;备注&quot;</span><br><span class="line">git push -u origin main(如果和前面设置的分支一致可以直接git push)</span><br></pre></td></tr></table></figure>
 
@@ -479,7 +488,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">Total words</span>
-                    <span class="item-value border-box word">27.7k</span>
+                    <span class="item-value border-box word">27.8k</span>
                 </span>
             
 
