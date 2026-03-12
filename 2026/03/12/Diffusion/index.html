@@ -9,7 +9,7 @@
     
     <title>
         
-            SAM 2 |
+            DDPM |
         
         Bamboo Traces
     </title>
@@ -223,7 +223,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        SAM 2
+                        DDPM
                     </div>
                 
 
@@ -247,13 +247,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-08-22 12:25:01</span>
+                <span class="datetime">2026-03-12 18:21:42</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Apr 11 2025 16:40:28 GMT+0800">2025-04-11 16:40:28</span>
+                    <span class="datetime" data-updated="Thu Mar 12 2026 19:20:28 GMT+0800">2026-03-12 19:20:28</span>
                 </span>
             
         
@@ -274,12 +274,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>50 Words</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>675 Words</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 Mins</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 Mins</span>
             </span>
         
         
@@ -301,9 +301,34 @@
                     
 
                     
-                         <h1 id="Segment-Anything-in-Images-and-Videos"><a href="#Segment-Anything-in-Images-and-Videos" class="headerlink" title="Segment Anything in Images and Videos"></a>Segment Anything in Images and Videos</h1><h2 id="Introduction-介绍"><a href="#Introduction-介绍" class="headerlink" title="Introduction(介绍)"></a>Introduction(介绍)</h2><p>比起SAM，SAM2可以看作是SAM的拓展，从静态的图像分割，到动态的视频分割。准确度和速度都提升了。</p>
-<p>（未完待续）</p>
-
+                         <h2 id="Abstract-摘要"><a href="#Abstract-摘要" class="headerlink" title="Abstract(摘要)"></a>Abstract(摘要)</h2><p>作者提出了一种生成模型：通过模拟物理中的扩散过程，把图像逐渐加噪声再逐渐去噪。我们发现这种方法在数学上和分数匹配以及朗之万动力学有关。通过优化一种改进的变分目标，我们可以生成高质量图像，并且模型还能逐步恢复图像，类似自回归生成的扩展。</p>
+<blockquote>
+<p>热力学扩散过程：从平衡态 （有结构）-&gt;非平衡态（随机）</p>
+<p>​	就比如把一滴墨水滴进水里：一开始是清晰的，然后慢慢扩散，最后完全变成随机状态</p>
+<p>分数（score）：数据分布的梯度方向。往哪个方向移动，数据会变得更像真实数据（探索）</p>
+<p>去噪分数匹配（Denoising Score Matching）：模型去学习一个去噪方向。</p>
+<p>朗之万动力学（Langevin Dynamics）：是一个采样算法，意思是：</p>
+<p>每一步都朝概率更大的方向移动并且加一点随机噪声，然后反复迭代得到符合分布的样本。（应该就是完成前面原图变纯噪声的这一步）</p>
+</blockquote>
+<h2 id="Discussion（讨论）"><a href="#Discussion（讨论）" class="headerlink" title="Discussion（讨论）"></a>Discussion（讨论）</h2><p>优点：</p>
+<ul>
+<li>高质量样本生成</li>
+<li>diffusion可以用于渐进式图像压缩</li>
+</ul>
+<p>​		直观理解：扩散模型生成图像就是从纯噪声变成模糊图像，最后变成清晰图像，所以可以看成一种逐层恢复细节的压缩编码。作者认为随着图像分辨率和全球网络流量的增加，这种技术可能对互联网数据传输很重要。</p>
+<ul>
+<li><p>扩散模型还可以学习数据的结构，用于下游任务，例如：图像分类、强化学习、特征提取，其实和自监督学习有点类似。因为扩散模型可以在无标签数据上训练。</p>
+</li>
+<li><p>扩散模型适用于创意领域，例如：艺术创作、摄影、音乐，现在的AI绘画基本就是这一类的应用。</p>
+</li>
+</ul>
+<p>缺点&#x2F;风险：</p>
+<ul>
+<li>伪造内容（Deepfake），降低了造假成本，可能被用于政治操纵、虚假新闻、网络欺诈等。</li>
+<li>随着生成模型进步，检测越来越困难。CNN模型通常还有一些小缺陷（纹理异常、频率分布异常等）可以识别出来，但是生成模型难检测。</li>
+<li>生成模型会继承训练数据的偏见。很多数据集是互联网自动抓取，所以包含很多偏见（性别偏见、种族偏见、文化偏见等），如果生成模型被大量使用然后再进入互联网就会形成偏见循环强化。</li>
+</ul>
+<h2 id="Introduction（导言）"><a href="#Introduction（导言）" class="headerlink" title="Introduction（导言）"></a>Introduction（导言）</h2>
                     
                 </div>
 
@@ -354,31 +379,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2024/08/28/%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"
-                                   title="进程调度算法"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">进程调度算法</span>
-                                        <span class="post-nav-item">Prev posts</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/08/20/SAM/"
-                                   title="SAM"
+                                   href="/2025/05/10/Vue-study/"
+                                   title="Vue_study"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">SAM</span>
+                                        <span class="post-nav-title-item text-ellipsis">Vue_study</span>
                                         <span class="post-nav-item">Next posts</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -406,7 +415,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Segment-Anything-in-Images-and-Videos"><span class="nav-number">1.</span> <span class="nav-text">Segment Anything in Images and Videos</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction(介绍)</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">Abstract(摘要)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discussion%EF%BC%88%E8%AE%A8%E8%AE%BA%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">Discussion（讨论）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction%EF%BC%88%E5%AF%BC%E8%A8%80%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">Introduction（导言）</span></a></li></ol>
     </div>
 </div>
 
@@ -589,7 +598,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Segment-Anything-in-Images-and-Videos"><span class="nav-number">1.</span> <span class="nav-text">Segment Anything in Images and Videos</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction(介绍)</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract-%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">Abstract(摘要)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Discussion%EF%BC%88%E8%AE%A8%E8%AE%BA%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">Discussion（讨论）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction%EF%BC%88%E5%AF%BC%E8%A8%80%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">Introduction（导言）</span></a></li></ol>
     </div>
 </div>
 
